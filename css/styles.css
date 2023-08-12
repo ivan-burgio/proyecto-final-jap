@@ -228,7 +228,7 @@ input.input-login {
   border: inset 4px black;
 }
 
-button.button-login {
+input.button-login {
   margin: 30px;
   width: 400px;
   height: 50px;
@@ -241,3 +241,28 @@ button.button-login:hover {
 }
 
 /*Final diseño del login*/
+
+/* Inicio diseño alertas del Login */
+
+.alerta {
+  padding: 1rem 1rem 1rem 2rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  max-width: 80rem;
+}
+
+&.error {
+    background-color: lighten(red, 55%);
+    border-left: .5rem solid red;
+    color: red;
+}
+
+&.exito {
+  background-color: lighten(green, 55%);
+  border-left: .5rem solid green;
+  color: green;
+}
+
+/* Final diseño alertas del Login */
