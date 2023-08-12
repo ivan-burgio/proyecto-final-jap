@@ -246,21 +246,21 @@ button.button-login:hover {
 
 .alerta {
   padding: 1rem 1rem 1rem 2rem;
-  text-transform: uppercase;
   font-weight: 900;
   margin: 1rem 0;
   font-size: 1.2rem;
   max-width: 80rem;
+  font-family: 'Verdana', serif;
 }
 
-&.error {
-    background-color: lighten(red, 55%);
+.alerta.error {
+    background-color:rgb(255, 196, 196);
     border-left: .5rem solid red;
     color: red;
 }
 
-&.exito {
-  background-color: lighten(green, 55%);
+.alerta.exito {
+  background-color: rgb(188, 241, 188);
   border-left: .5rem solid green;
   color: green;
 }
