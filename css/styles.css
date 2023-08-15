@@ -228,12 +228,14 @@ input.input-login {
   border: inset 4px black;
 }
 
-button.button-login {
+div.button-login {
   margin: 30px;
-  width: 400px;
-  height: 50px;
   font-size: 30px;
+}
+
+div button{
   border: outset 5px black;
+  width: 400px;
 }
 
 button.button-login:hover {
