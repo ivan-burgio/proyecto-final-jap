@@ -228,14 +228,11 @@ input.input-login {
   border: inset 4px black;
 }
 
-div.button-login {
-  margin: 30px;
-  font-size: 30px;
-}
-
-div button{
+div input.button-login{
   border: outset 5px black;
   width: 400px;
+  margin: 30px;
+  font-size: 30px;
 }
 
 button.button-login:hover {
@@ -243,3 +240,28 @@ button.button-login:hover {
 }
 
 /*Final diseño del login*/
+
+/* Inicio diseño alertas del Login */
+
+.alerta {
+  padding: 1rem 1rem 1rem 2rem;
+  font-weight: 900;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  max-width: 80rem;
+  font-family: 'Verdana', serif;
+}
+
+.alerta.error {
+    background-color:rgb(255, 196, 196);
+    border-left: .5rem solid red;
+    color: red;
+}
+
+.alerta.exito {
+  background-color: rgb(188, 241, 188);
+  border-left: .5rem solid green;
+  color: green;
+}
+
+/* Final diseño alertas del Login */
