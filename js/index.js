@@ -1,3 +1,8 @@
+
+if (!localStorage.getItem("email") && !localStorage.getItem("password")){
+    window.location.href='login.html'
+}
+
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
