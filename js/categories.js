@@ -141,3 +141,61 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 });
+
+// Codigo del input search
+// NO FUNCIONA
+const catID = localStorage.getItem("catID");
+const productContainer = document.getElementById("product-list-container");
+
+fetch(PRODUCTS_URL + catID + EXT_TYPE)
+  .then(response => response.json())
+  .then(result => {
+    if (result.catID == catID && result.products.length > 0) {
+      const searchInput = document.getElementById("searchInput");
+      
+      // Filtrar los productos en base a la búsqueda
+      searchInput.addEventListener("input", function () {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredProducts = result.products.filter(product =>
+          product.name.toLowerCase().includes(searchTerm)
+        );
+        
+        // Limpiar el contenedor de productos
+        productContainer.innerHTML = "";
+        
+        // Mostrar los productos filtrados
+        filteredProducts.forEach(producto => {
+          const productCard = `
+            <div class="row list-group-item d-flex justify-content-start">
+              <div class="col-3">
+                <img src="${producto.image}" alt="${producto.name}" style="max-width: 100%; height: auto;">
+              </div>
+              <div class="col-7">
+                <h3>${producto.name} - USD ${producto.cost}</h3>
+                <p>${producto.description}</p>
+              </div>
+              <div class="col-2 text-muted text-end">
+                <small>${producto.soldCount} vendidos</small>
+              </div>
+            </div>
+          `;
+          productContainer.innerHTML += productCard;
+        });
+
+        if (filteredProducts.length === 0) {
+          const alertProducts = `
+            <div class="alert alert-success" role="alert">
+              <h4 class="alert-heading">¡No hay artículos!</h4>
+              <p>No se encontraron productos para la búsqueda.</p>
+            </div>
+          `;
+          productContainer.innerHTML += alertProducts;
+        }
+      });
+    } else {
+      // Código para manejar la falta de productos o error en la solicitud
+    }
+  })
+  .catch(error => {
+    console.error('Error en la solicitud:', error);
+  });
