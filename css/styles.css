@@ -265,3 +265,34 @@ button.button-login:hover {
 }
 
 /* Final diseño alertas del Login */
+
+/* Inicio estilos search */
+
+.contenedor-orden {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.contenedor-orden label {
+  display: flex;
+  align-items: center;
+}
+
+.search__input {
+  padding: 10px;
+    font-size: 16px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    width: 300px;
+    transition: border-color 0.3s ease;
+}
+
+.search__input:focus {
+  border-color: #2980b9;
+  outline: none;
+}
+
+/* Final estilos search */
