@@ -91,7 +91,8 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentCategoriesArray = resultObj.data
-            showCategoriesList()
+            showCategoriesList();
+            handleSearchFilter(currentCategoriesArray); // Llamar a la función de filtro
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
@@ -143,59 +144,22 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 
 // Codigo del input search
-// NO FUNCIONA
-const catID = localStorage.getItem("catID");
-const productContainer = document.getElementById("product-list-container");
+function handleSearchFilter(categoriesArray) {
+  // Obtener referencia al campo de búsqueda por su ID
+  const searchInput = document.getElementById("searchInput");
 
-fetch(PRODUCTS_URL + catID + EXT_TYPE)
-  .then(response => response.json())
-  .then(result => {
-    if (result.catID == catID && result.products.length > 0) {
-      const searchInput = document.getElementById("searchInput");
-      
-      // Filtrar los productos en base a la búsqueda
-      searchInput.addEventListener("input", function () {
-        const searchTerm = searchInput.value.toLowerCase();
-        const filteredProducts = result.products.filter(product =>
-          product.name.toLowerCase().includes(searchTerm)
-        );
-        
-        // Limpiar el contenedor de productos
-        productContainer.innerHTML = "";
-        
-        // Mostrar los productos filtrados
-        filteredProducts.forEach(producto => {
-          const productCard = `
-            <div class="row list-group-item d-flex justify-content-start">
-              <div class="col-3">
-                <img src="${producto.image}" alt="${producto.name}" style="max-width: 100%; height: auto;">
-              </div>
-              <div class="col-7">
-                <h3>${producto.name} - USD ${producto.cost}</h3>
-                <p>${producto.description}</p>
-              </div>
-              <div class="col-2 text-muted text-end">
-                <small>${producto.soldCount} vendidos</small>
-              </div>
-            </div>
-          `;
-          productContainer.innerHTML += productCard;
-        });
+  // Agregar un evento para escuchar cuando se levante una tecla
+  searchInput.addEventListener("keyup", function() {
+      // Obtener el valor del campo de búsqueda y limpiar espacios en blanco
+      let searchText = this.value.trim().toLowerCase();
 
-        if (filteredProducts.length === 0) {
-          const alertProducts = `
-            <div class="alert alert-success" role="alert">
-              <h4 class="alert-heading">¡No hay artículos!</h4>
-              <p>No se encontraron productos para la búsqueda.</p>
-            </div>
-          `;
-          productContainer.innerHTML += alertProducts;
-        }
+      // Filtrar categorías según el texto de búsqueda
+      let filteredCategories = categoriesArray.filter(function(category){
+          // Verificar si el nombre de la categoría contiene el texto de búsqueda en minúsculas
+          return category.name.toLowerCase().includes(searchText);
       });
-    } else {
-      // Código para manejar la falta de productos o error en la solicitud
-    }
-  })
-  .catch(error => {
-    console.error('Error en la solicitud:', error);
+
+      // Mostrar las categorías filtradas
+      sortAndShowCategories(currentSortCriteria, filteredCategories);
   });
+}
