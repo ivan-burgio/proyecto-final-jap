@@ -1,5 +1,11 @@
 const mail = document.querySelector('#email');
 const password = document.querySelector('#password');
+let mailcortado = localStorage.getItem("email").split("@") // separa a apartir del @ del email
+
+//obtengo el email loggeado y lo pongo en correoUsuario para poder utilizarlo 
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("correoUsuario").textContent = mailcortado[0];
+});
 
 function crearAlerta(mensaje, tipo, referencia) {
     const alerta = document.createElement('DIV');
