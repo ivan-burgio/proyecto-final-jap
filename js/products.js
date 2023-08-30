@@ -4,7 +4,9 @@ let currentProductsArray = [];
 let minCost = undefined;
 let maxCost = undefined;
 let botonFiltrado;
-
+const ORDER_ASC_BY_NAME = "AZ";
+const ORDER_DESC_BY_NAME = "ZA";
+const ORDER_BY_PROD_COUNT = "Cant.";
 
   function getDataProduct(){
     fetch(PRODUCTS_URL + catID + EXT_TYPE)
@@ -64,11 +66,11 @@ document.addEventListener("DOMContentLoaded", function(e){
   getDataProduct();
 
   document.getElementById("sortAsc").addEventListener("click", function(){
-      sortAndShowCategories(ORDER_ASC_BY_NAME);
+      sortAndShowCategories(ORDER_ASC_BY_NAME, currentProductsArray);
   });
 
   document.getElementById("sortDesc").addEventListener("click", function(){
-      sortAndShowCategories(ORDER_DESC_BY_NAME);
+      sortAndShowCategories(ORDER_DESC_BY_NAME, currentProductsArray);
   });
 
   document.getElementById("sortByCost").addEventListener("click", function(){
@@ -110,3 +112,46 @@ document.addEventListener("DOMContentLoaded", function(e){
       showProductList();
   });
 });
+
+function sortAndShowCategories(sortCriteria, categoriesArray){
+  currentSortCriteria = sortCriteria;
+
+  if(categoriesArray != undefined){
+      currentCategoriesArray = categoriesArray;
+  }
+
+  currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
+  productContainer.innerHTML = "";
+  //Muestro las categorías ordenadas
+  showProductList();
+
+}
+
+function sortCategories(criteria, array){
+  debugger;
+  let result = [];
+  if (criteria === ORDER_ASC_BY_NAME)
+  {
+      result = array.sort(function(a, b) {
+          if ( a.cost < b.cost ){ return -1; }
+          if ( a.cost > b.cost ){ return 1; }
+          return 0;
+      });
+  }else if (criteria === ORDER_DESC_BY_NAME){
+      result = array.sort(function(a, b) {
+          if ( a.cost > b.cost ){ return -1; }
+          if ( a.cost < b.cost ){ return 1; }
+          return 0;
+      });
+  }else if (criteria === ORDER_BY_PROD_COUNT){
+      result = array.sort(function(a, b) {
+          let asoldCount = parseInt(a.soldCount);
+          let bsoldCount = parseInt(b.soldCount);
+
+          if ( asoldCount > bsoldCount ){ return -1; }
+          if ( asoldCount < bsoldCount ){ return 1; }
+          return 0;
+      });
+  }
+
+  return result;}
