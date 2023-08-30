@@ -73,6 +73,7 @@ function showCategoriesList(){
 }
 
 function sortAndShowCategories(sortCriteria, categoriesArray){
+    debugger;
     currentSortCriteria = sortCriteria;
 
     if(categoriesArray != undefined){
@@ -153,9 +154,8 @@ document.addEventListener("DOMContentLoaded", function(e){
  
   // Agregar un evento para escuchar cuando se levante una tecla
   const searchInput = document.getElementById("searchInput");
-
+debugger;
   searchInput.addEventListener("keyup", function() {
-    debugger;
     
       // Obtener el valor del campo de búsqueda y limpiar espacios en blanco
       let searchText = this.value.trim().toLowerCase();
@@ -167,7 +167,8 @@ document.addEventListener("DOMContentLoaded", function(e){
       });
 
       // Mostrar las categorías filtradas
-      sortAndShowCategories(currentSortCriteria, filteredCategories);
+      currentCategoriesArray = filteredCategories
+      showCategoriesList(currentCategoriesArray);
   });
 //}
 

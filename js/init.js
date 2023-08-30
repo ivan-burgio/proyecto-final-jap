@@ -38,3 +38,33 @@ let getJSONData = function(url){
         return result;
     });
 }
+  function showAlert(icon, message, type) {
+    debugger;
+      const alertDiv = document.createElement('div');
+      alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x`;
+
+      const svg = document.createElement('svg');
+      svg.className = 'bi flex-shrink-0 me-2';
+      svg.innerHTML = `<use xlink:href="${icon}"></use>`;
+
+      const closeButton = document.createElement('button');
+      closeButton.type = 'button';
+      closeButton.className = 'btn-close';
+      closeButton.setAttribute('data-bs-dismiss', 'alert');
+      closeButton.setAttribute('aria-label', 'Close');
+
+      const alertMessage = document.createElement('div');
+      alertMessage.className = 'd-flex align-items-center';
+      alertMessage.appendChild(svg);
+      alertMessage.appendChild(document.createTextNode(message));
+      alertMessage.appendChild(closeButton);
+
+      alertDiv.appendChild(alertMessage);
+
+      document.body.appendChild(alertDiv);
+
+      // Eliminar la alerta después de 5 segundos (ajusta el tiempo según sea necesario)
+      setTimeout(function() {
+        alertDiv.remove();
+     }, 2000);
+  }
