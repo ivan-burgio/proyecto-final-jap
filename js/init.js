@@ -38,3 +38,13 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+let emailGuardado = localStorage.getItem("email"); //obtiene el email y lo guarda
+
+document.addEventListener("DOMContentLoaded", function () { 
+    // Verificar si emailGuardado no es null
+  if (emailGuardado !== null) {
+      // Dividir la dirección de correo electrónico si no es null
+      let mailcortado = emailGuardado.split("@");
+      document.getElementById("correoUsuario").textContent = mailcortado[0];
+  }});
