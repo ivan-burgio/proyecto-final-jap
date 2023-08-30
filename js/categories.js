@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             currentCategoriesArray = resultObj.data
             arregloFiltrar = resultObj.data
             showCategoriesList();
-            handleSearchFilter(currentCategoriesArray)
+            searchCategories(currentCategoriesArray)
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     // Codigo del input search
-    function handleSearchFilter(categoriesArray) {
+    function searchCategories(categoriesArray) {
         // Obtener referencia al campo de búsqueda por su ID
         const searchInput = document.getElementById("searchInput");
 
@@ -163,6 +163,4 @@ document.addEventListener("DOMContentLoaded", function(e){
             sortAndShowCategories(currentSortCriteria, filteredCategories);
         });
     }
-    
-
 })
