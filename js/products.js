@@ -48,7 +48,7 @@ let botonFiltrado;
         });
     }else{
       const alertProducts = `
-        <div class="alert alert-success" role="alert">
+        <div class="alert-empty-product" role="alert">
           <h4 class="alert-heading">¡No hay artículos!</h4>
           <p>En este momento no se encuentra ningún articulo disponible para esta categoría.</p>
         <hr>

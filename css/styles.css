@@ -389,3 +389,10 @@ button.button-login:hover {
 }
 
 /* Final estilos search */
+/*Inicio estilo alertas categorías vacías*/
+
+.alert-empty-product {
+  color: #ffb543;
+}
+
+/*Fin estilo alertas categorías vacías*/
