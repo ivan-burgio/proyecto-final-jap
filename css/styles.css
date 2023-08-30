@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-*{
+*:not(i){
   scroll-behavior: smooth;
   background-color:RGB(248,249,250)
 }
@@ -389,3 +389,10 @@ button.button-login:hover {
 }
 
 /* Final estilos search */
+/*Inicio estilo alertas categorías vacías*/
+
+.alert-empty-product {
+  color: #ffb543;
+}
+
+/*Fin estilo alertas categorías vacías*/
