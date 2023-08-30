@@ -2,7 +2,8 @@ const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
 let currentCategoriesArray = [];
-let currentSortCriteria = undefined;
+let arregloFiltrar = [];
+let currentSortCriteria = ORDER_ASC_BY_NAME;
 let minCount = undefined;
 let maxCount = undefined;
 
@@ -80,7 +81,7 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 
     currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
 
-    //Muestro las categorías ordenadas
+    // Muestro las categorías ordenadas
     showCategoriesList();
 }
 
@@ -91,8 +92,9 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentCategoriesArray = resultObj.data
+            arregloFiltrar = resultObj.data
             showCategoriesList();
-            handleSearchFilter(currentCategoriesArray); // Llamar a la función de filtro
+            handleSearchFilter(currentCategoriesArray)
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
@@ -141,25 +143,26 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCategoriesList();
     });
-});
 
-// Codigo del input search
-function handleSearchFilter(categoriesArray) {
-  // Obtener referencia al campo de búsqueda por su ID
-  const searchInput = document.getElementById("searchInput");
+    // Codigo del input search
+    function handleSearchFilter(categoriesArray) {
+        // Obtener referencia al campo de búsqueda por su ID
+        const searchInput = document.getElementById("searchInput");
 
-  // Agregar un evento para escuchar cuando se levante una tecla
-  searchInput.addEventListener("keyup", function() {
-      // Obtener el valor del campo de búsqueda y limpiar espacios en blanco
-      let searchText = this.value.trim().toLowerCase();
+        searchInput.addEventListener("keyup", function(event) {
+            // Obtener el valor del campo de búsqueda y limpiar espacios en blanco
+            let searchText = event.target.value.trim().toLowerCase();
 
-      // Filtrar categorías según el texto de búsqueda
-      let filteredCategories = categoriesArray.filter(function(category){
-          // Verificar si el nombre de la categoría contiene el texto de búsqueda en minúsculas
-          return category.name.toLowerCase().includes(searchText);
-      });
+            // Filtrar categorías según el texto de búsqueda
+            let filteredCategories = categoriesArray.filter(function(category){
+                // Verificar si el nombre de la categoría contiene el texto de búsqueda en minúsculas
+                return category.name.toLowerCase().includes(searchText);
+            });
 
-      // Mostrar las categorías filtradas
-      sortAndShowCategories(currentSortCriteria, filteredCategories);
-  });
-}
+            // Mostrar las categorías filtradas
+            sortAndShowCategories(currentSortCriteria, filteredCategories);
+        });
+    }
+    
+
+})
