@@ -186,17 +186,19 @@ h3:hover{
 }
 
 .btn-c{
+  display: flex;
+  justify-content: center;
   height: 30px;
   width: 100px;
 }
 .btn-c label{
- text-align: center;
-  }
-  .btn-c:hover{
-    background-color:rgba(250, 183, 60, 0.8);
-    box-shadow: 0 0 20px var(--color);
-    color: #fff;
-  }
+  text-align: center;
+}
+.btn-c:hover{
+  background-color:rgba(250, 183, 60, 0.8);
+  box-shadow: 0 0 20px var(--color);
+  color: #fff;
+}
 .search_input{
   border-radius: 5px;
 }
@@ -224,6 +226,8 @@ h3:hover{
   /*------------------------PRODUCTS---------------*/
 
   .btn-p{
+    display: flex;
+    justify-content: center;
     height: 30px;
     width: 100px;
   }
@@ -473,6 +477,7 @@ button.button-login:hover {
 }
 
 /* Final estilos search */
+
 /*Inicio estilo alertas categorías vacías*/
 
 .alert-empty-product {

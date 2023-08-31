@@ -37,13 +37,22 @@
   <!------------------------------------------------------------------------------------------------------------>
 
   <main class="pb-5 container">
+    <div class="titulo-cat">
+      <h2>Productos</h2>
+      <p class="lead">Verás aquí todas los productos de la categoria seleccionada.</p>
+    </div>
     <div class="row">
-      <div class="col contenedor-orden d-flex justify-content-end">
+      <div class="col contenedor-orden">
+
+        <div class="search">
+          <input type="search" class="search__input" id="searchInputP" placeholder="Buscar...">
+        </div>
+
         <div class="btn-group btn-group-toggle mb-2 mt-2" data-bs-toggle="buttons">
           <input type="radio" class="btn-check" name="options" id="sortAsc">
-          <label class="btn-p border border-warning rounded" for="sortAsc"><i class="fas fa-sort-amount-down mr-1"></i>$</label>
+          <label class="btn-p border border-warning rounded" for="sortAsc"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
           <input type="radio" class="btn-check" name="options" id="sortDesc">
-          <label class="btn-p border border-warning rounded" for="sortDesc"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
+          <label class="btn-p border border-warning rounded" for="sortDesc"><i class="fas fa-sort-amount-down mr-1"></i>$</label>
           <input type="radio" class="btn-check" name="options" id="sortByCost" checked>
           <label class="btn-p border border-warning rounded text-center" for="sortByCost"><i class="fas fa-sort-amount-down mr-1"></i>rel</label>
         </div>
