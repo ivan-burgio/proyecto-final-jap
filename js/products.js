@@ -9,71 +9,82 @@ const ORDER_ASC_BY_COST = "menor a mayor";
 const ORDER_DESC_BY_COST = "mayor a menor";
 const ORDER_BY_PROD_SOLDCOUNT = "Cant.";
 
-  function getDataProduct(){
-    //Consulta a la API que trae los datos 'Producto' a mostrar
-    fetch(PRODUCTS_URL + catID + EXT_TYPE)
-      .then(response => response.json())
-      .then(result => {
-          currentProductsArray = result.products;
-          showProductList();
-      })
-      .catch(error => {
-        console.error('Error en la solicitud:', error);
-      });
+function getDataProduct(){
+  //Consulta a la API que trae los datos 'Producto' a mostrar
+  fetch(PRODUCTS_URL + catID + EXT_TYPE)
+    .then(response => response.json())
+    .then(result => {
+        currentProductsArray = result.products;
+        showProductList();
+        searchProducts(currentProductsArray);
+    })
+    .catch(error => {
+      console.error('Error en la solicitud:', error);
+    });
+}
+
+//Función que inserta la estructura HTML con los datos de producto en el contenedor div 
+function showProductList(productsArray) {
+  // Si no se proporciona un array de productos, usamos el array completo
+  const productsToDisplay = productsArray || currentProductsArray;
+
+  // Limpiamos el contenido del contenedor de productos
+  productContainer.innerHTML = '';
+
+  if (productsToDisplay.length !== 0) {
+    let count = 0;
+    productsToDisplay.forEach(producto => {
+      let productCard = '';
+      // Filtramos por rango de precio si es necesario
+      if (
+        ((minCost === undefined) || (minCost !== undefined && parseInt(producto.cost) >= minCost)) &&
+        ((maxCost === undefined) || (maxCost !== undefined && parseInt(producto.cost) <= maxCost))
+      ) {
+        productCard = `
+          <div class="row list-group-item d-flex justify-content-start">
+            <div class="col-3">
+              <img src="${producto.image}" alt="${producto.name}" style="max-width: 100%; height: auto;">
+            </div>
+            <div class="col-7">
+              <h3>${producto.name} - USD ${producto.cost}</h3>
+              <p>${producto.description}</p>
+            </div>
+            <div class="col-2 text-muted text-end">
+              <small>${producto.soldCount} vendidos</small>
+            </div>
+          </div>`;
+        productContainer.innerHTML += productCard;
+        count += 1;
+      }
+    });
+
+    if (count === 0) {
+      // No hay productos en este rango
+    }
+  } else {
+    // No hay productos disponibles
   }
+}
 
-  //Función que inserta la estructura HTML con los datos de producto en el contenedor div 
-  function showProductList(){
-    if(currentProductsArray.length !== 0){ //Valida que el array no esté vacio
-      let count       = 0;
-        currentProductsArray.forEach(producto => { //Recorre los elementos del array
-          let productCard = "";
-          //Si corresponde filtra por rango de precio, sino muestra todo el listado
-          if (((minCost == undefined) || (minCost != undefined && parseInt(producto.cost) >= minCost)) &&
-              ((maxCost == undefined) || (maxCost != undefined && parseInt(producto.cost) <= maxCost))){
-                productCard = `
-                  <div class="row list-group-item d-flex justify-content-start">
-                    <div class="col-3">
-                      <img src="${producto.image}" alt="${producto.name}" style="max-width: 100%; height: auto;">
-                    </div>
-                    <div class="col-7">
-                      <h3>${producto.name} - USD ${producto.cost}</h3>
-                      <p>${producto.description}</p>
-                    </div>
-                    <div class="col-2 text-muted text-end">
-                        <small>${producto.soldCount} vendidos</small>
-                    </div>
-                  </div>`;
-                  //Inserta la estructura HTML productCard en el contenedor
-          productContainer.innerHTML += productCard;
-          count += 1;
-        }
-                 
-        });
-       
-        if(count == 0){
-          alertNoData();
-        }
-    }else{ //Si el array es vacio, muestra que no hay datos
-      alertNoData();
-    }      
-  }
+  
 
-  function alertNoData(){
-    alert("No hay productos en este rango");
+// Esta funcion spamea muchas alertas, una detras de otra, revisar luego
+function alertNoData(){
+  alert("No hay productos en este rango");
 
-    //Se marca indefinida las variables
-    minCost = undefined;
-    maxCost = undefined;
+  //Se marca indefinida las variables
+  minCost = undefined;
+  maxCost = undefined;
 
-    //Se llama a la funcion que inserta la estructura HTML en el contenedor
-    showProductList();
-  }
+  //Se llama a la funcion que inserta la estructura HTML en el contenedor
+  showProductList();
+}
 
 document.addEventListener("DOMContentLoaded", function(e){
 
   //Función que trae los datos de la API
   getDataProduct();
+  searchProducts(currentProductsArray);
 
   //sortAsc sortDesc sortByCost botones que ordena el listado
   document.getElementById("sortAsc").addEventListener("click", function(){
@@ -177,4 +188,25 @@ function sortProducts(criteria, array){
   }
 
   return result;
+}
+
+function searchProducts(productsArray) {
+  const productSearchInput = document.getElementById("searchInputP");
+
+  productSearchInput.addEventListener("keyup", function(event) {
+    const searchText = event.target.value.trim().toLowerCase();
+
+    // Filtramos los productos según el texto de búsqueda
+    const filteredProducts = filterProducts(productsArray, searchText);
+
+    // Mostramos los productos filtrados
+    showProductList(filteredProducts);
+  });
+}
+
+
+function filterProducts(productsArray, searchText) {
+  return productsArray.filter(function(product) {
+    return product.name.toLowerCase().includes(searchText);
+  });
 }

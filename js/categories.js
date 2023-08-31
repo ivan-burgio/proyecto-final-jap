@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             currentCategoriesArray = resultObj.data
             arregloFiltrar = resultObj.data
             showCategoriesList();
-            searchCategories(currentCategoriesArray)
+            searchCategories(currentCategoriesArray);
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
@@ -145,10 +145,10 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 
-    // Codigo del input search
+    // Codigo del input search en Cateories
     function searchCategories(categoriesArray) {
         // Obtener referencia al campo de búsqueda por su ID
-        const searchInput = document.getElementById("searchInput");
+        const searchInput = document.getElementById("searchInputC");
 
         searchInput.addEventListener("keyup", function(event) {
             // Obtener el valor del campo de búsqueda y limpiar espacios en blanco
