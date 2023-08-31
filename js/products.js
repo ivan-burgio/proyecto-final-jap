@@ -190,23 +190,30 @@ function sortProducts(criteria, array){
   return result;
 }
 
+// Función para buscar y filtrar productos
 function searchProducts(productsArray) {
+  // Obtener referencia al campo de búsqueda por su ID
   const productSearchInput = document.getElementById("searchInputP");
 
+  // Agregar un evento para escuchar cuando se levante una tecla en el campo de búsqueda
   productSearchInput.addEventListener("keyup", function(event) {
+    // Obtener el valor del campo de búsqueda y limpiar espacios en blanco, convirtiéndolo a minúsculas
     const searchText = event.target.value.trim().toLowerCase();
 
     // Filtramos los productos según el texto de búsqueda
     const filteredProducts = filterProducts(productsArray, searchText);
 
-    // Mostramos los productos filtrados
+    // Mostramos los productos filtrados en la lista
     showProductList(filteredProducts);
   });
 }
 
-
+// Función para filtrar productos en función del texto de búsqueda
 function filterProducts(productsArray, searchText) {
+  // Utilizamos la función 'filter' en el array de productos para filtrar aquellos que coincidan con el texto de búsqueda
   return productsArray.filter(function(product) {
+    // Comparamos el nombre del producto convertido a minúsculas con el texto de búsqueda también en minúsculas
+    // Si el nombre contiene el texto de búsqueda, se mantendrá en el array filtrado
     return product.name.toLowerCase().includes(searchText);
   });
 }
