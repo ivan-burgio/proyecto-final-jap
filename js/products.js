@@ -1,12 +1,16 @@
 const catID = localStorage.getItem("catID");
-const productContainer = document.getElementById("product-list-container"); 
+const productContainer = document.getElementById("product-list-container");
+const script = document.getElementById("script");
 let currentProductsArray = [];
 let minCost = undefined;
 let maxCost = undefined;
 let botonFiltrado;
-
+const ORDER_ASC_BY_COST = "menor a mayor";
+const ORDER_DESC_BY_COST = "mayor a menor";
+const ORDER_BY_PROD_SOLDCOUNT = "Cant.";
 
   function getDataProduct(){
+    //Consulta a la API que trae los datos 'Producto' a mostrar
     fetch(PRODUCTS_URL + catID + EXT_TYPE)
       .then(response => response.json())
       .then(result => {
@@ -18,16 +22,13 @@ let botonFiltrado;
       });
   }
 
+  //Función que inserta la estructura HTML con los datos de producto en el contenedor div 
   function showProductList(){
-    if(currentProductsArray.length !== 0){
-
-      if(botonFiltrado === true){
-        const productCard = `
-          <div class="row list-group-item d-flex justify-content-start"></div>`;
-          productContainer.innerHTML = productCard;
-      }
-        currentProductsArray.forEach(producto => {
+    if(currentProductsArray.length !== 0){ //Valida que el array no esté vacio
+      let count       = 0;
+        currentProductsArray.forEach(producto => { //Recorre los elementos del array
           let productCard = "";
+          //Si corresponde filtra por rango de precio, sino muestra todo el listado
           if (((minCost == undefined) || (minCost != undefined && parseInt(producto.cost) >= minCost)) &&
               ((maxCost == undefined) || (maxCost != undefined && parseInt(producto.cost) <= maxCost))){
                 productCard = `
@@ -43,57 +44,75 @@ let botonFiltrado;
                         <small>${producto.soldCount} vendidos</small>
                     </div>
                   </div>`;
-          } 
-        productContainer.innerHTML += productCard;
+                  //Inserta la estructura HTML productCard en el contenedor
+          productContainer.innerHTML += productCard;
+          count += 1;
+        }
+                 
         });
-    }else{
-      const alertProducts = `
-        <div class="alert-empty-product" role="alert">
-          <h4 class="alert-heading">¡No hay artículos!</h4>
-          <p>En este momento no se encuentra ningún articulo disponible para esta categoría.</p>
-        <hr>
-          <p class="mb-0">Si deseas vender un articulo, dirígete a nuestra zona de <a href="sell.html" target="_blank">venta</a>.</p>
-        </div>`;
-        productContainer.innerHTML += alertProducts;
-        console.error('No se encontraron productos para la categoría especificada.');
+       
+        if(count == 0){
+          alertNoData();
+        }
+    }else{ //Si el array es vacio, muestra que no hay datos
+      alertNoData();
     }      
+  }
+
+  function alertNoData(){
+    alert("No hay productos en este rango");
+
+    //Se marca indefinida las variables
+    minCost = undefined;
+    maxCost = undefined;
+
+    //Se llama a la funcion que inserta la estructura HTML en el contenedor
+    showProductList();
   }
 
 document.addEventListener("DOMContentLoaded", function(e){
 
+  //Función que trae los datos de la API
   getDataProduct();
 
+  //sortAsc sortDesc sortByCost botones que ordena el listado
   document.getElementById("sortAsc").addEventListener("click", function(){
-      sortAndShowCategories(ORDER_ASC_BY_NAME);
+      sortAndShowProducts(ORDER_ASC_BY_COST);
   });
 
   document.getElementById("sortDesc").addEventListener("click", function(){
-      sortAndShowCategories(ORDER_DESC_BY_NAME);
+      sortAndShowProducts(ORDER_DESC_BY_COST);
   });
 
   document.getElementById("sortByCost").addEventListener("click", function(){
-      sortAndShowCategories(ORDER_BY_PROD_COUNT);
+      sortAndShowProducts(ORDER_BY_PROD_SOLDCOUNT);
   });
 
   document.getElementById("clearRangeFilter").addEventListener("click", function(){
+
+      //Se borra lo ingresado por el usuario en los campos rango de precio
       document.getElementById("rangeFilterCostMin").value = "";
       document.getElementById("rangeFilterCostMax").value = "";
 
+      //Se marca indefinida las variables
       minCost = undefined;
       maxCost = undefined;
-
+    
+      //Se llama a la funcion que inserta la estructura HTML en el contenedor
       showProductList();
   });
 
   document.getElementById("rangeFilterCost").addEventListener("click", function(){
-      //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-      //de productos por categoría.
+      //Obtengo el mínimo y máximo de los intervalos para filtrar por precio
 
-      botonFiltrado = true;
+      //Contenedor listado queda vacio, para luego mostrar los datos filtrados
+      productContainer.innerHTML = '';
 
+      //Guardamos los datos de los campo minimo y maximo
       minCost = document.getElementById("rangeFilterCostMin").value;
       maxCost = document.getElementById("rangeFilterCostMax").value;
 
+      //Se guarda como nro entero o indefinido segun corresponda
       if ((minCost != undefined) && (minCost != "") && (parseInt(minCost)) >= 0){
           minCost = parseInt(minCost);
       }
@@ -107,6 +126,55 @@ document.addEventListener("DOMContentLoaded", function(e){
       else{
           maxCost = undefined;
       }
+
+      //Llamamos a la función que que muestra el listado
       showProductList();
   });
 });
+
+function sortAndShowProducts(sortCriteria, productsArray){
+  currentSortCriteria = sortCriteria;
+
+  if(productsArray != undefined){
+    currentProductsArray = productsArray;
+  }
+
+  //Se llama a la función que ordena el array
+  currentProductsArray = sortProducts(currentSortCriteria, currentProductsArray);
+  productContainer.innerHTML = "";
+
+  //Muestro los productos ordenadaos
+  showProductList();
+
+}
+
+function sortProducts(criteria, array){
+  //Ordena el array que luego se va a mostrar, segun el boton cliceado
+  let result = [];
+
+  if (criteria === ORDER_ASC_BY_COST)
+  {
+      result = array.sort(function(a, b) {
+          if ( a.cost < b.cost ){ return -1; }
+          if ( a.cost > b.cost ){ return 1; }
+          return 0;
+      });
+  }else if (criteria === ORDER_DESC_BY_COST){
+      result = array.sort(function(a, b) {
+          if ( a.cost > b.cost ){ return -1; }
+          if ( a.cost < b.cost ){ return 1; }
+          return 0;
+      });
+  }else if (criteria === ORDER_BY_PROD_SOLDCOUNT){
+      result = array.sort(function(a, b) {
+          let asoldCount = parseInt(a.soldCount);
+          let bsoldCount = parseInt(b.soldCount);
+
+          if ( asoldCount > bsoldCount ){ return -1; }
+          if ( asoldCount < bsoldCount ){ return 1; }
+          return 0;
+      });
+  }
+
+  return result;
+}

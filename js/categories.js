@@ -73,6 +73,7 @@ function showCategoriesList(){
 }
 
 function sortAndShowCategories(sortCriteria, categoriesArray){
+    debugger;
     currentSortCriteria = sortCriteria;
 
     if(categoriesArray != undefined){
