@@ -13,7 +13,10 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+
+  <!------------------------------------------------------------------------------------------------------------------------------------------->
+
+  <nav class="navbar navbar-expand-lg navbar-dark  pb-2">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,8 +34,10 @@
       </div>
     </div>
   </nav>
+<!------------------------------------------------------------------------------------------------------------------------------------------->
+
   <main class="pb-5">
-    <div class="text-center p-4">
+    <div class="titulo-cat">
       <h2>Categorías</h2>
       <p class="lead">Verás aquí todas las categorías del sitio.</p>
     </div>
@@ -42,16 +47,24 @@
           <div class="search">
             <input type="search" class="search__input" id="searchInput" placeholder="Buscar...">
           </div>
+
+
+
+          <div class="btn-group btn-group-toggle mb-2 mt-2" data-bs-toggle="buttons">
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+
             <input type="radio" class="btn-check" name="options" id="sortAsc">
-            <label class="btn btn-light" for="sortAsc">A-Z</label>
+            <label class="btn-c border border-warning rounded" for="sortAsc">A-Z</label>
             <input type="radio" class="btn-check" name="options" id="sortDesc">
-            <label class="btn btn-light" for="sortDesc">Z-A</label>
+            <label class="btn-c border border-warning rounded" for="sortDesc">Z-A</label>
             <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-            <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+            <label class="btn-c border border-warning rounded" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
           </div>
         </div>
       </div>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------->
+
       <div class="row">
         <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
           <div class="row container p-0 m-0">
@@ -66,15 +79,18 @@
             </div>
             <div class="col-3 p-0">
               <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                <button class="btn-filtro btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                <button class="btn-filtro" id="clearRangeFilter">Limpiar</button>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!------------------------------------------------------------------------------------------------------------------------------------------->
+
       <div class="row">
-        <div class="list-group" id="cat-list-container">
+        <div class="list-groupc shadow " id="cat-list-container">
         </div>
       </div>
     </div>
@@ -86,6 +102,9 @@
       </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
+
+    <!------------------------------------------------------------------------------------------------------------------------------------------->
+
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
