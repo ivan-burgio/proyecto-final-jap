@@ -186,24 +186,24 @@ h3:hover{
 }
 
 .btn-c{
-  height: 25px;
+  height: 30px;
   width: 100px;
 }
+.btn-group{
+  align-items: center;
+  text-align: center;
+  margin: 0 center;
+  position: center;
+}
   .btn-c label{
-align-items: center;
+ text-align: center;
   }
   .btn-c:hover{
     background-color:rgba(250, 183, 60, 0.8);
     box-shadow: 0 0 20px var(--color);
     color: #fff;
   }
-.btn-group i{
-  position: center;
-  align-items: center;
-  background-color: transparent;
-}
-
-.search__input{
+.search_input{
   border-radius: 5px;
 }
 .btn-filtro{
