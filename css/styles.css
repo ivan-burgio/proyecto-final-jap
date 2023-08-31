@@ -168,6 +168,23 @@ h3:hover{
   transition: all 0.6s ease;
   }
 
+.titulo-cat{
+  text-align: center;
+  align-items:center;
+  justify-content: center;
+  background-image: url('../img/diseño_fm.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+.titulo-cat h2{
+  background-color: transparent;
+}
+.titulo-cat p{
+  background-color: transparent;
+}
+
 .btn-c{
   height: 25px;
   width: 100px;
@@ -190,6 +207,7 @@ align-items: center;
   border-radius: 5px;
 }
 .btn-filtro{
+  color: #000000;
   font-family: 'Poppins';
   margin-right: 2px;
   border: 1px solid rgba(250, 183, 60, 0.8);;
