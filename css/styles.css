@@ -189,13 +189,7 @@ h3:hover{
   height: 30px;
   width: 100px;
 }
-.btn-group{
-  align-items: center;
-  text-align: center;
-  margin: 0 center;
-  position: center;
-}
-  .btn-c label{
+.btn-c label{
  text-align: center;
   }
   .btn-c:hover{
@@ -226,6 +220,29 @@ h3:hover{
 }
 
   /*FIN de Categorias*/
+
+  /*------------------------PRODUCTS---------------*/
+
+  .btn-p{
+    height: 30px;
+    width: 100px;
+  }
+  .btn-p label{
+   text-align: center;
+    }
+    .btn-p:hover{
+      background-color:rgba(250, 183, 60, 0.8);
+      box-shadow: 0 0 20px var(--color);
+      color: #fff;
+    }
+
+    #product-list-container{
+      border-radius: 3px rgba(250, 183, 60, 0.8) solid;
+      padding: 0;
+      
+    }
+
+   /*----------------------Fin de PRODUCTS---------------*/
 footer {
   padding-top: 2rem;
   padding-bottom: 3rem;
