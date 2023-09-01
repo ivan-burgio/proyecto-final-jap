@@ -38,7 +38,6 @@ function showProductList(currentProductsFilter) {
 
   // Limpiamos el contenido del contenedor de productos
   productContainer.innerHTML = '';
-  debugger;
   let valor = false;
   if (productsToDisplay.length !== 0) {
     productsToDisplay.forEach(producto => {
@@ -68,12 +67,12 @@ function showProductList(currentProductsFilter) {
     });
     
     if(count == 0){
-      alertNoData();    
+      //alertNoData();    //Función por arreglar
     }
 
   } else {
     // No hay productos disponibles
-    alertNoData();
+    //alertNoData(); //Funcion por arreglar
   }
 
 
@@ -81,7 +80,6 @@ function showProductList(currentProductsFilter) {
 }
 
 function colorCelda(valor){
-debugger;
    minCost = document.getElementById("rangeFilterCostMin");
    maxCost = document.getElementById("rangeFilterCostMax");
 
@@ -111,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 
   //Función que trae los datos de la API
   getDataProduct();
-  //debugger;
   //searchProducts(currentProductsArray);
 
   //sortAsc sortDesc sortByCost botones que ordena el listado
@@ -174,7 +171,6 @@ document.addEventListener("DOMContentLoaded", function(e){
     // Obtener referencia al campo de búsqueda por su ID
     const searchInput = document.getElementById("searchInputP");
     searchInput.addEventListener("keyup", function(event) {
-      debugger;
         // Obtener el valor del campo de búsqueda y limpiar espacios en blanco
         let searchText = event.target.value.trim().toLowerCase();
 
@@ -257,34 +253,3 @@ function sortProducts(criteria, array){
 
   return result;
 }
-
-/*// Función para buscar y filtrar productos
-function searchProducts(productsArray) {
-  debugger;
-
-  // Obtener referencia al campo de búsqueda por su ID
-  const productSearchInput = document.getElementById("searchInputP");
-
-  // Agregar un evento para escuchar cuando se levante una tecla en el campo de búsqueda
-  productSearchInput.addEventListener("keyup", function(event) {
-    // Obtener el valor del campo de búsqueda y limpiar espacios en blanco, convirtiéndolo a minúsculas
-    const searchText = event.target.value.trim().toLowerCase();
-
-    // Filtramos los productos según el texto de búsqueda
-    const filteredProducts = filterProducts(productsArray, searchText);
-    console.log(filteredProducts);
-    // Mostramos los productos filtrados en la lista
-    showProductList(filteredProducts);
-  });
-}
-
-// Función para filtrar productos en función del texto de búsqueda
-function filterProducts(productsArray, searchText) {
-  debugger;
-  // Utilizamos la función 'filter' en el array de productos para filtrar aquellos que coincidan con el texto de búsqueda
-  return productsArray.filter(function(product) {
-    // Comparamos el nombre del producto convertido a minúsculas con el texto de búsqueda también en minúsculas
-    // Si el nombre contiene el texto de búsqueda, se mantendrá en el array filtrado
-    return product.name.toLowerCase().includes(searchText);
-  });
-}*/
