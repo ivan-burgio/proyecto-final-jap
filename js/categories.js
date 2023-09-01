@@ -41,11 +41,18 @@ function setCatID(id) {
     window.location = "products.html"
 }
 
-function showCategoriesList(){
+function showCategoriesList(currentCategoriesFilter){
+
+    let categoriesToDisplay;
+    if(currentCategoriesFilter != undefined){
+        categoriesToDisplay = currentCategoriesFilter;
+    }else{
+        categoriesToDisplay = currentCategoriesArray;
+    }
 
     let htmlContentToAppend = "";
-    for(let i = 0; i < currentCategoriesArray.length; i++){
-        let category = currentCategoriesArray[i];
+    for(let i = 0; i < categoriesToDisplay.length; i++){
+        let category = categoriesToDisplay[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
@@ -72,18 +79,22 @@ function showCategoriesList(){
     }
 }
 
-function sortAndShowCategories(sortCriteria, categoriesArray){
-    debugger;
+function sortAndShowCategories(sortCriteria){
+
     currentSortCriteria = sortCriteria;
 
-    if(categoriesArray != undefined){
-        currentCategoriesArray = categoriesArray;
+    let arrayCategoriesFilter;
+    //Si hay datos ya filtrados por el buscador toma esos sino, todo el listado
+    if(arregloFiltrar != undefined || arregloFiltrar.length !== 0){
+        arrayCategoriesFilter = arregloFiltrar;
+    }else{
+        arrayCategoriesFilter = currentCategoriesArray;
     }
 
-    currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
+    dataSorted = sortCategories(currentSortCriteria, arrayCategoriesFilter);
 
     // Muestro las categorías ordenadas
-    showCategoriesList();
+    showCategoriesList(dataSorted);
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -93,10 +104,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentCategoriesArray = resultObj.data
-            arregloFiltrar = resultObj.data
             showCategoriesList();
-            searchCategories(currentCategoriesArray);
-            //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
 
@@ -119,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         minCount = undefined;
         maxCount = undefined;
 
-        showCategoriesList();
+        showCategoriesList(arregloFiltrar); //arregloFiltrar por si hay datos ya filtrados por el buscador
     });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
@@ -142,26 +150,33 @@ document.addEventListener("DOMContentLoaded", function(e){
             maxCount = undefined;
         }
 
-        showCategoriesList();
+        showCategoriesList(arregloFiltrar); //arregloFiltrar por si hay datos ya filtrados por el buscador
     });
 
-    // Codigo del input search en Cateories
-    function searchCategories(categoriesArray) {
-        // Obtener referencia al campo de búsqueda por su ID
-        const searchInput = document.getElementById("searchInputC");
+ 
+    // Obtener referencia al campo de búsqueda por su ID
+    const searchInput = document.getElementById("searchInputC");
 
         searchInput.addEventListener("keyup", function(event) {
+        
             // Obtener el valor del campo de búsqueda y limpiar espacios en blanco
             let searchText = event.target.value.trim().toLowerCase();
-
+            
             // Filtrar categorías según el texto de búsqueda
-            let filteredCategories = categoriesArray.filter(function(category){
+            let filteredCategories = currentCategoriesArray.filter(function(category){
                 // Verificar si el nombre de la categoría contiene el texto de búsqueda en minúsculas
                 return category.name.toLowerCase().includes(searchText);
             });
 
+            //Array Gral para que quede guardada la busqueda y se trabaje en ella ej para ordenar
+            arregloFiltrar = filteredCategories;
+
             // Mostrar las categorías filtradas
-            sortAndShowCategories(currentSortCriteria, filteredCategories);
+            if(arregloFiltrar.length !== 0){
+                searchInput.style.borderColor = "#3498db";
+                showCategoriesList(arregloFiltrar);
+            }else{
+                searchInput.style.borderColor = "red";
+            }
         });
-    }
 })

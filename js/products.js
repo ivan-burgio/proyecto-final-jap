@@ -2,9 +2,9 @@ const catID = localStorage.getItem("catID");
 const productContainer = document.getElementById("product-list-container");
 const script = document.getElementById("script");
 let currentProductsArray = [];
+let arregloFiltrar = [];
 let minCost = undefined;
 let maxCost = undefined;
-let botonFiltrado;
 const ORDER_ASC_BY_COST = "menor a mayor";
 const ORDER_DESC_BY_COST = "mayor a menor";
 const ORDER_BY_PROD_SOLDCOUNT = "Cant.";
@@ -16,7 +16,7 @@ function getDataProduct(){
     .then(result => {
         currentProductsArray = result.products;
         showProductList();
-        searchProducts(currentProductsArray);
+        //searchProducts(currentProductsArray);
     })
     .catch(error => {
       console.error('Error en la solicitud:', error);
@@ -24,15 +24,23 @@ function getDataProduct(){
 }
 
 //Función que inserta la estructura HTML con los datos de producto en el contenedor div 
-function showProductList(productsArray) {
-  // Si no se proporciona un array de productos, usamos el array completo
-  const productsToDisplay = productsArray || currentProductsArray;
+function showProductList(currentProductsFilter) {
+
+  
+  let count = 0; 
+  let productsToDisplay;
+  // Si no se proporciona un array filtrado de productos, usamos el array completo
+  if(currentProductsFilter != undefined && currentProductsFilter.length != 0){
+    productsToDisplay = currentProductsFilter;
+  }else{
+    productsToDisplay = currentProductsArray;
+  }
 
   // Limpiamos el contenido del contenedor de productos
   productContainer.innerHTML = '';
-
+  debugger;
+  let valor = false;
   if (productsToDisplay.length !== 0) {
-    let count = 0;
     productsToDisplay.forEach(producto => {
       let productCard = '';
       // Filtramos por rango de precio si es necesario
@@ -54,19 +62,38 @@ function showProductList(productsArray) {
             </div>
           </div>`;
         productContainer.innerHTML += productCard;
+       
         count += 1;
       }
     });
-
-    if (count === 0) {
-      // No hay productos en este rango
+    
+    if(count == 0){
+      alertNoData();    
     }
+
   } else {
     // No hay productos disponibles
+    alertNoData();
   }
+
+
+
 }
 
+function colorCelda(valor){
+debugger;
+   minCost = document.getElementById("rangeFilterCostMin");
+   maxCost = document.getElementById("rangeFilterCostMax");
+
+  if(valor == 0){
+    minCost.style.borderColor = "red";
+    maxCost.style.borderColor = "red";
+  }else if(valor == 1){
+    minCost.style.borderColor = "#3498db";
+    maxCost.style.borderColor = "#3498db";
+  }
   
+}
 
 // Esta funcion spamea muchas alertas, una detras de otra, revisar luego
 function alertNoData(){
@@ -77,14 +104,15 @@ function alertNoData(){
   maxCost = undefined;
 
   //Se llama a la funcion que inserta la estructura HTML en el contenedor
-  showProductList();
+  showProductList(arregloFiltrar);
 }
 
 document.addEventListener("DOMContentLoaded", function(e){
 
   //Función que trae los datos de la API
   getDataProduct();
-  searchProducts(currentProductsArray);
+  //debugger;
+  //searchProducts(currentProductsArray);
 
   //sortAsc sortDesc sortByCost botones que ordena el listado
   document.getElementById("sortAsc").addEventListener("click", function(){
@@ -110,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function(e){
       maxCost = undefined;
     
       //Se llama a la funcion que inserta la estructura HTML en el contenedor
-      showProductList();
+      showProductList(arregloFiltrar); //arregloFiltrar por si hay datos ya filtrados por el buscador
   });
 
   document.getElementById("rangeFilterCost").addEventListener("click", function(){
@@ -139,23 +167,63 @@ document.addEventListener("DOMContentLoaded", function(e){
       }
 
       //Llamamos a la función que que muestra el listado
-      showProductList();
+      showProductList(arregloFiltrar); //arregloFiltrar por si hay datos ya filtrados por el buscador
   });
+
+
+    // Obtener referencia al campo de búsqueda por su ID
+    const searchInput = document.getElementById("searchInputP");
+    searchInput.addEventListener("keyup", function(event) {
+      debugger;
+        // Obtener el valor del campo de búsqueda y limpiar espacios en blanco
+        let searchText = event.target.value.trim().toLowerCase();
+
+        // Filtrar productos según el texto de búsqueda
+        let filteredProducts = currentProductsArray.filter(function(product){
+            // Verificar si el nombre de la categoría contiene el texto de búsqueda en minúsculas
+            return product.name.toLowerCase().includes(searchText);
+        });
+
+
+         //Array Gral para que quede guardada la busqueda y se trabaje en ella ej para ordenar
+         arregloFiltrar = filteredProducts;
+
+        // Mostrar los productos filtrados
+        if(arregloFiltrar.length !== 0){
+          searchInput.style.borderColor = "#3498db";
+          showProductList(arregloFiltrar);
+        }else{
+          searchInput.style.borderColor = "red";
+        }
+
+        // Mostrar los productos filtrados
+        //sortAndShowProducts(filteredProducts);
+    });
+
 });
 
-function sortAndShowProducts(sortCriteria, productsArray){
+function sortAndShowProducts(sortCriteria){
+
   currentSortCriteria = sortCriteria;
 
-  if(productsArray != undefined){
+ /*if(productsArray != undefined){
     currentProductsArray = productsArray;
+  }*/
+
+  let arrayProductsFilter;
+  //Si hay datos ya filtrados por el buscador toma esos sino, todo el listado
+  if(arregloFiltrar != undefined || arregloFiltrar.length !== 0){
+    arrayProductsFilter = arregloFiltrar;
+  }else{
+    arrayProductsFilter = currentCategoriesArray;
   }
 
   //Se llama a la función que ordena el array
-  currentProductsArray = sortProducts(currentSortCriteria, currentProductsArray);
-  productContainer.innerHTML = "";
+  dataSorted = sortProducts(currentSortCriteria, arrayProductsFilter);
+  //productContainer.innerHTML = "";
 
   //Muestro los productos ordenadaos
-  showProductList();
+  showProductList(dataSorted);
 
 }
 
@@ -190,8 +258,10 @@ function sortProducts(criteria, array){
   return result;
 }
 
-// Función para buscar y filtrar productos
+/*// Función para buscar y filtrar productos
 function searchProducts(productsArray) {
+  debugger;
+
   // Obtener referencia al campo de búsqueda por su ID
   const productSearchInput = document.getElementById("searchInputP");
 
@@ -202,7 +272,7 @@ function searchProducts(productsArray) {
 
     // Filtramos los productos según el texto de búsqueda
     const filteredProducts = filterProducts(productsArray, searchText);
-
+    console.log(filteredProducts);
     // Mostramos los productos filtrados en la lista
     showProductList(filteredProducts);
   });
@@ -210,10 +280,11 @@ function searchProducts(productsArray) {
 
 // Función para filtrar productos en función del texto de búsqueda
 function filterProducts(productsArray, searchText) {
+  debugger;
   // Utilizamos la función 'filter' en el array de productos para filtrar aquellos que coincidan con el texto de búsqueda
   return productsArray.filter(function(product) {
     // Comparamos el nombre del producto convertido a minúsculas con el texto de búsqueda también en minúsculas
     // Si el nombre contiene el texto de búsqueda, se mantendrá en el array filtrado
     return product.name.toLowerCase().includes(searchText);
   });
-}
+}*/
