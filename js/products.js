@@ -16,7 +16,6 @@ function getDataProduct(){
     .then(result => {
         currentProductsArray = result.products;
         showProductList();
-        //searchProducts(currentProductsArray);
     })
     .catch(error => {
       console.error('Error en la solicitud:', error);
@@ -79,7 +78,7 @@ function showProductList(currentProductsFilter) {
 
 }
 
-function colorCelda(valor){
+function colorCelda(valor){ //Funcion por arreglar
    minCost = document.getElementById("rangeFilterCostMin");
    maxCost = document.getElementById("rangeFilterCostMax");
 
@@ -109,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 
   //Función que trae los datos de la API
   getDataProduct();
-  //searchProducts(currentProductsArray);
 
   //sortAsc sortDesc sortByCost botones que ordena el listado
   document.getElementById("sortAsc").addEventListener("click", function(){
@@ -191,32 +189,23 @@ document.addEventListener("DOMContentLoaded", function(e){
         }else{
           searchInput.style.borderColor = "red";
         }
-
-        // Mostrar los productos filtrados
-        //sortAndShowProducts(filteredProducts);
     });
 
 });
 
 function sortAndShowProducts(sortCriteria){
-
   currentSortCriteria = sortCriteria;
-
- /*if(productsArray != undefined){
-    currentProductsArray = productsArray;
-  }*/
 
   let arrayProductsFilter;
   //Si hay datos ya filtrados por el buscador toma esos sino, todo el listado
-  if(arregloFiltrar != undefined || arregloFiltrar.length !== 0){
+  if(arregloFiltrar != undefined && arregloFiltrar.length !== 0){
     arrayProductsFilter = arregloFiltrar;
   }else{
-    arrayProductsFilter = currentCategoriesArray;
+    arrayProductsFilter = currentProductsArray;
   }
 
   //Se llama a la función que ordena el array
   dataSorted = sortProducts(currentSortCriteria, arrayProductsFilter);
-  //productContainer.innerHTML = "";
 
   //Muestro los productos ordenadaos
   showProductList(dataSorted);

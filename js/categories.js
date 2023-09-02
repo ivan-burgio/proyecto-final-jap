@@ -44,7 +44,7 @@ function setCatID(id) {
 function showCategoriesList(currentCategoriesFilter){
 
     let categoriesToDisplay;
-    if(currentCategoriesFilter != undefined){
+    if(currentCategoriesFilter != undefined && currentCategoriesFilter.length !== 0){
         categoriesToDisplay = currentCategoriesFilter;
     }else{
         categoriesToDisplay = currentCategoriesArray;
@@ -85,7 +85,7 @@ function sortAndShowCategories(sortCriteria){
 
     let arrayCategoriesFilter;
     //Si hay datos ya filtrados por el buscador toma esos sino, todo el listado
-    if(arregloFiltrar != undefined || arregloFiltrar.length !== 0){
+    if(arregloFiltrar != undefined && arregloFiltrar.length !== 0){
         arrayCategoriesFilter = arregloFiltrar;
     }else{
         arrayCategoriesFilter = currentCategoriesArray;
@@ -131,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
+        
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de productos por categoría.
         minCount = document.getElementById("rangeFilterCountMin").value;
