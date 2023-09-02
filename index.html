@@ -12,67 +12,75 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark  pb-2">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
+        <ul class="navbar-nav w-100 justify-content-between flex">
+          <li class="nav-item"> <a class="nav-link active" href="index.html">Inicio <ion-icon name="home-outline"></ion-icon></a></li>
+          <li class="nav-item"> <a class="nav-link" href="categories.html">Categorías <ion-icon name="compass-outline"></ion-icon></a></li>
+          <li class="nav-item"> <a class="nav-link" href="sell.html">Vender <ion-icon name="pricetag-outline"></ion-icon></a></li>
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
+            <a class="nav-link" href="my-profile.html">Bienvenido <span id="correoUsuario"></span></a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <main>
+
+    <!---------------------------------------------------------------------------------------------------------------------->
     <div class="jumbotron text-center"></div>
-    <div class="album py-5 bg-light">
+    <div class="album py-5">
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="autos">
+            <div class="card custom-card custom-shadow-orange cursor-active" id="autos">
               <img class="bd-placeholder-img card-img-top" src="img/cars_index.jpg"
-                alt="Imgagen representativa de la categoría 'Autos'">
-              <h3 class="m-3">Autos</h3>
+                alt="Imagen representativa de la categoría 'Autos'">
+              <h3 class="m-0">Autos</h3>
               <div class="card-body">
                 <p class="card-text">Los mejores precios en autos 0 kilómetro, de alta y media gama.</p>
               </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="juguetes">
-              <img class="bd-placeholder-img card-img-top" src="img/toys_index.jpg"
-                alt="Imgagen representativa de la categoría 'Juguetes'">
-              <h3 class="m-3">Juguetes</h3>
-              <div class="card-body">
-                <p class="card-text">Encuentra aquí los mejores precios para niños/as de cualquier edad.</p>
               </div>
             </div>
+
+            <!-------------------------------------------------------------------------------------------------------------------------->
+            <div class="col-md-4">
+            <div class= "card custom-card custom-shadow-orange cursor-active" id="juguetes">
+                <img class="bd-placeholder-img card-img-top" src="img/toys_index.jpg" alt="Imagen representativa de la categoría 'Juguetes'">
+               <h3 class="m-0">Juguetes</h3>
+            <div class="card-body">
+                 <p class="card-text">Encuentra aquí los mejores precios para niños/as de cualquier edad.</p>
+            </div>
           </div>
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="muebles">
+        </div>
+        
+            
+            
+            <!-------------------------------------------------------------------------------------------------------------------------->
+            
+            <div class="col-md-4">
+            <div class="card custom-card custom-shadow-orange cursor-active" id="muebles">
               <img class="bd-placeholder-img card-img-top" src="img/furniture_index.jpg"
-                alt="Imgagen representativa de la categoría 'Muebles'">
-              <h3 class="m-3">Muebles</h3>
+              alt="Imagen representativa de la categoría 'Muebles'">
+              <h3 class="m-0">Muebles</h3>
               <div class="card-body">
                 <p class="card-text">Muebles antiguos, nuevos y para ser armados por uno mismo.</p>
               </div>
             </div>
           </div>
         </div>
+          </div>
+        </div>
+  
+
+<!-------------------------------------------------------------------------------------------------------------------------->
+
         <div class="row">
-          <a class="btn btn-light btn-lg btn-block" href="categories.html">Y mucho más!</a>
+          <a class="btn" href="categories.html">Y mucho más!</a>
         </div>
       </div>
     </div>
@@ -82,12 +90,19 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
+      <div class="final">
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
+    </div>
   </footer>
+
+  <!------------------------------------------------------------------------------------------------------------------------>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/login.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

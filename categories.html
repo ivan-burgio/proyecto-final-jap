@@ -13,47 +13,55 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+
+  <!------------------------------------------------------------------------------------------------------------------------------------------->
+
+  <nav class="navbar navbar-expand-lg navbar-dark  pb-2">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
+        <ul class="navbar-nav w-100 justify-content-between flex">
+          <li class="nav-item"> <a class="nav-link active" href="index.html">Inicio <ion-icon name="home-outline"></ion-icon></a></li>
+          <li class="nav-item"> <a class="nav-link" href="categories.html">Categorías <ion-icon name="compass-outline"></ion-icon></a></li>
+          <li class="nav-item"> <a class="nav-link" href="sell.html">Vender <ion-icon name="pricetag-outline"></ion-icon></a></li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
+            <a class="nav-link" href="my-profile.html">Bienvenido <span id="correoUsuario"></span></a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+<!------------------------------------------------------------------------------------------------------------------------------------------->
+
   <main class="pb-5">
-    <div class="text-center p-4">
+    <div class="titulo-cat">
       <h2>Categorías</h2>
       <p class="lead">Verás aquí todas las categorías del sitio.</p>
     </div>
     <div class="container">
       <div class="row">
-        <div class="col text-end">
-          <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+        <div class="col contenedor-orden">
+
+          <div class="search">
+            <input type="search" class="search__input" id="searchInputC" placeholder="Buscar...">
+          </div>
+
+          <div class="btn-group btn-group-toggle " data-bs-toggle="buttons">
             <input type="radio" class="btn-check" name="options" id="sortAsc">
-            <label class="btn btn-light" for="sortAsc">A-Z</label>
+            <label class="btn-c border border-warning rounded" for="sortAsc">A-Z</label>
             <input type="radio" class="btn-check" name="options" id="sortDesc">
-            <label class="btn btn-light" for="sortDesc">Z-A</label>
+            <label class="btn-c border border-warning rounded" for="sortDesc">Z-A</label>
             <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-            <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+            <label class="btn-c border border-warning rounded" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
           </div>
         </div>
       </div>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------->
+
       <div class="row">
         <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
           <div class="row container p-0 m-0">
@@ -61,22 +69,25 @@
               <p class="font-weight-normal text-end my-2">Cant.</p>
             </div>
             <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" min=0>
             </div>
             <div class="col">
               <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
             </div>
             <div class="col-3 p-0">
               <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                <button class="btn-filtro btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                <button class="btn-filtro" id="clearRangeFilter">Limpiar</button>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!------------------------------------------------------------------------------------------------------------------------------------------->
+
       <div class="row">
-        <div class="list-group" id="cat-list-container">
+        <div class="list-groupc shadow " id="cat-list-container">
         </div>
       </div>
     </div>
@@ -88,6 +99,9 @@
       </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
+
+    <!------------------------------------------------------------------------------------------------------------------------------------------->
+
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
@@ -100,6 +114,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/categories.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
