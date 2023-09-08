@@ -47,7 +47,7 @@ function showProductList(currentProductsFilter) {
         ((maxCost === undefined) || (maxCost !== undefined && parseInt(producto.cost) <= maxCost))
       ) {
         productCard = `
-          <div class="row list-group-item d-flex justify-content-start">
+          <div onclick="setProductsID(${producto.id})" class="row list-group-item d-flex justify-content-start">
             <div class="col-3">
               <img src="${producto.image}" alt="${producto.name}" style="max-width: 100%; height: auto;">
             </div>
@@ -241,4 +241,9 @@ function sortProducts(criteria, array){
   }
 
   return result;
+}
+
+function setProductsID(id) {
+  localStorage.setItem("productID", id);
+  window.location = "product-info.html"
 }
