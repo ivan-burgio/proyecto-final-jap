@@ -91,7 +91,7 @@ submitButton.addEventListener("click", function (e) {
     };
 
     // Obtener los comentarios existentes del localStorage
-    const existingComments = JSON.parse(localStorage.getItem("comments")) || [];
+    const existingComments = JSON.parse(localStorage.getItem("comments[comments.length - 1]")) || [];
 
     // Agregar el nuevo comentario a la lista de comentarios
     existingComments.push(newComment);
