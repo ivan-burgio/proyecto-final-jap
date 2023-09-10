@@ -2,6 +2,7 @@ const productID = localStorage.getItem("productID");
 const containerInfo = document.getElementById("container-Info");
 const commentsList = document.getElementById("comments-list");
 const noCommentsMessage = document.getElementById("no-comments-message");
+const submitButton = document.getElementById("submit-comment");
 
 document.addEventListener("DOMContentLoaded", function () {
   getDataProduct();
@@ -57,11 +58,55 @@ function getComments() {
 }
 
 function displayComments(comments) {
-  commentsList.innerHTML = ""; // Limpiar la lista de comentarios
+  const commentsList = document.getElementById("comments-list");
 
   comments.forEach((comment) => {
     const li = document.createElement("li");
-    li.textContent = `${comment.user} - ${comment.description} (${comment.score}) - ${comment.dateTime}`;
+    li.textContent = comment.user + ": " + comment.description; // Mostrar nombre de usuario y comentario
     commentsList.appendChild(li);
   });
 }
+
+// Agregar un evento al botón para manejar el envío de comentarios
+submitButton.addEventListener("click", function (e) {
+  e.preventDefault(); // Evitar que el formulario se envíe
+
+  // Obtener el comentario del campo de texto
+  const commentText = document.getElementById("comment-text").value;
+
+  // Obtener la calificación seleccionada
+  const rating = document.querySelector('input[name="rating"]:checked');
+
+  // Verificar si el comentario no está vacío y se ha seleccionado una calificación
+  if (commentText.trim() !== "" && rating) {
+    // Obtener el nombre de usuario del localStorage
+    const storedUsername = localStorage.getItem("username") || "Invitado";
+
+    // Crear un objeto para representar el nuevo comentario
+    const newComment = {
+      user: storedUsername,
+      description: commentText,
+      score: parseInt(rating.value),
+      dateTime: new Date().toISOString(),
+    };
+
+    // Obtener los comentarios existentes del localStorage
+    const existingComments = JSON.parse(localStorage.getItem("comments")) || [];
+
+    // Agregar el nuevo comentario a la lista de comentarios
+    existingComments.push(newComment);
+
+    // Guardar la lista actualizada en el localStorage
+    localStorage.setItem("comments", JSON.stringify(existingComments));
+
+    // Mostrar los comentarios actualizados
+    displayComments(existingComments);
+
+    // Limpiar el campo de comentario y la selección de calificación
+    document.getElementById("comment-text").value = "";
+    rating.checked = false; // Desmarcar la calificación seleccionada
+  } else {
+    // Si falta el comentario o la calificación, muestra un mensaje de error o toma la acción apropiada
+    alert("Por favor, ingresa un comentario y selecciona una calificación.");
+  }
+});
