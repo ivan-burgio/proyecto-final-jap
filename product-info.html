@@ -33,10 +33,32 @@
   </nav>
   
   <main>
-    <div id="container-Info">
-      
+    <div id="container-Info"></div>
+
+    <form id="commentForm">
+      <!-- Campo de texto para el comentario -->
+      <textarea id="comment-text" rows="4" cols="50" placeholder="Escribe tu comentario aquí"></textarea>
+    
+      <!-- Opciones de calificación como botones de radio -->
+      <label for="rating">Calificación:</label>
+      <input type="radio" name="rating" value="1">1
+      <input type="radio" name="rating" value="2">2
+      <input type="radio" name="rating" value="3">3
+      <input type="radio" name="rating" value="4">4
+      <input type="radio" name="rating" value="5">5
+    
+      <!-- Botón para enviar el comentario -->
+      <button type="submit" id="submit-comment">Enviar Comentario</button>
+    </form>
+    
+    <div id="comments-container">
+      <h3>Comentarios</h3>
+      <ul id="comments-list"></ul>
+      <p id="no-comments-message">No hay comentarios disponibles.</p>
     </div>
+
   </main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

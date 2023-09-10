@@ -41,10 +41,24 @@ let getJSONData = function(url){
 
 let emailGuardado = localStorage.getItem("email"); //obtiene el email y lo guarda
 
-document.addEventListener("DOMContentLoaded", function () { 
-    // Verificar si emailGuardado no es null
-  if (emailGuardado !== null) {
-      // Dividir la dirección de correo electrónico si no es null
-      let mailcortado = emailGuardado.split("@");
-      document.getElementById("correoUsuario").textContent = mailcortado[0];
-  }});
+document.addEventListener("DOMContentLoaded", () => { 
+  mailCortado() ;
+});
+
+function mailCortado() {
+  // Obtener el correo electrónico del localStorage
+  const emailGuardado = localStorage.getItem("email");
+
+  // Verificar si el correo electrónico no es null
+  if (emailGuardado) {
+    // Dividir la dirección de correo electrónico
+    const mailCortado = emailGuardado.split("@")[0];
+
+    // Guardar el correo cortado en el localStorage como nombre de usuario
+    localStorage.setItem("username", mailCortado);
+
+    // Obtener el correo cortado del localStorage y mostrarlo en el span con el ID "correoUsuario"
+    const username = localStorage.getItem("username");
+    document.getElementById("correoUsuario").textContent = username;
+  }
+}
