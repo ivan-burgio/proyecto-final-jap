@@ -1,5 +1,7 @@
 const mail = document.querySelector('#email');
 const password = document.querySelector('#password');
+const mailValido = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+const passwordValido = /^(?=.*[a-z])(?=.*[A-Z])[A-Za-zñÑ\d#$@!%&*?]/;
 
 function crearAlerta(mensaje, tipo, referencia) {
     const alerta = document.createElement('DIV');
@@ -14,9 +16,28 @@ function crearAlerta(mensaje, tipo, referencia) {
         alerta.remove();
     }, 4000);
 }
+
+//Validación de Email
+function validarEmail() {
+    if(mailValido.test(mail.value)){
+        return true;
+	}else{
+		return false
+	}
+ }
+
+ //Validación de contraseña
+ function validarPassword() {
+    if(passwordValido.test(password.value)) {
+        return true
+    } else {
+        return false
+    }
+ }
+
  //comprobacion y redirección 
 function comprobarDatos (){
-  if (mail.value.length !== 0 && password.value.length !== 0)  {
+  if ((password.value.length >= 5 && password.value.length <=12) && (validarEmail() === true) && (validarPassword() === true)) {
      window.localStorage.setItem("email", mail.value)
      window.localStorage.setItem("password", password.value)
      window.location.href = 'index.html'; 
@@ -25,10 +46,26 @@ function comprobarDatos (){
 
 function mostrarAlertas() {
     if(mail.value.length === 0) {
-        crearAlerta('Ingrese un correo', 'error', document.querySelector('.container-login h1'));
+        crearAlerta('Ingrese un correo', 'error', document.querySelector('#email'));
     }
     if(password.value.length === 0) {
-        crearAlerta('Ingrese una contraseña', 'error', document.querySelector('.container-login h1'));
+        crearAlerta('Ingrese una contraseña', 'error', document.querySelector('#password'));
+    }
+
+    if(password.value.length < 5 && password.value.length !==0) {
+        crearAlerta('La contraseña debe tener mínimo 5 caracteres', 'error', document.querySelector('#password'));
+    }
+
+    if (password.value.length > 12) {
+        crearAlerta('La contraseña debe tener máximo 12 caracteres' ,'error', document.querySelector('#password'));
+    }
+
+    if (!mailValido.test(mail.value) && mail.value.length !== 0) {
+        crearAlerta('Ingrese un correo valido', 'error', document.querySelector('#email'));
+    }
+
+    if (!passwordValido.test(password.value) && password.value.length !== 0) {
+        crearAlerta('La contraseña debe tener una mayúscula y una minúscula.', 'error', document.querySelector('#password'));
     }
 }
 
