@@ -1,5 +1,7 @@
 const mail = document.querySelector('#email');
 const password = document.querySelector('#password');
+
+//Expresiones regulares para la validación de datos
 const mailValido = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
 const passwordValido = /^[A-Za-zñÑ\d#$@!%&*?]/;
 
@@ -17,7 +19,7 @@ function crearAlerta(mensaje, tipo, referencia) {
     }, 4000);
 }
 
-//Validación de Email
+//Validación de Email con expresiones regulares
 function validarEmail() {
     if(mailValido.test(mail.value)){
         return true;
@@ -26,7 +28,7 @@ function validarEmail() {
 	}
  }
 
- //Validación de contraseña
+ //Validación de contraseña con expresiones regulares
  function validarPassword() {
     if(passwordValido.test(password.value)) {
         return true
