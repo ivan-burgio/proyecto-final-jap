@@ -1,8 +1,8 @@
-const productID = localStorage.getItem("productID");
-const containerInfo = document.getElementById("container-Info");
-const commentsList = document.getElementById("comments-list");
+const productID         = localStorage.getItem("productID");
+const containerInfo     = document.getElementById("container-Info");
+const commentsList      = document.getElementById("comments-list");
 const noCommentsMessage = document.getElementById("no-comments-message");
-const submitButton = document.getElementById("submit-comment");
+const submitButton      = document.getElementById("submit-comment");
 
 document.addEventListener("DOMContentLoaded", function () {
   getDataProduct();
@@ -24,20 +24,72 @@ function showProductInfo(result) {
   containerInfo.innerHTML = '';
 
   let productCard = `
-    <div id="${result.id}" 
-      <div>
+    <div id="${result.id} style="width:80%;height:auto;" style="padding:5%;">
+    <p> ${result.cost} ${result.currency}</p>
+    
+    
+        ${getHTMLCarousel(result.images)}
+    
+      <div style="margin-left:5%">
         <h2>${result.name}</h2>
         <hr>
         <div>
-        <p>Precio: ${result.currency} - ${result.cost}</p>
-        <p>Descripción: ${result.description}</p>
-        <p>Categoría: ${result.category}</p>
-        <p>Cantidad de vendidos: ${result.soldCount}</p>
-        <img src="${result.images[0]}">
+        <p> ${result.cost} ${result.currency}</p>
+        <p>Descripción ${result.description}</p>
+        <p>${result.category}</p>
+        <p>${result.soldCount} vendidos</p>
       </div>
-      
+     
     </div>`;
   containerInfo.innerHTML += productCard;
+}
+
+function getHTMLCarousel(arrayImg){
+debugger; 
+    let productCard = `
+    <div id="carouselExampleIndicators" class="carousel slide" style="width:40%;height:150%">
+      <div class="carousel-indicators" style="background-color:black;height:20px">`;
+
+    for (let i = 0; i < arrayImg.length; i++) {
+    productCard += `
+        <button  type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="${i}"
+        class="${i === 0 ? ' active' : ''}"
+        aria-label="Slide ${i}"
+        aria-current="true"
+      ></button>`;
+    }
+
+    productCard += `</div>
+                <div class="carousel-inner">`;
+
+    for (let i = 0; i < arrayImg.length; i++) {
+    productCard += `
+    <div class="carousel-item ${i === 0 ? ' active' : ''}" style="width:550px;height:350px">
+      <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
+        width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+        role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <image xlink:href="${arrayImg[i]}" width="100%" height="100%">
+      </svg>
+    </div>
+  `;
+    }
+
+    productCard += `
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+      </a>
+    </div>`;
+
+    return productCard;
 }
 
 // Parte de Comentarios
@@ -109,4 +161,21 @@ submitButton.addEventListener("click", function (e) {
     // Si falta el comentario o la calificación, muestra un mensaje de error o toma la acción apropiada
     alert("Por favor, ingresa un comentario y selecciona una calificación.");
   }
+});
+
+
+$(document).ready(function() {
+  
+  // Inicializa el carrusel
+  const myCarousel = $('#carouselExampleIndicators');
+  myCarousel.carousel();
+
+  // Controla manualmente la transición del carrusel
+  $('#carousel-control-prev').click(function() {
+    myCarousel.carousel('prev');
+  });
+
+  $('#carousel-control-next').click(function() {
+    myCarousel.carousel('next');
+  });
 });
