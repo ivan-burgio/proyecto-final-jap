@@ -485,3 +485,23 @@ button.button-login:hover {
 }
 
 /*Fin estilo alertas categorías vacías*/
+
+/*Coloca un fondo transparente en el icono de error en la alerta*/
+.swal2-x-mark{
+  background-color: transparent;
+}
+
+/*Coloca un fondo transparente en la alerta*/
+*:not(i) {
+  background-color: transparent;
+}
+
+
+.sinStock-style{
+  color: #ffffff;
+  background-color: #ffb543;
+  padding: 0.5rem 0.5rem;
+  border-radius: 7px;
+
+}
+

@@ -48,7 +48,7 @@ function getHTMLCarousel(arrayImg){
 debugger; 
     let productCard = `
     <div id="carouselExampleIndicators" class="carousel slide" style="width:40%;height:150%">
-      <div class="carousel-indicators" style="background-color:black;height:20px">`;
+      <div class="carousel-indicators" style="height:20px">`;
 
     for (let i = 0; i < arrayImg.length; i++) {
     productCard += `
