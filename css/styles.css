@@ -530,6 +530,7 @@ button.button-login:hover {
   cursor: pointer;
   color: #ccc;
   margin-right: 5px;
+  text-align: end;
 }
 .star-rating p{
   font-family: 'Poppins';
@@ -609,4 +610,8 @@ text-align: center;
   align-items: center;
   filter: blur(10px);
   box-shadow: 7px 15px 17px 0px rgba(0,0,0,0.59);
+}
+
+#comments-list li{
+  justify-content: space-between;
 }
