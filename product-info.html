@@ -31,7 +31,7 @@ rel="stylesheet"
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark  pb-2">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,22 +55,39 @@ rel="stylesheet"
 
     <form id="commentForm">
       <!-- Campo de texto para el comentario -->
-      <textarea id="comment-text" rows="4" cols="50" placeholder="Escribe tu comentario aquí"></textarea>
+      <textarea id="comment-text" rows="4" cols="70" placeholder="Escribe tu comentario aquí"></textarea>
     
-      <!-- Opciones de calificación como botones de radio -->
-      <label for="rating">Calificación:</label>
-      <input type="radio" name="rating" value="1">1
-      <input type="radio" name="rating" value="2">2
-      <input type="radio" name="rating" value="3">3
-      <input type="radio" name="rating" value="4">4
-      <input type="radio" name="rating" value="5">5
+      <label for="rating"></label>
+      
+      <div class="star-rating">
+        <p>Calificación:</p>
+        <input type="radio" id="star5" name="rating" value="5">
+        <label for="star5">&#9733;</label>
+        
+        <input type="radio" id="star4" name="rating" value="4">
+        <label for="star4">&#9733;</label>
+        
+        <input type="radio" id="star3" name="rating" value="3">
+        <label for="star3">&#9733;</label>
+        
+        <input type="radio" id="star2" name="rating" value="2">
+        <label for="star2">&#9733;</label>
+        
+        <input type="radio" id="star1" name="rating" value="1">
+        <label for="star1">&#9733;</label>
+
+      </div>
     
       <!-- Botón para enviar el comentario -->
       <button type="submit" id="submit-comment">Enviar Comentario</button>
     </form>
     
+    
+
+   
+
     <div id="comments-container">
-      <h3>Comentarios</h3>
+      <h4>Comentarios</h4>
       <ul id="comments-list"></ul>
       <p id="no-comments-message">No hay comentarios disponibles.</p>
     </div>

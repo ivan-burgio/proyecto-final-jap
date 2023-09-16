@@ -3,6 +3,7 @@ const containerInfo     = document.getElementById("container-Info");
 const commentsList      = document.getElementById("comments-list");
 const noCommentsMessage = document.getElementById("no-comments-message");
 const submitButton      = document.getElementById("submit-comment");
+const ratingLabels = document.querySelectorAll(".star-rating label");
 
 document.addEventListener("DOMContentLoaded", function () {
   getDataProduct();
@@ -24,30 +25,32 @@ function showProductInfo(result) {
   containerInfo.innerHTML = '';
 
   let productCard = `
-    <div id="${result.id} style="width:80%;height:auto;" style="padding:5%;">
-    <p> ${result.cost} ${result.currency}</p>
-    
-    
-        ${getHTMLCarousel(result.images)}
-    
-      <div style="margin-left:5%">
-        <h2>${result.name}</h2>
-        <hr>
-        <div>
-        <p> ${result.cost} ${result.currency}</p>
-        <p>Descripción ${result.description}</p>
-        <p>${result.category}</p>
-        <p>${result.soldCount} vendidos</p>
-      </div>
-     
-    </div>`;
+  <div class="titleProduct">
+  <h2>${result.name}</h2>
+</div>
+
+<div class="productCard" id="${result.id}" style="display: flex;">
+
+
+  <div class="carrusel"> <!-- Ajusta el margen según tus necesidades -->
+      ${getHTMLCarousel(result.images)}
+  </div>
+  <div class= "fondoCarrusel" style= "width:550px;height:440px"></div>
+  <div class="infoProduct">
+<p><b>Precio:</b> ${result.cost} ${result.currency}</p>
+<p><b>Descripción:</b>  ${result.description}</p>
+<p><b>Categoria:</b>  ${result.category}</p>
+<p>${result.soldCount} <b>unidades vendidas</b></p>
+</div>
+
+</div>`;
   containerInfo.innerHTML += productCard;
 }
 
 function getHTMLCarousel(arrayImg){
 debugger; 
     let productCard = `
-    <div id="carouselExampleIndicators" class="carousel slide" style="width:40%;height:150%">
+    <div id="carouselExampleIndicators" class="carousel slide" style=" width:550px;height:350px,max-width:100%">
       <div class="carousel-indicators" style="height:20px">`;
 
     for (let i = 0; i < arrayImg.length; i++) {
@@ -178,4 +181,33 @@ $(document).ready(function() {
   $('#carousel-control-next').click(function() {
     myCarousel.carousel('next');
   });
+});
+
+
+
+
+
+// Función para manejar el clic en una estrella
+function handleStarClick(event) {
+  const clickedStar = event.target;
+  const rating = clickedStar.getAttribute("for").replace("star", "");
+
+  // Resalta las estrellas seleccionadas y las anteriores
+  ratingLabels.forEach((starLabel) => {
+    const star = starLabel.previousElementSibling;
+    const starNumber = star.getAttribute("id").replace("star", "");
+
+    if (starNumber <= rating) {
+      star.checked = true;
+      starLabel.classList.add("active");
+    } else {
+      star.checked = false;
+      starLabel.classList.remove("active");
+    }
+  });
+}
+
+// Agrega el evento clic a las etiquetas de estrellas
+ratingLabels.forEach((starLabel) => {
+  starLabel.addEventListener("click", handleStarClick);
 });

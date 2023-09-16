@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 *:not(i){
   scroll-behavior: smooth;
   background-color:RGB(248,249,250)
@@ -6,7 +7,8 @@
 
 /*-------------------------------------------------------------------------------------------------------------------------*/
 nav{
-  background-color:RGB(248,249,250)
+  background-color:RGB(248,249,250);
+  position: fixed;
 }
 
 .navbar-toggler-icon{
@@ -505,3 +507,99 @@ button.button-login:hover {
 
 }
 
+#submit-comment{
+  background-color: #ffb543;
+  font-family: 'Poppins';
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px;
+  align-items: center;
+  margin-top: 20px;
+  border: transparent;
+}
+
+/* Estilo para ocultar los botones de radio */
+.star-rating input[type="radio"] {
+  display: none;
+}
+
+/* Estilo para las estrellas */
+.star-rating label {
+  font-size: 30px;
+  cursor: pointer;
+  color: #ccc;
+  margin-right: 5px;
+}
+.star-rating p{
+  font-family: 'Poppins';
+}
+/* Estilo para las estrellas seleccionadas */
+.star-rating input[type="radio"]:checked + label,
+.star-rating input[type="radio"]:hover + label {
+  color: #ffcc00;
+}
+.titleProduct h2{
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  background-image: url('../img/Diseño_FM.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: 100%;
+  font-family: 'Fjalla One', sans-serif;
+}
+.infoProduct{ 
+  width: 600px;
+  float: right;
+  margin-top: 40px;
+  margin-left: auto;
+} 
+.infoProduct p{
+  text-decoration-line:underline ;
+  text-decoration-color:#ffb543 ;
+  font-family: 'Poppins';
+}
+
+.carrusel{
+  justify-content: left;
+  margin:40px;
+  margin-right: 10px;
+  margin-top: 40px;
+  z-index: 10;
+}
+#commentForm{
+  height: auto;
+  width: auto;
+  margin-top: 90px;
+  text-align:center;
+  margin-left: 620px ;
+  margin-bottom: 50px;
+}
+.infoProduct p{
+  padding-top: 0px;
+  padding-bottom: 60px;
+}
+.comments-container{
+  position: fixed;
+}
+#comment-text{
+  border: transparent;
+  box-shadow: inset -8px -10px 15px -10px rgba(0,0,0,0.75);
+}
+.fondoCarrusel{
+  background-color: #ffa9582c;
+  position: absolute;
+  margin-right: 10px;
+  padding-top:-40px; 
+  height: 600px;
+  margin-left: 40px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: blur(10px);
+  box-shadow: 7px 15px 17px 0px rgba(0,0,0,0.59);
+}
