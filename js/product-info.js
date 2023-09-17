@@ -48,7 +48,6 @@ function showProductInfo(result) {
 }
 
 function getHTMLCarousel(arrayImg){
-debugger; 
     let productCard = `
     <div id="carouselExampleIndicators" class="carousel slide" style=" width:550px;height:350px,max-width:100%">
       <div class="carousel-indicators" style="height:20px">`;
