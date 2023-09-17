@@ -66,7 +66,7 @@ function showCategoriesList(currentCategoriesFilter){
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">${category.name}</h4>
-                            <small class="text-muted">${category.productCount} artículos</small>
+                            ${outOfStock(category.productCount).outerHTML} 
                         </div>
                         <p class="mb-1">${category.description}</p>
                     </div>
@@ -78,6 +78,23 @@ function showCategoriesList(currentCategoriesFilter){
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
 }
+
+//Agrega las clases correspondientes según la cantidad de artículos 
+function outOfStock(productCount){
+     const smallProductCount = document.createElement("small")
+    
+    if (productCount === 0){
+      
+        smallProductCount.classList.add("sinStock-style")
+        smallProductCount.textContent ='Sin stock';
+
+    }else {
+     smallProductCount.textContent  = productCount + ' artículos';
+     smallProductCount.classList.add("text-muted")
+    }  
+   return smallProductCount
+}
+
 
 function sortAndShowCategories(sortCriteria){
 
