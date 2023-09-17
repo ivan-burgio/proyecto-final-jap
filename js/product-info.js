@@ -116,7 +116,7 @@ function displayComments(comments) {
 
   comments.forEach((comment) => {
     const li = document.createElement("li");
-    li.textContent = comment.user + ": " + comment.description; // Mostrar nombre de usuario y comentario
+    li.textContent = comment.user + ": " + comment.description +" "+ stars(comment.score); // Mostrar nombre de usuario y comentario
     commentsList.appendChild(li);
   });
 }
@@ -210,3 +210,9 @@ function handleStarClick(event) {
 ratingLabels.forEach((starLabel) => {
   starLabel.addEventListener("click", handleStarClick);
 });
+
+function stars(score) {
+  const starIcon = '⭐';
+  const starsString = starIcon.repeat(score);
+  return starsString;
+}
