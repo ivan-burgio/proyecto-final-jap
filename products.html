@@ -26,9 +26,16 @@
           <li class="nav-item"> <a class="nav-link active" href="index.html">Inicio <ion-icon name="home-outline"></ion-icon></a></li>
           <li class="nav-item"> <a class="nav-link" href="categories.html">Categorías <ion-icon name="compass-outline"></ion-icon></a></li>
           <li class="nav-item"> <a class="nav-link" href="sell.html">Vender <ion-icon name="pricetag-outline"></ion-icon></a></li>
-          <li class="nav-item">
-            <a class="nav-link" href="my-profile.html">Bienvenido <span id="correoUsuario"></span></a>
+          <!--Se crea un menu desplegable al hacer click al usuario-->
+          <li class="nav-item"><div class="dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Bienvenido <span id="correoUsuario"></span></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" href="cart.html"><ion-icon name="cart-outline"></ion-icon>  Mi Carrito</a></li>
+                  <li><a class="dropdown-item" href="my-profile.html"><ion-icon name="person-circle-outline"></ion-icon>  Mi Perfil</a></li>
+                  <li><a class="dropdown-item" href="login.html">Cerrar Sesión</a></li>
+                </ul>
+            </div>
           </li>
+          <!--Termina el menu desplegable-->
         </ul>
       </div>
     </div>
