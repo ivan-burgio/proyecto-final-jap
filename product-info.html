@@ -10,10 +10,28 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+
+  <!-- bibliotecas de Bootstrap y jQuery -->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+rel="stylesheet"
+/>
+<link
+href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
+rel="stylesheet"
+/>
+<title>Bootstrap Example</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark  pb-2">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,19 +42,65 @@
           <li class="nav-item"> <a class="nav-link active" href="index.html">Inicio <ion-icon name="home-outline"></ion-icon></a></li>
           <li class="nav-item"> <a class="nav-link" href="categories.html">Categorías <ion-icon name="compass-outline"></ion-icon></a></li>
           <li class="nav-item"> <a class="nav-link" href="sell.html">Vender <ion-icon name="pricetag-outline"></ion-icon></a></li>
-          <li class="nav-item">
-            <a class="nav-link" href="my-profile.html">Bienvenido <span id="correoUsuario"></span></a>
+          <!--Se crea un menu desplegable al hacer click al usuario-->
+          <li class="nav-item"><div class="dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Bienvenido <span id="correoUsuario"></span></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" href="cart.html"><ion-icon name="cart-outline"></ion-icon>  Mi Carrito</a></li>
+                  <li><a class="dropdown-item" href="my-profile.html"><ion-icon name="person-circle-outline"></ion-icon>  Mi Perfil</a></li>
+                  <li><a class="dropdown-item" href="login.html"><ion-icon name="exit-outline"></ion-icon>  Cerrar Sesión</a></li>
+                </ul>
+            </div>
           </li>
+          <!--Termina el menu desplegable-->
         </ul>
       </div>
     </div>
   </nav>
   
   <main>
-    <div id="container-Info">
+    <div id="container-Info"></div>
+
+    <form id="commentForm">
+      <!-- Campo de texto para el comentario -->
+      <textarea id="comment-text" rows="4" cols="70" placeholder="Escribe tu comentario aquí"></textarea>
+    
+      <label for="rating"></label>
       
+      <div class="star-rating">
+        <p>Calificación:</p>
+        <input type="radio" id="star1" name="rating" value="1">
+        <label for="star1">&#9733;</label>
+        
+        <input type="radio" id="star2" name="rating" value="2">
+        <label for="star2">&#9733;</label>
+        
+        <input type="radio" id="star3" name="rating" value="3">
+        <label for="star3">&#9733;</label>
+        
+        <input type="radio" id="star4" name="rating" value="4">
+        <label for="star4">&#9733;</label>
+        
+        <input type="radio" id="star5" name="rating" value="5">
+        <label for="star5">&#9733;</label>
+
+      </div>
+    
+      <!-- Botón para enviar el comentario -->
+      <button type="submit" id="submit-comment">Enviar Comentario</button>
+    </form>
+    
+    
+
+   
+
+    <div id="comments-container">
+      <h4><b>Comentarios: </b></h4>
+      <ul id="comments-list"></ul>
+      <p id="no-comments-message">No hay comentarios disponibles.</p>
     </div>
+
   </main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
