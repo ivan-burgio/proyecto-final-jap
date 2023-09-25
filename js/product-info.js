@@ -7,18 +7,19 @@ const ratingLabels = document.querySelectorAll(".star-rating label");
 
 document.addEventListener("DOMContentLoaded", function () {
   getDataProduct();
+});
 
-  function getDataProduct() {
-    debugger;
-    fetch(PRODUCT_INFO_URL + productID + EXT_TYPE)
-      .then((response) => response.json())
-      .then((result) => {
-        showProductInfo(result);
-      })
-      .catch((error) => {
-        console.error('Error en la solicitud:', error);
-      });
-  }
+function getDataProduct() {
+  fetch(PRODUCT_INFO_URL + productID + EXT_TYPE)
+    .then((response) => response.json())
+    .then((result) => {
+      showProductInfo(result);
+      getComments(result.id);
+    })
+    .catch((error) => {
+      console.error('Error en la solicitud:', error);
+    });
+}
 
 function showProductInfo(result) { 
   containerInfo.innerHTML = '';
