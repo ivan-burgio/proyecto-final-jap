@@ -1,20 +1,16 @@
 const productID = localStorage.getItem("productID");
 const containerInfo = document.getElementById("container-Info");
 
-document.addEventListener("DOMContentLoaded", function () {
-  getDataProduct();
+//document.addEventListener("DOMContentLoaded", function () {
+  //getDataProduct();
 
-  function getDataProduct() {
-    debugger;
-    fetch(PRODUCT_INFO_URL + productID + EXT_TYPE)
-      .then((response) => response.json())
-      .then((result) => {
+  document.addEventListener('DOMContentLoaded', function() {
+    let url = PRODUCT_INFO_URL + productID + EXT_TYPE;
+    getJSONData(url)
+    .then(function(result) {
         showProductInfo(result);
-      })
-      .catch((error) => {
-        console.error('Error en la solicitud:', error);
-      });
-  }
+    });
+
 
   function showProductInfo(result) { 
     console.log(result)
