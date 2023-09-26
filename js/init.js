@@ -14,6 +14,7 @@ let hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
+
 let getJSONData = function(url){
     let result = {};
     showSpinner();
@@ -21,7 +22,7 @@ let getJSONData = function(url){
     .then(response => {
       if (response.ok) {
         return response.json();
-      }else{
+      } else {
         throw Error(response.statusText);
       }
     })
