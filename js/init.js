@@ -63,3 +63,15 @@ function mailCortado() {
     document.getElementById("correoUsuario").textContent = username;
   }
 }
+
+// Parte de cerrar sesión
+const logout = document.querySelector('#logout');
+
+logout.addEventListener('click', () => {
+  localStorage.clear();
+});
+
+// Redirigir al usuario al login si no esta iniciado sesion (Esta vez desde cualquier pagina)
+if (!localStorage.getItem("email") && !localStorage.getItem("password")){
+  window.location.href='login.html'
+}
