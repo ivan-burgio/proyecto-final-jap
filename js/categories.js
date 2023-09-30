@@ -231,7 +231,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         })
 
         function addModoDark(modo){
-            debugger;
             let modoOscuro = document.getElementById('btnSwitch');
             let icono = '';
             if(modo === 1){
