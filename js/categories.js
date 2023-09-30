@@ -211,8 +211,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
 })
 
-
-
+        //Segun el localStorage o el boton cliceado, muestra el tema oscuro o claro
         document.getElementById('btnSwitch').addEventListener('click',()=>{
             const storedTheme = localStorage.getItem('theme');
 
@@ -230,6 +229,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             }
         })
 
+        //Cambia en el listado Menu por Modo Oscuro o Claro
         function addModoDark(modo){
             let modoOscuro = document.getElementById('btnSwitch');
             let icono = '';
