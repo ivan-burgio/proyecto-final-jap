@@ -627,6 +627,8 @@ text-align: center;
   justify-content: space-between;
 }
 
+
+/* Inicio dark mode */
 :root {
   --background-light: #ffffff;
   --text-light: #000000;
@@ -683,3 +685,5 @@ body.dark-mode #navbarNav ul li ul li a {
   background-color: rgba(var(--background-dark))!important;
   color: rgba(255, 255, 255, 0.848);
 }
+
+/* Fin dark mode */
