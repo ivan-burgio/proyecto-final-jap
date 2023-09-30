@@ -605,11 +605,12 @@ text-align: center;
 }
 
 #comment-text{
-  border: transparent;
-  box-shadow: inset -8px -10px 15px -10px rgba(0,0,0,0.75);
+  border: #484041 1px solid;
+  border-radius: 6px;
+  outline-color: #FD7E14;
 }
 .fondoCarrusel{
-  background-color: #ffa9582c;
+  background-color: #d7e3ec;
   position: absolute;
   margin-right: 10px;
   padding-top:-40px; 
@@ -683,3 +684,21 @@ body.dark-mode #navbarNav ul li ul li a {
   background-color: rgba(var(--background-dark))!important;
   color: rgba(255, 255, 255, 0.848);
 }
+/*Título de Productos Relacionados */
+.titleRelatedProducts {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+/*Hace que los productos relacionados estén uno al lado de otros*/
+.card1{
+  float: left;
+  margin-right: 10px;
+}
+
+.textRelatedProducts{
+  text-align: center;
+  font-weight: bolder;
+}
+
+

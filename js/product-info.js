@@ -42,7 +42,7 @@ function showProductInfo(result) {
 <p><b>Categoria:</b>  ${result.category}</p>
 <p>${result.soldCount} <b>unidades vendidas</b></p>
 </div>
-<div>${result.category}</div>
+
 
 </div>`;
   containerInfo.innerHTML += productCard;
@@ -51,14 +51,16 @@ function showProductInfo(result) {
   // Mostrar productos relacionados
   if (result.relatedProducts && result.relatedProducts.length > 0) {
     let relatedProductsHTML = `<div class="relatedProducts">
-      <h3>Productos relacionados</h3>
+      <h4 class="titleRelatedProducts">Productos relacionados</h4>
       <div class="relatedProductsContainer">`;
 
     for (let relatedProduct of result.relatedProducts) {
       relatedProductsHTML += `
-        <div onclick="setProductsID(${relatedProduct.id})" class="relatedProduct">
-          <img src="${relatedProduct.image}" alt="${relatedProduct.name}">
-          <p>${relatedProduct.name}</p>
+        <div class= "card1 card custom-card custom-shadow-orange cursor-active" onclick="setProductsID(${relatedProduct.id})" class="relatedProduct">
+          <img src="${relatedProduct.image}" alt="${relatedProduct.name}" class= "card-img-top">
+          <div class="card-body">
+          <p class="card-text textRelatedProducts">${relatedProduct.name}</p>
+          </div>
         </div>`;
     }
 
