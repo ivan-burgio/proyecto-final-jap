@@ -640,6 +640,8 @@ text-align: center;
   justify-content: space-between;
 }
 
+
+/* Inicio dark mode */
 :root {
   --background-light: #ffffff;
   --text-light: #000000;
@@ -715,3 +717,6 @@ body.dark-mode #navbarNav ul li ul li a {
 }
 
 
+
+
+/* Fin dark mode */
