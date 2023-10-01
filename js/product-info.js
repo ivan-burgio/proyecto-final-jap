@@ -43,9 +43,32 @@ function showProductInfo(result) {
 <p>${result.soldCount} <b>unidades vendidas</b></p>
 </div>
 
+
 </div>`;
   containerInfo.innerHTML += productCard;
+  ;
+
+  // Mostrar productos relacionados
+  if (result.relatedProducts && result.relatedProducts.length > 0) {
+    let relatedProductsHTML = `<div class="relatedProducts">
+      <h4 class="titleRelatedProducts">Productos relacionados</h4>
+      <div class="relatedProductsContainer">`;
+
+    for (let relatedProduct of result.relatedProducts) {
+      relatedProductsHTML += `
+        <div class= "card1 card custom-card custom-shadow-orange cursor-active" onclick="setProductsID(${relatedProduct.id})" class="relatedProduct">
+          <img src="${relatedProduct.image}" alt="${relatedProduct.name}" class= "card-img-top">
+          <div class="card-body">
+          <p class="card-text textRelatedProducts">${relatedProduct.name}</p>
+          </div>
+        </div>`;
+    }
+
+    relatedProductsHTML += `</div></div>`;
+    containerInfo.innerHTML += relatedProductsHTML;
+  }
 }
+
 
 function getHTMLCarousel(arrayImg){
     let productCard = `
@@ -215,4 +238,9 @@ function stars(score) {
   const starIcon = '⭐';
   const starsString = starIcon.repeat(score);
   return starsString;
+}
+
+function setProductsID(id) {
+  localStorage.setItem("productID", id);
+  window.location = "product-info.html"
 }

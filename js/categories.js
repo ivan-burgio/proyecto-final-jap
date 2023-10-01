@@ -197,4 +197,55 @@ document.addEventListener("DOMContentLoaded", function(e){
                 searchInput.style.borderColor = "red";
             }
         });
+
+        //Evalua si está en modo oscuro o claro la pagina desde el local storge
+        const storedTheme = localStorage.getItem('theme');
+
+        if (storedTheme === 'dark') {
+          document.documentElement.setAttribute('data-bs-theme', 'dark');
+          document.body.classList.add('dark-mode');
+          addModoDark(1)
+        } else {
+          document.documentElement.setAttribute('data-bs-theme', 'light');
+          addModoDark(0)
+        }
 })
+
+        //Segun el localStorage o el boton cliceado, muestra el tema oscuro o claro
+        document.getElementById('btnSwitch').addEventListener('click',()=>{
+            const storedTheme = localStorage.getItem('theme');
+
+            if (storedTheme === 'dark') {
+                document.documentElement.setAttribute('data-bs-theme','light')
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light'); // Almacena el tema en localStorage
+                addModoDark(0)
+            }
+            else {
+                document.documentElement.setAttribute('data-bs-theme','dark')
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark'); // Almacena el tema en localStorage
+                addModoDark(1)
+            }
+        })
+
+        //Cambia en el listado Menu por Modo Oscuro o Claro
+        function addModoDark(modo){
+            let modoOscuro = document.getElementById('btnSwitch');
+            let icono = '';
+            if(modo === 1){
+                icono = `<ion-icon name="sunny-outline"></ion-icon> 
+                            Modo claro
+                        `;
+                            
+            }else if(modo === 0){
+                icono = `<ion-icon name="moon-outline"></ion-icon>
+                            Modo oscuro
+                        `;
+            }
+            let html = `${icono}`;
+
+            modoOscuro.innerHTML = '';
+            modoOscuro.innerHTML = html;
+        }
+

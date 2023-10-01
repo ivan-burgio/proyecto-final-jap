@@ -17,16 +17,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
 
-<link
-href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-rel="stylesheet"
-/>
-<link
-href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
-rel="stylesheet"
-/>
-<title>Bootstrap Example</title>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+.custom-card{height: auto !important;}
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet"/>
 
 </head>
 
@@ -42,9 +38,16 @@ rel="stylesheet"
           <li class="nav-item"> <a class="nav-link active" href="index.html">Inicio <ion-icon name="home-outline"></ion-icon></a></li>
           <li class="nav-item"> <a class="nav-link" href="categories.html">Categorías <ion-icon name="compass-outline"></ion-icon></a></li>
           <li class="nav-item"> <a class="nav-link" href="sell.html">Vender <ion-icon name="pricetag-outline"></ion-icon></a></li>
-          <li class="nav-item">
-            <a class="nav-link" href="my-profile.html">Bienvenido <span id="correoUsuario"></span></a>
-          </li>
+          <!--Se crea un menu desplegable al hacer click al usuario-->
+          <li class="nav-item"><div class="dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Bienvenido <span id="correoUsuario"></span></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" href="cart.html"><ion-icon name="cart-outline"></ion-icon>  Mi Carrito</a></li>
+                  <li><a class="dropdown-item" href="my-profile.html"><ion-icon name="person-circle-outline"></ion-icon>  Mi Perfil</a></li>
+                  <li><a id="logout" class="dropdown-item" href="login.html"><ion-icon name="exit-outline"></ion-icon>  Cerrar Sesión</a></li>
+                </ul>
+              </div>
+            </li>
+          <!--Termina el menu desplegable-->
         </ul>
       </div>
     </div>
@@ -59,8 +62,9 @@ rel="stylesheet"
     
       <label for="rating"></label>
       
-      <div class="star-rating">
+      <div class="star-rating ">
         <p>Calificación:</p>
+        <div class="clasification">
         <input type="radio" id="star1" name="rating" value="1">
         <label for="star1">&#9733;</label>
         
@@ -75,7 +79,7 @@ rel="stylesheet"
         
         <input type="radio" id="star5" name="rating" value="5">
         <label for="star5">&#9733;</label>
-
+       </div>
       </div>
     
       <!-- Botón para enviar el comentario -->
@@ -110,6 +114,7 @@ rel="stylesheet"
       <div></div>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>

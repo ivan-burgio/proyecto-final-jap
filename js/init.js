@@ -14,6 +14,7 @@ let hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
+
 let getJSONData = function(url){
     let result = {};
     showSpinner();
@@ -21,7 +22,7 @@ let getJSONData = function(url){
     .then(response => {
       if (response.ok) {
         return response.json();
-      }else{
+      } else {
         throw Error(response.statusText);
       }
     })
@@ -61,4 +62,16 @@ function mailCortado() {
     const username = localStorage.getItem("username");
     document.getElementById("correoUsuario").textContent = username;
   }
+}
+
+// Parte de cerrar sesión
+const logout = document.querySelector('#logout');
+
+logout.addEventListener('click', () => {
+  localStorage.clear();
+});
+
+// Redirigir al usuario al login si no esta iniciado sesion (Esta vez desde cualquier pagina)
+if (!localStorage.getItem("email") && !localStorage.getItem("password")){
+  window.location.href='login.html'
 }
