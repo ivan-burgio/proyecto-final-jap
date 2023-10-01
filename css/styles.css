@@ -551,6 +551,18 @@ button.button-login:hover {
 .star-rating input[type="radio"]:hover + label {
   color: #ffcc00;
 }
+/*cambia de color todas las estrellas precedidas que tienen el mouse encima*/
+label:hover ~ label{color:#ffcc00;}
+/*al tocar el boton todas las estrellas que le preceden se ponen de color*/
+input[type = "radio"]:checked ~ label{color:#ffcc00;}
+
+
+/*Hace que se marquen de derecha a izquierda*/
+.clasification{
+  direction: rtl;/*derecha a izquierda*/
+  unicode-bidi: bidi-override;/* bidi de bidireccional */
+}
+
 .titleProduct h2{
   text-align: center;
   justify-content: center;
@@ -696,6 +708,7 @@ body.dark-mode #navbarNav ul li ul li a {
   margin-right: 10px;
 }
 
+/*Nombre del producto*/
 .textRelatedProducts{
   text-align: center;
   font-weight: bolder;

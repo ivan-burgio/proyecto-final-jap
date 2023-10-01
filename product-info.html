@@ -19,7 +19,7 @@
 
 
 <style>
-.custom-card{height: auto;}
+.custom-card{height: auto !important;}
 </style>
 
 </head>
@@ -60,8 +60,9 @@
     
       <label for="rating"></label>
       
-      <div class="star-rating">
+      <div class="star-rating ">
         <p>Calificación:</p>
+        <div class="clasification">
         <input type="radio" id="star1" name="rating" value="1">
         <label for="star1">&#9733;</label>
         
@@ -76,7 +77,7 @@
         
         <input type="radio" id="star5" name="rating" value="5">
         <label for="star5">&#9733;</label>
-
+       </div>
       </div>
     
       <!-- Botón para enviar el comentario -->
