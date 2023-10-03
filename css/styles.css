@@ -1,90 +1,102 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
-*:not(i){
+
+*:not(i) {
   scroll-behavior: smooth;
-  background-color:RGB(248,249,250)
+  background-color: RGB(248, 249, 250)
 }
 
-/*-------------------------------------------------------------------------------------------------------------------------*/
-nav{
-  background-color:RGB(248,249,250);
+/*------------------------------------------------------------------------------------------------*/
+nav {
+  background-color: RGB(248, 249, 250);
   position: fixed;
 }
 
-.navbar-toggler-icon{
- background-color:#ffb543;
- border-radius: 5px;
+.navbar-toggler-icon {
+  background-color: #ffb543;
+  border-radius: 5px;
 }
 
-#navbarNav ul li a{
+#navbarNav ul li a {
   color: #000000;
   border-bottom: 2px #ffb543 solid;
 }
+
 #navbarNav ul li a:hover {
   color: rgba(255, 165, 0, 0.8);
   border-radius: 2px;
   box-shadow: 0px 4px 6px rgba(255, 165, 0, 0.5);
 }
-.container ul li a{ 
+
+.container ul li a {
   font-family: 'Poppins';
 }
+
 .jumbotron .display-4 {
   font-weight: bold;
 }
 
 nav a {
   text-decoration: none;
-  
 }
 
-/*-------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
 /* ESTILO DE LAS CARTAS */
-img{
+img {
   padding-bottom: 20px;
 }
-h3{
+
+h3 {
   font-family: 'Poppins';
   text-align: center;
   align-items: center;
 }
-h3:hover{
- color:  rgba(255, 165, 0, 0.8);
+
+h3:hover {
+  color: rgba(255, 165, 0, 0.8);
 }
-.cardtext p{
+
+.cardtext p {
   font-family: 'Poppins';
-  text-align:justify;
+  text-align: justify;
 
 }
 
 /* ESTILO DE LAS CARTAS */
 .custom-shadow-orange {
-  box-shadow: 0px 4px 6px rgba(255, 165, 0, 0.5); /* Cambia el valor rgba para ajustar el color y la opacidad */
+  box-shadow: 0px 4px 6px rgba(255, 165, 0, 0.5);
+  /* Cambia el valor rgba para ajustar el color y la opacidad */
 }
+
 .custom-card:hover {
   box-shadow: 0px 6px 8px rgba(255, 165, 0, 0.8);
 }
+
 .custom-card {
   margin-bottom: 10px;
   border-radius: 10px;
-  box-shadow: 0px 4px 6px RGB(93,150,207); 
+  box-shadow: 0px 4px 6px RGB(93, 150, 207);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   position: relative;
   height: 400px;
   width: 300px;
   display: flex;
   justify-content: space-between;
-  flex-wrap:wrap ;
+  flex-wrap: wrap;
 }
 
-  
 .custom-card {
-    flex: 0 0 calc(33.33% - 10px); /* Ajusta el ancho de las cartas y el margen */
-    margin-bottom: 20px; /* Ajusta la separación entre cartas */
+  flex: 0 0 calc(33.33% - 10px);
+  /* Ajusta el ancho de las cartas y el margen */
+  margin-bottom: 20px;
+  /* Ajusta la separación entre cartas */
 }
-  
+
 .custom-card:hover {
-  transform: translateY(-25px); /* Elevación al pasar el mouse */
+  transform: translateY(-25px);
+  /* Elevación al pasar el mouse */
 }
+
 /*FIN DE ESTILO*/
 
 .bd-placeholder-img {
@@ -141,7 +153,7 @@ h3:hover{
   font-size: 38px;
 }
 
-.row .btn{
+.row .btn {
   background-color: #ffb543;
   font-family: 'Poppins';
   color: #fff;
@@ -153,59 +165,57 @@ h3:hover{
   padding: 10px;
   align-items: center;
   transition: transform 0.3s ease-in-out;
-  
+
 
 }
-.row .btn:hover{
-    box-shadow: 0px 6px 8px rgba(255, 165, 0, 0.8);
-    transform: translateY(-15px);
-  }
 
-  /*Categorias*/
-  .btn-group{
+.row .btn:hover {
+  box-shadow: 0px 6px 8px rgba(255, 165, 0, 0.8);
+  transform: translateY(-15px);
+}
+
+/*Categorias*/
+.btn-group {
   font-family: 'Poppins';
   text-align: center;
   align-items: center;
   cursor: pointer;
   transition: all 0.6s ease;
-  }
+}
 
-.titulo-cat{
+.titulo-cat {
   text-align: center;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   background-image: url('../img/diseño_fm.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
-}
-.titulo-cat h2{
-  background-color: transparent;
-}
-.titulo-cat p{
-  background-color: transparent;
 }
 
-.btn-c{
+.btn-c {
   display: flex;
   justify-content: center;
   height: 30px;
   width: 100px;
   cursor: pointer;
 }
-.btn-c label{
+
+.btn-c label {
   text-align: center;
 }
-.btn-c:hover{
-  background-color:rgba(250, 183, 60, 0.8);
+
+.btn-c:hover {
+  background-color: rgba(250, 183, 60, 0.8);
   box-shadow: 0 0 20px var(--color);
   color: #fff;
 }
-.search_input{
+
+.search_input {
   border-radius: 5px;
 }
-.btn-filtro{
+
+.btn-filtro {
   color: #000000;
   font-family: 'Poppins';
   margin-right: 2px;
@@ -218,14 +228,16 @@ h3:hover{
   border-radius: 5px;
 
 }
-.btn-filtro:hover{
+
+.btn-filtro:hover {
   background-color: rgb(248, 190, 83);
   box-shadow: 0 0 20px var(--color);
   color: #fff;
 }
 
-.count-filter{
-  border: 1px solid rgba(250, 183, 60, 0.8);;
+.count-filter {
+  border: 1px solid rgba(250, 183, 60, 0.8);
+  ;
 }
 
 /* Cambiar el color de los botones de aumento y disminución en input[type="number"] */
@@ -234,32 +246,34 @@ h3:hover{
   display: none;
 }
 
-  /*FIN de Categorias*/
+/*FIN de Categorias*/
 
-  /*------------------------PRODUCTS---------------*/
+/*------------------------PRODUCTS---------------*/
 
-  .btn-p{
-    display: flex;
-    justify-content: center;
-    height: 30px;
-    width: 100px;
-  }
-  .btn-p label{
-   text-align: center;
-    }
-    .btn-p:hover{
-      background-color:rgba(250, 183, 60, 0.8);
-      box-shadow: 0 0 20px var(--color);
-      color: #fff;
-    }
+.btn-p {
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  width: 100px;
+}
 
-    #product-list-container{
-      border-radius: 3px rgba(250, 183, 60, 0.8) solid;
-      padding: 0;
-      
-    }
+.btn-p label {
+  text-align: center;
+}
 
-   /*----------------------Fin de PRODUCTS---------------*/
+.btn-p:hover {
+  background-color: rgba(250, 183, 60, 0.8);
+  box-shadow: 0 0 20px var(--color);
+  color: #fff;
+}
+
+#product-list-container {
+  border-radius: 3px rgba(250, 183, 60, 0.8) solid;
+  padding: 0;
+
+}
+
+/*----------------------Fin de PRODUCTS---------------*/
 footer {
   padding-top: 2rem;
   padding-bottom: 3rem;
@@ -405,7 +419,6 @@ div.container-login {
 .container-login h1 {
   font-size: 2.5em;
   padding-bottom: 30px;
- 
 }
 
 label.label-login {
@@ -422,7 +435,7 @@ input.input-login {
   border: inset 4px black;
 }
 
-div input.button-login{
+div input.button-login {
   border: outset 5px black;
   width: 400px;
   margin: 30px;
@@ -447,9 +460,9 @@ button.button-login:hover {
 }
 
 .alerta.error {
-    background-color:rgb(255, 196, 196);
-    border-left: .5rem solid red;
-    color: red;
+  background-color: rgb(255, 196, 196);
+  border-left: .5rem solid red;
+  color: red;
 }
 
 .alerta.exito {
@@ -477,11 +490,11 @@ button.button-login:hover {
 
 .search__input {
   padding: 10px;
-    font-size: 16px;
-    border: 2px solid #3498db;
-    border-radius: 5px;
-    width: 300px;
-    transition: border-color 0.3s ease;
+  font-size: 16px;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  width: 300px;
+  transition: border-color 0.3s ease;
 }
 
 .search__input:focus {
@@ -500,7 +513,7 @@ button.button-login:hover {
 /*Fin estilo alertas categorías vacías*/
 
 /*Coloca un fondo transparente en el icono de error en la alerta*/
-.swal2-x-mark{
+.swal2-x-mark {
   background-color: transparent;
 }
 
@@ -509,8 +522,7 @@ button.button-login:hover {
   background-color: transparent;
 }
 
-
-.sinStock-style{
+.sinStock-style {
   color: #ffffff;
   background-color: #ffb543;
   padding: 0.5rem 0.5rem;
@@ -518,7 +530,7 @@ button.button-login:hover {
 
 }
 
-#submit-comment{
+#submit-comment {
   background-color: #ffb543;
   font-family: 'Poppins';
   color: #fff;
@@ -543,27 +555,37 @@ button.button-login:hover {
   margin-right: 5px;
   text-align: end;
 }
-.star-rating p{
+
+.star-rating p {
   font-family: 'Poppins';
 }
+
 /* Estilo para las estrellas seleccionadas */
-.star-rating input[type="radio"]:checked + label,
-.star-rating input[type="radio"]:hover + label {
+.star-rating input[type="radio"]:checked+label,
+.star-rating input[type="radio"]:hover+label {
   color: #ffcc00;
 }
+
 /*cambia de color todas las estrellas precedidas que tienen el mouse encima*/
-label:hover ~ label{color:#ffcc00;}
+label:hover~label {
+  color: #ffcc00;
+}
+
 /*al tocar el boton todas las estrellas que le preceden se ponen de color*/
-input[type = "radio"]:checked ~ label{color:#ffcc00;}
+input[type="radio"]:checked~label {
+  color: #ffcc00;
+}
 
 
 /*Hace que se marquen de derecha a izquierda*/
-.clasification{
-  direction: rtl;/*derecha a izquierda*/
-  unicode-bidi: bidi-override;/* bidi de bidireccional */
+.clasification {
+  direction: rtl;
+  /*derecha a izquierda*/
+  unicode-bidi: bidi-override;
+  /* bidi de bidireccional */
 }
 
-.titleProduct h2{
+.titleProduct h2 {
   text-align: center;
   justify-content: center;
   margin-bottom: 40px;
@@ -575,57 +597,64 @@ input[type = "radio"]:checked ~ label{color:#ffcc00;}
   background-image: 100%;
   font-family: 'Fjalla One', sans-serif;
 }
-.infoProduct{ 
+
+.infoProduct {
   width: 600px;
   float: right;
   margin-top: 40px;
   margin-left: auto;
-} 
-.infoProduct p{
-  text-decoration-line:underline ;
-  text-decoration-color:#ffb543 ;
+}
+
+.infoProduct p {
+  text-decoration-line: underline;
+  text-decoration-color: #ffb543;
   font-family: 'Poppins';
 }
 
-.carrusel{
+.carrusel {
   justify-content: left;
-  margin:40px;
+  margin: 40px;
   margin-right: 10px;
   margin-top: 40px;
   z-index: 10;
 }
-#commentForm{
+
+#commentForm {
   height: auto;
   width: auto;
   margin-top: 90px;
-  text-align:center;
-  margin-left: 620px ;
+  text-align: center;
+  margin-left: 620px;
   margin-bottom: 50px;
 }
-.infoProduct p{
+
+.infoProduct p {
   padding-top: 0px;
   padding-bottom: 60px;
 }
-#comments-container h4{
-margin: 0 0 40px 40px;
-font-family: 'Poppins';
-text-align: center;
-}
-#comments-list{
-  list-style-type: none;
-  
+
+#comments-container h4 {
+  margin: 0 0 40px 40px;
+  font-family: 'Poppins';
+  text-align: center;
 }
 
-#comment-text{
+#comments-list {
+  list-style-type: none;
+
+}
+
+#comment-text {
   border: #484041 1px solid;
   border-radius: 6px;
   outline-color: #FD7E14;
 }
-.fondoCarrusel{
+
+.fondoCarrusel {
   background-color: #d7e3ec;
   position: absolute;
   margin-right: 10px;
-  padding-top:-40px; 
+  padding-top: -40px;
   height: 600px;
   margin-left: 40px;
   border-radius: 20px;
@@ -633,13 +662,12 @@ text-align: center;
   justify-content: center;
   align-items: center;
   filter: blur(10px);
-  box-shadow: 7px 15px 17px 0px rgba(0,0,0,0.59);
+  box-shadow: 7px 15px 17px 0px rgba(0, 0, 0, 0.59);
 }
 
-#comments-list li{
+#comments-list li {
   justify-content: space-between;
 }
-
 
 /* Inicio dark mode */
 :root {
@@ -647,38 +675,39 @@ text-align: center;
   --text-light: #000000;
   --background-dark: 18, 18, 18;
   --text-dark: #ffffff;
-  --bs-bg-opacity: 	2172201;
+  --bs-bg-opacity: 2172201;
 }
 
-body.dark-mode p{
+body.dark-mode p {
   color: var(--text-dark);
 }
 
-body.dark-mode .container, 
+body.dark-mode .container,
 body.dark-mode .btn-filtro,
-body.dark-mode .navbar-nav a{
+body.dark-mode .navbar-nav a {
   color: rgba(255, 255, 255, 0.848);
 }
 
 body.dark-mode .form-control,
 body.dark-mode .row,
-body.dark-mode .titulo-cat{
+body.dark-mode .titulo-cat {
   color: rgba(255, 255, 255, 0.848);
-  background-color: rgba(var(--background-dark))!important;
+  background-color: rgba(var(--background-dark)) !important;
 }
 
-body.dark-mode  .titulo-cat{
-  background-image: url('../img/diseño_fmbk.jpg');  
+body.dark-mode .titulo-cat {
+  background-image: url('../img/diseño_fmbk.jpg');
 }
 
 body.dark-mode .list-group-item,
-body.dark-mode .img-thumbnail{
+body.dark-mode .img-thumbnail {
   border-color: rgb(150, 150, 150);
-  background-color: rgba(var(--background-dark))!important;
+  background-color: rgba(var(--background-dark)) !important;
 }
 
-body.dark-mode #navbarNav ul li a{
-  color: rgba(255, 255, 255, 0.848); /* Cambia el color del texto a blanco */
+body.dark-mode #navbarNav ul li a {
+  color: rgba(255, 255, 255, 0.848);
+  /* Cambia el color del texto a blanco */
   border-bottom: 2px #ffb543 solid;
 }
 
@@ -689,15 +718,16 @@ body.dark-mode #navbarNav ul li a:hover {
 }
 
 body.dark-mode #navbarNav ul li ul {
-  background-color: rgba(var(--background-dark))!important;
+  background-color: rgba(var(--background-dark)) !important;
   color: rgba(255, 255, 255, 0.848);
   border-color: rgb(150, 150, 150);
 }
 
 body.dark-mode #navbarNav ul li ul li a {
-  background-color: rgba(var(--background-dark))!important;
+  background-color: rgba(var(--background-dark)) !important;
   color: rgba(255, 255, 255, 0.848);
 }
+
 /*Título de Productos Relacionados */
 .titleRelatedProducts {
   margin-top: 50px;
@@ -705,18 +735,15 @@ body.dark-mode #navbarNav ul li ul li a {
 }
 
 /*Hace que los productos relacionados estén uno al lado de otros*/
-.card1{
+.card1 {
   float: left;
   margin-right: 10px;
 }
 
 /*Nombre del producto*/
-.textRelatedProducts{
+.textRelatedProducts {
   text-align: center;
   font-weight: bolder;
 }
-
-
-
 
 /* Fin dark mode */
