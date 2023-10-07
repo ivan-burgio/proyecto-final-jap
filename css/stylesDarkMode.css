@@ -35,8 +35,7 @@
     }
 }
 
-.dark-mode main,
-.dark-mode small {
+.dark-mode main {
     color: black;
 }
 
@@ -47,7 +46,7 @@
 .dark-mode .form-control,
 .dark-mode .row,
 .dark-mode .titulo-cat,
-.dark-mode .text-muted {
+.dark-mode small {
     color: rgba(255, 255, 255, 0.848) !important;
 }
 

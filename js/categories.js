@@ -59,8 +59,8 @@ function showCategoriesList(currentCategoriesFilter) {
             htmlContentToAppend += `
             <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
-                    <div class="col-3">
-                        <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
+                    <div class="col-lg col-md row-3 d-flex justify-content-center align-items-center">
+                        <img src="${category.imgSrc}" alt="${category.description}" style="max-width: 80%; height: auto;">
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">

@@ -74,10 +74,10 @@ function showProductList(currentProductsFilter) {
       ) {
         productCard = `
           <div onclick="setProductsID(${producto.id})" class="row list-group-item d-flex justify-content-start">
-            <div class="col-3  d-flex justify-content-center align-items-center">
+            <div class="col-lg col-md row-3 d-flex justify-content-center align-items-center">
               <img src="${producto.image}" alt="${producto.name}" style="max-width: 100%; height: auto;">
             </div>
-            <div class="col-7">
+            <div class="col">
               <h3>${producto.name} - USD ${producto.cost}</h3>
               <p>${producto.description}</p>
             </div>
