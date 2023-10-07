@@ -87,14 +87,17 @@ document.addEventListener("DOMContentLoaded", function () {
         addModoDark(0)
     }
 
-    const toggleButton = document.getElementById("toggleFilters");
-    const filterContent = document.getElementById("filterContent");
+    // JavaScript para manejar el botón de mostrar/ocultar filtros
+    const toggleFiltersButton = document.getElementById('toggleFilters');
+    const filterContent = document.getElementById('filterContent');
 
-    toggleButton.addEventListener("click", function () {
-        if (filterContent.style.display === "block" || filterContent.style.display === "") {
-            filterContent.style.display = "none";
+    toggleFiltersButton.addEventListener('click', () => {
+        if (filterContent.style.display === 'none' || filterContent.style.display === '') {
+            filterContent.style.display = 'block';
+            toggleFiltersButton.textContent = 'Ocultar Filtros';
         } else {
-            filterContent.style.display = "block";
+            filterContent.style.display = 'none';
+            toggleFiltersButton.textContent = 'Mostrar Filtros';
         }
     });
 })

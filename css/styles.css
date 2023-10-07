@@ -502,12 +502,13 @@ button.button-login:hover {
     align-items: center;
 }
 
+
 @media (min-width: 992px) {
     .container-filtros {
-        align-content: space-between;
         align-items: normal;
+        align-content: space-between;
     }
-  }
+}
 
 #toggleFilters {
     width: 10rem;
