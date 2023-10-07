@@ -11,12 +11,28 @@
     color: var(--text-dark);
 }
 
+.dark-mode #toggleFilters {
+    background-color: rgb(37, 37, 37);
+    color: white;
+}
+
+.dark-mode #toggleFilters:hover {
+    background-color: #ffb543;
+}
+
 /* Gris Oscuro */
+.dark-mode #filterContent,
 .dark-mode input,
 .dark-mode button,
 .dark-mode label,
 .dark-mode .navbar {
     background-color: rgb(37, 37, 37);
+}
+
+@media (min-width: 992px) {
+    #filterContent {
+        background-color: transparent !important;
+    }
 }
 
 .dark-mode main,
