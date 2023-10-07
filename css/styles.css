@@ -17,6 +17,10 @@ nav div.container {
     justify-content: center !important;
 }
 
+h2 {
+    margin-top: 2rem;
+}
+
 .navbar-toggler-icon {
     width: 3rem;
     height: 3rem;
@@ -398,7 +402,6 @@ footer p {
 }
 
 main {
-    min-height: calc(100vh - 210px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -493,9 +496,25 @@ button.button-login:hover {
 
 /* Inicio estilos search */
 
+.container-filtros {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 992px) {
+    .container-filtros {
+        align-content: space-between;
+        align-items: normal;
+    }
+  }
+
+#toggleFilters {
+    width: 10rem;
+}
+
 .contenedor-orden {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 0;

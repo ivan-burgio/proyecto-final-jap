@@ -57,52 +57,61 @@
             <h2>Productos</h2>
             <p class="lead">Verás aquí todas los productos de la categoria seleccionada.</p>
         </div>
-        <div class="row">
-            <div class="col contenedor-orden">
+        <div class="container">
+            <div class="container-filtros">
+                <button class="btn btn-primary d-lg-none" id="toggleFilters">
+                    Mostrar Filtros
+                </button>
+                <div id="filterContent" class="d-lg-block">
+                    <div class="row-lg col-12-md mx-auto-md">
+                        <div class="contenedor-orden">
 
-                <div class="search">
-                    <input type="search" class="search__input" id="searchInputP" placeholder="Buscar...">
-                </div>
+                            <div class="search">
+                                <input type="search" class="search__input" id="searchInputP" placeholder="Buscar...">
+                            </div>
 
-                <div class="btn-group btn-group-toggle mb-2 mt-2" data-bs-toggle="buttons">
-                    <input type="radio" class="btn-check" name="options" id="sortAsc">
-                    <label class="btn-p border border-warning rounded" for="sortAsc"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
-                    <input type="radio" class="btn-check" name="options" id="sortDesc">
-                    <label class="btn-p border border-warning rounded" for="sortDesc"><i class="fas fa-sort-amount-down mr-1"></i>$</label>
-                    <input type="radio" class="btn-check" name="options" id="sortByCost" checked>
-                    <label class="btn-p border border-warning rounded text-center" for="sortByCost"><i class="fas fa-sort-amount-down mr-1"></i>rel</label>
-                </div>
-            </div>
-        </div>
+                            <div class="btn-group btn-group-toggle mb-2 mt-2" data-bs-toggle="buttons">
+                                <input type="radio" class="btn-check" name="options" id="sortAsc">
+                                <label class="btn-p border border-warning rounded" for="sortAsc"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
+                                <input type="radio" class="btn-check" name="options" id="sortDesc">
+                                <label class="btn-p border border-warning rounded" for="sortDesc"><i class="fas fa-sort-amount-down mr-1"></i>$</label>
+                                <input type="radio" class="btn-check" name="options" id="sortByCost" checked>
+                                <label class="btn-p border border-warning rounded text-center" for="sortByCost"><i class="fas fa-sort-amount-down mr-1"></i>rel</label>
+                            </div>
+                        </div>
+                    </div>
 
-        <!------------------------------------------------------------------------------------------------------------>
-        <div class="row">
-            <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-                <div class="row container p-0 m-0">
-                    <div class="col">
-                        <p class="font-weight-normal text-end my-2">Precio</p>
-                    </div>
-                    <div class="col">
-                        <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin" min=0>
-                    </div>
-                    <div class="col">
-                        <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
-                    </div>
-                    <div class="col-3 p-0">
-                        <div class="btn-group" role="group">
-                            <button class="btn-filtro btn-light btn-block" id="rangeFilterCost">Filtrar</button>
-                            <button class="btn-filtro btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                    <!------------------------------------------------------------------------------------------------------------>
+                    <div class="row col-12-md mx-auto-md">
+                        <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+                            <div class="row container p-0 m-0">
+                                <div class="col">
+                                    <p class="font-weight-normal text-end my-2">Precio</p>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin" min=0>
+                                </div>
+                                <div class="col">
+                                    <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
+                                </div>
+                                <div class="col-3 p-0">
+                                    <div class="btn-group" role="group">
+                                        <button class="btn-filtro btn-light btn-block" id="rangeFilterCost">Filtrar</button>
+                                        <button class="btn-filtro btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!------------------------------------------------------------------------------------------------------------>
+            <!------------------------------------------------------------------------------------------------------------>
 
-        <div id="product-list-container" class="container list-group shadow">
-        </div>
-        <div class="container">
+            <div id="product-list-container" class="container list-group shadow">
+            </div>
+            <div class="container">
 
+            </div>
         </div>
     </main>
     <!------------------------------------------------------------------------------------------------------------>

@@ -7,52 +7,68 @@
     --bs-bg-opacity: 2172201;
 }
 
-body.dark-mode p {
+.dark-mode p {
     color: var(--text-dark);
 }
 
-body.dark-mode .container,
-body.dark-mode .btn-filtro,
-body.dark-mode .navbar-nav a {
-    color: rgba(255, 255, 255, 0.848);
+/* Gris Oscuro */
+.dark-mode input,
+.dark-mode button,
+.dark-mode label,
+.dark-mode .navbar {
+    background-color: rgb(37, 37, 37);
 }
 
-body.dark-mode .form-control,
-body.dark-mode .row,
-body.dark-mode .titulo-cat {
-    color: rgba(255, 255, 255, 0.848);
-    background-color: rgba(var(--background-dark)) !important;
+.dark-mode main,
+.dark-mode small {
+    color: black;
 }
 
-body.dark-mode .titulo-cat {
+/* Gris Claro */
+.dark-mode .container,
+.dark-mode .btn-filtro,
+.dark-mode .navbar-nav a,
+.dark-mode .form-control,
+.dark-mode .row,
+.dark-mode .titulo-cat,
+.dark-mode .text-muted {
+    color: rgba(255, 255, 255, 0.848) !important;
+}
+
+.dark-mode .titulo-cat {
     background-image: url('../img/diseño_fmbk.jpg');
 }
 
-body.dark-mode .list-group-item,
-body.dark-mode .img-thumbnail {
+.dark-mode .img-thumbnail {
     border-color: rgb(150, 150, 150);
     background-color: rgba(var(--background-dark)) !important;
 }
 
-body.dark-mode #navbarNav ul li a {
+/* Gris Oscuro con Borde Blanco */
+.dark-mode .list-group-item {
+    background-color: rgb(37, 37, 37);
+    border-color: rgb(150, 150, 150);
+}
+
+.dark-mode #navbarNav ul li a {
     color: rgba(255, 255, 255, 0.848);
     /* Cambia el color del texto a blanco */
     border-bottom: 2px #ffb543 solid;
 }
 
-body.dark-mode #navbarNav ul li a:hover {
+.dark-mode #navbarNav ul li a:hover {
     color: rgba(255, 165, 0, 0.8);
     border-radius: 2px;
     box-shadow: 0px 4px 6px rgba(255, 165, 0, 0.5);
 }
 
-body.dark-mode #navbarNav ul li ul {
+.dark-mode #navbarNav ul li ul {
     background-color: rgba(var(--background-dark)) !important;
     color: rgba(255, 255, 255, 0.848);
     border-color: rgb(150, 150, 150);
 }
 
-body.dark-mode #navbarNav ul li ul li a {
+.dark-mode #navbarNav ul li ul li a {
     background-color: rgba(var(--background-dark)) !important;
     color: rgba(255, 255, 255, 0.848);
 }

@@ -6,6 +6,7 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
@@ -13,7 +14,6 @@ let showSpinner = function(){
 let hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
-
 
 let getJSONData = function(url){
     let result = {};
@@ -41,10 +41,6 @@ let getJSONData = function(url){
 }
 
 let emailGuardado = localStorage.getItem("email"); //obtiene el email y lo guarda
-
-document.addEventListener("DOMContentLoaded", () => { 
-  mailCortado() ;
-});
 
 function mailCortado() {
   // Obtener el correo electrónico del localStorage
@@ -77,6 +73,8 @@ if (!localStorage.getItem("email") && !localStorage.getItem("password")){
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    mailCortado();
+
     //Evalua si está en modo oscuro o claro la pagina desde el local storge
     const storedTheme = localStorage.getItem('theme');
 
@@ -88,6 +86,17 @@ document.addEventListener("DOMContentLoaded", function () {
         document.documentElement.setAttribute('data-bs-theme', 'light');
         addModoDark(0)
     }
+
+    const toggleButton = document.getElementById("toggleFilters");
+    const filterContent = document.getElementById("filterContent");
+
+    toggleButton.addEventListener("click", function () {
+        if (filterContent.style.display === "block" || filterContent.style.display === "") {
+            filterContent.style.display = "none";
+        } else {
+            filterContent.style.display = "block";
+        }
+    });
 })
 
 //Segun el localStorage o el boton cliceado, muestra el tema oscuro o claro
