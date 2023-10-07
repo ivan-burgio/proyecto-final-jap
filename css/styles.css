@@ -8,13 +8,25 @@
 
 /*------------------------------------------------------------------------------------------------*/
 nav {
-    background-color: RGB(248, 249, 250);
     position: fixed;
 }
 
+nav div.container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
 .navbar-toggler-icon {
+    width: 3rem;
+    height: 3rem;
     background-color: #ffb543;
     border-radius: 5px;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
 }
 
 #navbarNav ul li a {
@@ -674,82 +686,3 @@ input[type="radio"]:checked~label {
 #comments-list li {
     justify-content: space-between;
 }
-
-/* Inicio dark mode */
-:root {
-    --background-light: #ffffff;
-    --text-light: #000000;
-    --background-dark: 18, 18, 18;
-    --text-dark: #ffffff;
-    --bs-bg-opacity: 2172201;
-}
-
-body.dark-mode p {
-    color: var(--text-dark);
-}
-
-body.dark-mode .container,
-body.dark-mode .btn-filtro,
-body.dark-mode .navbar-nav a {
-    color: rgba(255, 255, 255, 0.848);
-}
-
-body.dark-mode .form-control,
-body.dark-mode .row,
-body.dark-mode .titulo-cat {
-    color: rgba(255, 255, 255, 0.848);
-    background-color: rgba(var(--background-dark)) !important;
-}
-
-body.dark-mode .titulo-cat {
-    background-image: url('../img/diseño_fmbk.jpg');
-}
-
-body.dark-mode .list-group-item,
-body.dark-mode .img-thumbnail {
-    border-color: rgb(150, 150, 150);
-    background-color: rgba(var(--background-dark)) !important;
-}
-
-body.dark-mode #navbarNav ul li a {
-    color: rgba(255, 255, 255, 0.848);
-    /* Cambia el color del texto a blanco */
-    border-bottom: 2px #ffb543 solid;
-}
-
-body.dark-mode #navbarNav ul li a:hover {
-    color: rgba(255, 165, 0, 0.8);
-    border-radius: 2px;
-    box-shadow: 0px 4px 6px rgba(255, 165, 0, 0.5);
-}
-
-body.dark-mode #navbarNav ul li ul {
-    background-color: rgba(var(--background-dark)) !important;
-    color: rgba(255, 255, 255, 0.848);
-    border-color: rgb(150, 150, 150);
-}
-
-body.dark-mode #navbarNav ul li ul li a {
-    background-color: rgba(var(--background-dark)) !important;
-    color: rgba(255, 255, 255, 0.848);
-}
-
-/*Título de Productos Relacionados */
-.titleRelatedProducts {
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-/*Hace que los productos relacionados estén uno al lado de otros*/
-.card1 {
-    float: left;
-    margin-right: 10px;
-}
-
-/*Nombre del producto*/
-.textRelatedProducts {
-    text-align: center;
-    font-weight: bolder;
-}
-
-/* Fin dark mode */
