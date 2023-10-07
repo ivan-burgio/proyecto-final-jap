@@ -21,17 +21,37 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between flex">
           <li class="nav-item"> <a class="nav-link active" href="index.html">Inicio <ion-icon name="home-outline"></ion-icon></a></li>
-          <li class="nav-item"> <a class="nav-link" href="categories.html">Categorías <ion-icon name="compass-outline"></ion-icon></a></li>
+          
+          <!--Menu desplegable de categorías-->
+          <li class="nav-item"><div class="dropdown" id="categoriesDropdown">
+            <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Categorías <ion-icon name="compass-outline"></ion-icon></a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="categories.html">Todas las Categorías</a></li>
+              <li><a class="dropdown-item">Autos</a></li>
+              <li><a class="dropdown-item">Celulares</a></li>
+              <li><a class="dropdown-item">Computadoras</a></li>
+              <li><a class="dropdown-item">Deportes</a></li>
+              <li><a class="dropdown-item">Electrodomésticos</a></li>
+              <li><a class="dropdown-item">Herramientas</a></li>
+              <li><a class="dropdown-item">Juguetes</a></li>
+              <li><a class="dropdown-item">Muebles</a></li>
+              <li><a class="dropdown-item">Vestimentas</a></li>
+            </ul>
+          </div>
+          <!--Termina menu despegable-->
+          
           <li class="nav-item"> <a class="nav-link" href="sell.html">Vender <ion-icon name="pricetag-outline"></ion-icon></a></li>
+          
           <!--Se crea un menu desplegable al hacer click al usuario-->
-          <li class="nav-item"><div class="dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Bienvenido <span id="correoUsuario"></span></a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="cart.html"><ion-icon name="cart-outline"></ion-icon>  Mi Carrito</a></li>
-                  <li><a class="dropdown-item" href="my-profile.html"><ion-icon name="person-circle-outline"></ion-icon>  Mi Perfil</a></li>
-                  <li><a id="logout" class="dropdown-item" href="login.html"><ion-icon name="exit-outline"></ion-icon>  Cerrar Sesión</a></li>
-                </ul>
+          <li class="nav-item"><div class="dropdown">
+              <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Bienvenido <span id="correoUsuario"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="cart.html"><ion-icon name="cart-outline"></ion-icon>  Mi Carrito</a></li>
+                <li><a class="dropdown-item" href="my-profile.html"><ion-icon name="person-circle-outline"></ion-icon>  Mi Perfil</a></li>
+                <li><a id="logout" class="dropdown-item" href="login.html"><ion-icon name="exit-outline"></ion-icon>  Cerrar Sesión</a></li>
+              </ul>
             </div>
-          </li>
+            </li>
           <!--Termina el menu desplegable-->
         </ul>
       </div>
