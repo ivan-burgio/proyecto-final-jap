@@ -25,9 +25,8 @@ function showCartList(array) {
     let cartUser = ``;
     for (i= 0; i < array.length; i++) {
         cartUser = `
-        <div class="card-product shadow">
-            <div class="card-1">
-                <img src="${array[i].image}" alt="${array[i].name}">
+            <div class="card-1 container-fluid">
+                <img class="img-fluid" src="${array[i].image}" alt="${array[i].name}">
             </div>
 
             <div class="right">
@@ -48,7 +47,6 @@ function showCartList(array) {
 
                 <h5>Subtotal: ${array[i].currency} ${array[i].unitCost}</h5>
             </div>
-        </div>
         `
         containerCart.innerHTML += cartUser;
     }
