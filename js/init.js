@@ -6,6 +6,7 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
@@ -13,7 +14,6 @@ let showSpinner = function(){
 let hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
-
 
 let getJSONData = function(url){
     let result = {};
@@ -41,10 +41,6 @@ let getJSONData = function(url){
 }
 
 let emailGuardado = localStorage.getItem("email"); //obtiene el email y lo guarda
-
-document.addEventListener("DOMContentLoaded", () => { 
-  mailCortado() ;
-});
 
 function mailCortado() {
   // Obtener el correo electrónico del localStorage
@@ -76,8 +72,70 @@ if (!localStorage.getItem("email") && !localStorage.getItem("password")){
   window.location.href='login.html'
 }
 
-//Menu desplegable de categorías
-function copiarID(id) {
-  localStorage.setItem("catID", id);
-  window.location = "products.html"
+document.addEventListener("DOMContentLoaded", function () {
+    mailCortado();
+
+    //Evalua si está en modo oscuro o claro la pagina desde el local storge
+    const storedTheme = localStorage.getItem('theme');
+
+    if (storedTheme === 'dark') {
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
+        document.body.classList.add('dark-mode');
+        addModoDark(1)
+    } else {
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+        addModoDark(0)
+    }
+
+    // JavaScript para manejar el botón de mostrar/ocultar filtros
+    const toggleFiltersButton = document.getElementById('toggleFilters');
+    const filterContent = document.getElementById('filterContent');
+
+    toggleFiltersButton.addEventListener('click', () => {
+        if (filterContent.style.display === 'none' || filterContent.style.display === '') {
+            filterContent.style.display = 'block';
+            toggleFiltersButton.textContent = 'Ocultar Filtros';
+        } else {
+            filterContent.style.display = 'none';
+            toggleFiltersButton.textContent = 'Mostrar Filtros';
+        }
+    });
+})
+
+//Segun el localStorage o el boton cliceado, muestra el tema oscuro o claro
+document.getElementById('btnSwitch').addEventListener('click', () => {
+    const storedTheme = localStorage.getItem('theme');
+
+    if (storedTheme === 'dark') {
+        document.documentElement.setAttribute('data-bs-theme', 'light')
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light'); // Almacena el tema en localStorage
+        addModoDark(0)
+    }
+    else {
+        document.documentElement.setAttribute('data-bs-theme', 'dark')
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark'); // Almacena el tema en localStorage
+        addModoDark(1)
+    }
+})
+
+//Cambia en el listado Menu por Modo Oscuro o Claro
+function addModoDark(modo) {
+    let modoOscuro = document.getElementById('btnSwitch');
+    let icono = '';
+    if (modo === 1) {
+        icono = `<ion-icon name="sunny-outline"></ion-icon> 
+                            Modo claro
+                        `;
+
+    } else if (modo === 0) {
+        icono = `<ion-icon name="moon-outline"></ion-icon>
+                            Modo oscuro
+                        `;
+    }
+    let html = `${icono}`;
+
+    modoOscuro.innerHTML = '';
+    modoOscuro.innerHTML = html;
 }
