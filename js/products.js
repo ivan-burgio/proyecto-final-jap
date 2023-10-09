@@ -23,11 +23,11 @@ function getDataProduct() {
 }
 
 //cambia de valor los precios ingresados cuando el min es mayor al max y los filtra 
-function changeValues (){
+function changeValues() {
   document.getElementById("rangeFilterCostMin").value = maxCost;
   document.getElementById("rangeFilterCostMax").value = minCost;
   minCost = document.getElementById("rangeFilterCostMin").value;
-  maxCost = document.getElementById("rangeFilterCostMax").value; 
+  maxCost = document.getElementById("rangeFilterCostMax").value;
   showProductList(currentProductsArray);
 
 }
@@ -53,51 +53,50 @@ function showProductList(currentProductsFilter) {
   if (minCost > maxCost) {
     Swal.fire({
       title: 'El costo mínimo no puede ser mayor al máximo',
-      confirmButtonColor:'#fd7e14',
+      confirmButtonColor: '#fd7e14',
       confirmButtonText: 'Entendido',
-      icon:'error',
-      iconColor:'#fd7e14',
+      icon: 'error',
+      iconColor: '#fd7e14',
       background: '#fffaff',
       toast: true,
       position: 'center-right',
-      timer:6000
+      timer: 6000
     })
     changeValues()
-  }else {
-  if (productsToDisplay.length !== 0) {
-    productsToDisplay.forEach(producto => {
-      let productCard = '';
-      // Filtramos por rango de precio si es necesario
-      if (
-        ((minCost === undefined) || (minCost !== undefined && parseInt(producto.cost) >= minCost)) &&
-        ((maxCost === undefined) || (maxCost !== undefined && parseInt(producto.cost) <= maxCost))
-      ) {
-        productCard = `
-          <div onclick="setProductsID(${producto.id})" class="row list-group-item d-flex justify-content-start">
-            <div class="col-lg col-md row-3 d-flex justify-content-center align-items-center">
-              <img src="${producto.image}" alt="${producto.name}" style="max-width: 100%; height: auto;">
-            </div>
-            <div class="col">
-              <h3>${producto.name} - USD ${producto.cost}</h3>
-              <p>${producto.description}</p>
-            </div>
-            <div class="col-2 text-muted text-end">
-              <small>${producto.soldCount} vendidos</small>
+  } else {
+    if (productsToDisplay.length !== 0) {
+      productsToDisplay.forEach(producto => {
+        let productCard = '';
+        // Filtramos por rango de precio si es necesario
+        if (
+          ((minCost === undefined) || (minCost !== undefined && parseInt(producto.cost) >= minCost)) &&
+          ((maxCost === undefined) || (maxCost !== undefined && parseInt(producto.cost) <= maxCost))
+        ) {
+          productCard = `
+          <div onclick="setProductsID(${producto.id})" class="list-group-item list-group-item-action cursor-active">
+            <div class="row">
+              <div class="col-lg col-md row-3 d-flex justify-content-center align-items-center">
+                <img src="${producto.image}" alt="${producto.name}" style="max-width: 100%; height: auto;">
+              </div>
+              <div class="col align-items-center">
+                <div class="d-flex w-100 justify-content-between align-items-center">
+                  <h4 class="my-3">${producto.name} <br> USD ${producto.cost}</h5>
+                  <small class="text-center ms-3">${producto.soldCount} vendidos</small>
+                </div>
+                <p>${producto.description}</p>
+              </div>
             </div>
           </div>`;
-        productContainer.innerHTML += productCard;
+          productContainer.innerHTML += productCard;
 
-        count += 1;
-      }
-
-
-    });
-
-  }}
+          count += 1;
+        }
+      });
+    }
+  }
 
   /*if (minCost>maxCost){ alert("hola")
   };*/
-
 
   if (count == 0) {
     //alertNoData();    //Función por arreglar
@@ -108,8 +107,6 @@ function showProductList(currentProductsFilter) {
   //alertNoData(); //Funcion por arreglar
 
 }
-
-
 
 function colorCelda(valor) { //Funcion por arreglar
   minCost = document.getElementById("rangeFilterCostMin");

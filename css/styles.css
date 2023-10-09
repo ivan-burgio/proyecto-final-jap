@@ -60,7 +60,7 @@ nav a {
 /*------------------------------------------------------------------------------------*/
 /* ESTILO DE LAS CARTAS */
 img {
-    padding-bottom: 20px;
+    padding: .5rem;
 }
 
 h3 {
@@ -283,12 +283,6 @@ h3:hover {
     background-color: rgba(250, 183, 60, 0.8);
     box-shadow: 0 0 20px var(--color);
     color: #fff;
-}
-
-#product-list-container {
-    border-radius: 3px rgba(250, 183, 60, 0.8) solid;
-    padding: 0;
-
 }
 
 /*----------------------Fin de PRODUCTS---------------*/

@@ -60,14 +60,14 @@ function showCategoriesList(currentCategoriesFilter) {
             <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-lg col-md row-3 d-flex justify-content-center align-items-center">
-                        <img src="${category.imgSrc}" alt="${category.description}" style="max-width: 80%; height: auto;">
+                        <img src="${category.imgSrc}" alt="${category.description}" style="max-width: 100%; height: auto;">
                     </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${category.name}</h4>
+                    <div class="col align-items-center">
+                        <div class="d-flex w-100 justify-content-between align-items-center">
+                            <h4 class="my-3">${category.name}</h4>
                             ${outOfStock(category.productCount).outerHTML} 
                         </div>
-                        <p class="mb-1">${category.description}</p>
+                        <p>${category.description}</p>
                     </div>
                 </div>
             </div>
