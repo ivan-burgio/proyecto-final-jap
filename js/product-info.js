@@ -41,6 +41,7 @@ function showProductInfo(result) {
 <p><b>Descripción:</b>  ${result.description}</p>
 <p><b>Categoria:</b>  ${result.category}</p>
 <p>${result.soldCount} <b>unidades vendidas</b></p>
+<button class="btn btn-primary btn-lg" type="submit">Agregar al carrito</button>
 </div>
 
 

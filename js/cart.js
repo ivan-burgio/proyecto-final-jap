@@ -20,38 +20,4 @@ function getDataCartUser() {
     });
 }
 
-//Muestra el contenido de un array
-function showCartList(array) {
-    let cartUser = ``;
-    for (i= 0; i < array.length; i++) {
-        cartUser = `
-        <div class="card-product shadow">
-            <div class="card-1">
-                <img src="${array[i].image}" alt="${array[i].name}">
-            </div>
-
-            <div class="right">
-                  <h4 class="card-title">${array[i].name}</h4>
-                  <h5>Precio: ${array[i].currency} ${array[i].unitCost}</h5>
-                  
-                <div class="card-count">
-                    <h5>Cantidad: </h5>
-
-            <!--Botón de cantidades-->
-                    <div class="number-control">
-                        <div class="number-left"></div>
-                        <input type="number" name="number-count" class="number-quantity" value="${count}">
-                        <div class="number-right"></div>
-                    </div>
-                </div>
-            <!--Final del Botón-->
-
-                <h5>Subtotal: ${array[i].currency} ${array[i].unitCost}</h5>
-            </div>
-        </div>
-        `
-        containerCart.innerHTML += cartUser;
-    }
-}
-
 document.addEventListener("DOMContentLoaded", getDataCartUser);
