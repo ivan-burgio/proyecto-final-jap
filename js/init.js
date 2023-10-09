@@ -75,3 +75,9 @@ logout.addEventListener('click', () => {
 if (!localStorage.getItem("email") && !localStorage.getItem("password")){
   window.location.href='login.html'
 }
+
+//Menu desplegable de categorías
+function copiarID(id) {
+  localStorage.setItem("catID", id);
+  window.location = "products.html"
+}
