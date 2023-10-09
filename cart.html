@@ -19,44 +19,56 @@
 </head>
 
 <body data-bs-theme="light">
-    <nav class="navbar navbar-expand-md navbar-dark pb-2">
-        <div class="container">
-            <button 
-                class="navbar-toggler" 
-                type="button" 
-                data-bs-toggle="collapse" 
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav w-100 justify-content-between flex">
-                    <li class="nav-item"> <a class="nav-link active" href="index.html">Inicio <ion-icon name="home-outline"></ion-icon></a></li>
-                    <li class="nav-item"> <a class="nav-link" href="categories.html">Categorías <ion-icon name="compass-outline"></ion-icon></a></li>
-                    <li class="nav-item"> <a class="nav-link" href="sell.html">Vender <ion-icon name="pricetag-outline"></ion-icon></a></li>
-                    <!--Se crea un menu desplegable al hacer click al usuario-->
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                Bienvenido <span id="correoUsuario"></span>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a id="btnSwitch" class="dropdown-item" href="#"></a></li>
-                                <li><a class="dropdown-item" href="cart.html"><ion-icon name="cart-outline"></ion-icon> Mi Carrito</a></li>
-                                <li><a class="dropdown-item" href="my-profile.html"><ion-icon name="person-circle-outline"></ion-icon> Mi Perfil</a></li>
-                                <li><a id="logout" class="dropdown-item" href="login.html"><ion-icon name="exit-outline"></ion-icon> Cerrar Sesión</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <!--Termina el menu desplegable-->
-                </ul>
+  <nav class="navbar navbar-expand-md navbar-dark pb-2">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between flex">
+          <li class="nav-item"> <a class="nav-link active" href="index.html">Inicio <ion-icon name="home-outline"></ion-icon></a></li>
+         
+      <!--Se crea un menu desplegable de categorías-->
+          <li class="nav-item"><div class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorías <ion-icon name="compass-outline"></ion-icon></a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="categories.html">Todas las Categorías</a></li>
+                <li><a class="dropdown-item" onclick="copiarID(101)">Autos</a></li>
+                <li><a class="dropdown-item" onclick="copiarID(109)">Celulares</a></li>
+                <li><a class="dropdown-item" onclick="copiarID(105)">Computadoras</a></li>
+                <li><a class="dropdown-item" onclick="copiarID(108)">Deporte</a></li>
+                <li><a class="dropdown-item" onclick="copiarID(107)">Electrodomésticos</a></li>
+                <li><a class="dropdown-item" onclick="copiarID(104)">Herramientas</a></li>
+                <li><a class="dropdown-item" onclick="copiarID(102)">Juguetes</a></li>
+                <li><a class="dropdown-item" onclick="copiarID(103)">Muebles</a></li>
+                <li><a class="dropdown-item" onclick="copiarID(106)">Vestimenta</a></li>
+              </ul>
             </div>
-        </div>
-    </nav>
-    <main class="container-fluid mt-4">
-        <div>
-            <h1 class="text-center">Carrito de Compras</h1>
-        </div>
+          </li>
+      <!--Termina menu desplegable-->
+
+
+          <li class="nav-item"> <a class="nav-link" href="sell.html">Vender <ion-icon name="pricetag-outline"></ion-icon></a></li>
+          <!--Se crea un menu desplegable al hacer click al usuario-->
+          <li class="nav-item"><div class="dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Bienvenido <span id="correoUsuario"></span></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a id="btnSwitch" class="dropdown-item" href="#"></a></li>
+                <li><a class="dropdown-item" href="cart.html"><ion-icon name="cart-outline"></ion-icon> Mi Carrito</a></li>
+                <li><a class="dropdown-item" href="my-profile.html"><ion-icon name="person-circle-outline"></ion-icon> Mi Perfil</a></li>
+                <li><a id="logout" class="dropdown-item" href="login.html"><ion-icon name="exit-outline"></ion-icon> Cerrar Sesión</a></li>
+            </ul>
+            </div>
+          </li>
+          <!--Termina el menu desplegable-->
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main class="container-fluid mt-4">
+    <div>
+      <h1 class="text-center">Carrito de Compras</h1>
+    </div>
 
         <div class="card-container shadow mt-4 caja-gris">
             <h3>Artículos a Comprar</h3>

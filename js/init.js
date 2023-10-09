@@ -139,3 +139,9 @@ function addModoDark(modo) {
     modoOscuro.innerHTML = '';
     modoOscuro.innerHTML = html;
 }
+
+//Copia el ID de cada categoría
+function copiarID(id) {
+  localStorage.setItem("catID", id);
+  window.location = "products.html"
+}
