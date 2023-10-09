@@ -73,7 +73,7 @@ function showProductList(currentProductsFilter) {
           ((maxCost === undefined) || (maxCost !== undefined && parseInt(producto.cost) <= maxCost))
         ) {
           productCard = `
-          <div onclick="setProductsID(${producto.id})" class="list-group-item list-group-item-action cursor-active">
+          <div onclick="setProductsID(${producto.id})" class="list-group-item list-group-item-action cursor-active caja-gris">
             <div class="row">
               <div class="col-lg col-md row-3 d-flex justify-content-center align-items-center">
                 <img src="${producto.image}" alt="${producto.name}" style="max-width: 100%; height: auto;">

@@ -26,15 +26,15 @@ function showCartList(array) {
     for (i= 0; i < array.length; i++) {
         cartUser = `
             <div class="card-1 container-fluid">
-                <img class="img-fluid" src="${array[i].image}" alt="${array[i].name}">
+                <img class="img-fluid" src="${array[i].image}" alt="${array[i].name}" style="width: 100%; height: auto; max-width: 30rem;">
             </div>
 
-            <div class="right">
+            <div class="right m-4 ms-0">
                   <h4 class="card-title">${array[i].name}</h4>
-                  <h5>Precio: ${array[i].currency} ${array[i].unitCost}</h5>
+                  <p>Precio: ${array[i].currency} ${array[i].unitCost}</p>
                   
-                <div class="card-count">
-                    <h5>Cantidad: </h5>
+                <div class="card-count mb-3">
+                    <p class="m-0">Cantidad: </p>
 
             <!--Botón de cantidades-->
                     <div class="number-control">
@@ -45,7 +45,7 @@ function showCartList(array) {
                 </div>
             <!--Final del Botón-->
 
-                <h5>Subtotal: ${array[i].currency} ${array[i].unitCost}</h5>
+                <p>Subtotal: ${array[i].currency} ${array[i].unitCost}</p>
             </div>
         `
         containerCart.innerHTML += cartUser;
