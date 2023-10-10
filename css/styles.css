@@ -50,7 +50,6 @@ h2 {
 
 .jumbotron .display-4 {
     font-weight: bold;
-
 }
 
 nav a {
@@ -400,12 +399,6 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-a.custom-card,
-a.custom-card:hover {
-    color: inherit;
-    text-decoration: inherit;
 }
 
 .checked {
