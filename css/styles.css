@@ -50,7 +50,6 @@ h2 {
 
 .jumbotron .display-4 {
     font-weight: bold;
-
 }
 
 nav a {
@@ -60,7 +59,7 @@ nav a {
 /*------------------------------------------------------------------------------------*/
 /* ESTILO DE LAS CARTAS */
 img {
-    padding-bottom: 20px;
+    padding: .5rem;
 }
 
 h3 {
@@ -285,12 +284,6 @@ h3:hover {
     color: #fff;
 }
 
-#product-list-container {
-    border-radius: 3px rgba(250, 183, 60, 0.8) solid;
-    padding: 0;
-
-}
-
 /*----------------------Fin de PRODUCTS---------------*/
 footer {
     padding-top: 2rem;
@@ -406,12 +399,6 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-a.custom-card,
-a.custom-card:hover {
-    color: inherit;
-    text-decoration: inherit;
 }
 
 .checked {
