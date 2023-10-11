@@ -14,29 +14,26 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/stylesDarkMode.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: rgb(248, 249, 250);
-        }
-    </style>
 </head>
 
-<body>
-    <div class="container2">
-        <main>
-            <div class="container-login">
-                <h1>Inicio de Sesión</h1>
-                <div>
-                    <label for="email" class="label-login">Correo electrónico</label>
-                    <input type="email" class="input-login" id="email" placeholder="ejemplo@gmail.com" required>
-                    <label for="password" class="label-login">Contraseña</label>
-                    <input type="password" class="input-login" id="password" placeholder="Contraseña" required>
-                    <div class="button-login">
-                        <input type="submit" class="button-login" id="button" value="Iniciar Sesión">
-                    </div>
-                </div>
+<body class="d-flex row align-items-center justify-content-center">
+    <div class="container-login">
+        <form class="p-5">
+            <h1 class="mb-4 text-center">Inicio de Sesión</h1>
+            <div class="mb-3">
+                <label for="email" class="form-label label-login">Correo electrónico</label>
+                <input type="email" class="form-control input-login" id="email" placeholder="ejemplo@gmail.com" required>
             </div>
-        </main>
+
+            <div class="mb-3">
+                <label for="password" class="form-label label-login">Contraseña</label>
+                <input type="password" class="form-control input-login" id="password" placeholder="Contraseña" required>
+            </div>
+            
+            <div class="text-center">
+                <button type="submit" id="button" class="btn btn-primary button-login">Iniciar Sesión</button>
+            </div>
+        </form>
     </div>
     <footer class="text-muted">
         <div class="container">
