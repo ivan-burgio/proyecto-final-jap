@@ -19,6 +19,11 @@
     color: black !important;
 }
 
+/* Fondo Negro */
+.dark-mode .caja-negra {
+    background-color: black;
+}
+
 /* Gris Oscuro */
 .dark-mode #filterContent,
 .dark-mode input,
