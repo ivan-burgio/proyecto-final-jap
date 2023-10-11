@@ -407,26 +407,19 @@ main {
 
 /*Diseño del login */
 
-div.container2 {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    padding-top: 130px;
-    font-size: 20px;
-}
-
 div.container-login {
+    max-width: 30rem;
+    width: 100%;
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 50px;
     box-shadow: 10px 15px 20px black;
-    border-radius: 3%;
+    border-radius: .5rem;
+    margin: 5rem;
 }
 
 .container-login h1 {
     font-size: 2.5em;
-    padding-bottom: 30px;
 }
 
 label.label-login {
@@ -439,18 +432,16 @@ label.label-login {
 input.input-login {
     display: flex;
     padding: 5px;
-    width: 500px;
+    width: 100%;
     border: inset 4px black;
 }
 
-div input.button-login {
+.button-login {
     border: outset 5px black;
-    width: 400px;
-    margin: 30px;
-    font-size: 30px;
+    font-size: 1rem;
 }
 
-button.button-login:hover {
+.button-login:hover {
     border: inset 5px black;
 }
 
