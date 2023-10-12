@@ -4,6 +4,7 @@ const commentsList      = document.getElementById("comments-list");
 const noCommentsMessage = document.getElementById("no-comments-message");
 const submitButton      = document.getElementById("submit-comment");
 const ratingLabels = document.querySelectorAll(".star-rating label");
+const buttonAddCart = document.getElementById("addCartItem");
 
 document.addEventListener("DOMContentLoaded", function () {
   getDataProduct();
@@ -13,13 +14,27 @@ function getDataProduct() {
   fetch(PRODUCT_INFO_URL + productID + EXT_TYPE)
     .then((response) => response.json())
     .then((result) => {
+      actualItem = {name: result.name,
+      image: result.images[0],
+    currency: result.currency,
+  unitCost: result.cost};
       showProductInfo(result);
       getComments(result.id);
+
+      // Guardar 'result' en el local storage
+      localStorage.setItem('productData', JSON.stringify(result));
     })
     .catch((error) => {
       console.error('Error en la solicitud:', error);
     });
 }
+
+
+function addCart(){
+  cartItems.push(actualItem);
+  localStorage.setItem('cartItem', JSON.stringify(cartItems));
+}
+
 
 function showProductInfo(result) { 
   containerInfo.innerHTML = '';
@@ -41,6 +56,7 @@ function showProductInfo(result) {
 <p><b>Descripción:</b>  ${result.description}</p>
 <p><b>Categoria:</b>  ${result.category}</p>
 <p>${result.soldCount} <b>unidades vendidas</b></p>
+<button onclick="addCart(actualItem)"  class="btn btn-primary btn-lg" type="button">Agregar al carrito</button>
 </div>
 
 
@@ -244,3 +260,29 @@ function setProductsID(id) {
   localStorage.setItem("productID", id);
   window.location = "product-info.html"
 }
+
+document.getElementById('addCartItem').addEventListener('click', function() {
+  let url = 'PRODUCT_INFO_URL' + productID + 'EXT_TYPE';
+
+  getJSONData(url)
+    .then(function(response) {
+      if (response.status === 'ok') {
+        // Procesa la data aquí si la solicitud fue exitosa
+        console.log(response.data);
+
+        // Agrega la data a la variable global arrayItemCart
+        arrayItemCart.push(response.data);
+
+        // Verifica que se haya guardado correctamente
+        console.log(arrayItemCart);
+      } else {
+        // Procesa el error aquí si la solicitud falló
+        console.error(response.data);
+      }
+    })
+    .catch(function(error) {
+      // Maneja errores en la petición o parseo del JSON
+      console.error(error);
+    });
+    
+});
