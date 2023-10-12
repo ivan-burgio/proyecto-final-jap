@@ -14,26 +14,32 @@
 }
 
 /* Negro */
-.dark-mode main,
 .dark-mode h4.card-title {
     color: black !important;
 }
 
 /* Fondo Negro */
+.dark-mode body,
 .dark-mode .caja-negra {
     background-color: black;
 }
 
 /* Gris Oscuro */
-.dark-mode #filterContent,
 .dark-mode button,
 .dark-mode label,
-.dark-mode .navbar {
-    background-color: rgb(37, 37, 37);
+.dark-mode nav,
+.dark-mode footer,
+.dark-mode .fondoCarrusel {
+    background-color: rgb(37, 37, 37) !important;
 }
 
 .dark-mode input {
     background-color: rgb(37, 37, 37) !important;
+}
+
+/* Main con color del nav */
+.dark-mode main {
+    background-color: #121212;
 }
 
 /* Gris Claro */
