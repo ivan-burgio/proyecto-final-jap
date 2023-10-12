@@ -53,6 +53,7 @@ function showProductInfo(result) {
             <p><span>Categoria:</span>  ${result.category}</p>
             <p>${result.soldCount} <span>unidades vendidas</span></p>
         </div>
+        <button onclick="addCart(actualItem)" class="btn btn-primary btn-lg" type="button">Agregar al carrito</button>
     </div>`;
     containerInfo.innerHTML += productCard;
     ;
@@ -197,7 +198,6 @@ submitButton.addEventListener("click", function (e) {
     }
 });
 
-
 $(document).ready(function () {
 
     // Inicializa el carrusel
@@ -213,10 +213,6 @@ $(document).ready(function () {
         myCarousel.carousel('next');
     });
 });
-
-
-
-
 
 // Función para manejar el clic en una estrella
 function handleStarClick(event) {
