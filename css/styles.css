@@ -8,10 +8,17 @@
 
 /*------------------------------------------------------------------------------------------------*/
 nav {
-    position: fixed;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    z-index: 1000 !important;
+    background-color: white !important;
 }
 
 nav div.container {
+    height: 100% !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -50,7 +57,6 @@ h2 {
 
 .jumbotron .display-4 {
     font-weight: bold;
-
 }
 
 nav a {
@@ -60,7 +66,7 @@ nav a {
 /*------------------------------------------------------------------------------------*/
 /* ESTILO DE LAS CARTAS */
 img {
-    padding-bottom: 20px;
+    padding: .5rem;
 }
 
 h3 {
@@ -142,6 +148,7 @@ h3:hover {
     background-repeat: no-repeat;
     color: black;
     font-weight: bold;
+    margin-top: 3.5rem;
 }
 
 @media (min-width: 768px) {
@@ -285,21 +292,17 @@ h3:hover {
     color: #fff;
 }
 
-#product-list-container {
-    border-radius: 3px rgba(250, 183, 60, 0.8) solid;
-    padding: 0;
-
-}
-
 /*----------------------Fin de PRODUCTS---------------*/
 footer {
-    padding-top: 2rem;
-    padding-bottom: 3rem;
-
+    height: 5rem;
+    padding: 5rem auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 footer p {
-    margin-bottom: .25rem;
+    margin: 1rem;
 }
 
 .site-header a {
@@ -402,16 +405,14 @@ footer p {
 }
 
 main {
+    margin-top: 3.5rem;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-a.custom-card,
-a.custom-card:hover {
-    color: inherit;
-    text-decoration: inherit;
+    min-height: 80vh;
+    overflow: auto;
 }
 
 .checked {
@@ -420,26 +421,19 @@ a.custom-card:hover {
 
 /*Diseño del login */
 
-div.container2 {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    padding-top: 130px;
-    font-size: 20px;
-}
-
 div.container-login {
+    max-width: 30rem;
+    width: 100%;
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding: 50px;
     box-shadow: 10px 15px 20px black;
-    border-radius: 3%;
+    border-radius: .5rem;
+    margin: 5rem;
 }
 
 .container-login h1 {
     font-size: 2.5em;
-    padding-bottom: 30px;
 }
 
 label.label-login {
@@ -452,18 +446,16 @@ label.label-login {
 input.input-login {
     display: flex;
     padding: 5px;
-    width: 500px;
+    width: 100%;
     border: inset 4px black;
 }
 
-div input.button-login {
+.button-login {
     border: outset 5px black;
-    width: 400px;
-    margin: 30px;
-    font-size: 30px;
+    font-size: 1rem;
 }
 
-button.button-login:hover {
+.button-login:hover {
     border: inset 5px black;
 }
 
@@ -676,25 +668,61 @@ input[type="radio"]:checked~label {
     font-family: 'Fjalla One', sans-serif;
 }
 
+.product-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 40rem;
+    box-shadow: 0px 0px 30px 1px rgba(0,0,0,0.75);
+    border-radius: .5rem;
+}
+
+@media (min-width: 992px) {
+    .product-info {
+        flex-direction: row;
+        max-width: 80rem;
+    }
+}
+
 .infoProduct {
-    width: 600px;
-    float: right;
-    margin-top: 40px;
-    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 3rem;
 }
 
 .infoProduct p {
-    text-decoration-line: underline;
-    text-decoration-color: #ffb543;
     font-family: 'Poppins';
+    font-size: 1.2rem;
+    margin: 1rem;
+}
+
+.infoProduct span {
+    font-weight: 700;
 }
 
 .carrusel {
     justify-content: left;
-    margin: 40px;
-    margin-right: 10px;
-    margin-top: 40px;
+    margin: 3rem;
     z-index: 10;
+}
+
+.relatedProducts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.relatedProductsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50rem;
+}
+
+@media (min-width: 778px) {
+    .relatedProductsContainer {
+        flex-direction: row;
+    }
 }
 
 #commentForm {
@@ -704,11 +732,6 @@ input[type="radio"]:checked~label {
     text-align: center;
     margin-left: 620px;
     margin-bottom: 50px;
-}
-
-.infoProduct p {
-    padding-top: 0px;
-    padding-bottom: 60px;
 }
 
 #comments-container h4 {
@@ -726,21 +749,6 @@ input[type="radio"]:checked~label {
     border: #484041 1px solid;
     border-radius: 6px;
     outline-color: #FD7E14;
-}
-
-.fondoCarrusel {
-    background-color: #d7e3ec;
-    position: absolute;
-    margin-right: 10px;
-    padding-top: -40px;
-    height: 600px;
-    margin-left: 40px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    filter: blur(10px);
-    box-shadow: 7px 15px 17px 0px rgba(0, 0, 0, 0.59);
 }
 
 #comments-list li {

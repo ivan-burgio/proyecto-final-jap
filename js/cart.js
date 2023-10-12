@@ -25,27 +25,29 @@ function showCartList(array) {
     let cartUser = ``;
     for (i= 0; i < array.length; i++) {
         cartUser = `
-            <div class="card-1 container-fluid">
-                <img class="img-fluid" src="${array[i].image}" alt="${array[i].name}">
-            </div>
-
-            <div class="right">
-                  <h4 class="card-title">${array[i].name}</h4>
-                  <h5>Precio: ${array[i].currency} ${array[i].unitCost}</h5>
-                  
-                <div class="card-count">
-                    <h5>Cantidad: </h5>
-
-            <!--Botón de cantidades-->
-                    <div class="number-control">
-                        <div class="number-left"></div>
-                        <input type="number" name="number-count" class="number-quantity" value="${count}">
-                        <div class="number-right"></div>
-                    </div>
+            <div class="card-product shadow align-items-center caja-gris-raro" id="container-cart">
+                <div class="card-1 container-fluid">
+                    <img class="img-fluid" src="${array[i].image}" alt="${array[i].name}" style="width: 100%; height: auto; max-width: 30rem;">
                 </div>
-            <!--Final del Botón-->
 
-                <h5>Subtotal: ${array[i].currency} ${array[i].unitCost}</h5>
+                <div class="right m-4 ms-0">
+                    <h4 class="card-title">${array[i].name}</h4>
+                    <p>Precio: ${array[i].currency} ${array[i].unitCost}</p>
+                    
+                    <div class="card-count mb-3">
+                        <p class="m-0">Cantidad: </p>
+
+                <!--Botón de cantidades-->
+                        <div class="number-control">
+                            <div class="number-left"></div>
+                            <input type="number" name="number-count" class="number-quantity" value="${count}">
+                            <div class="number-right"></div>
+                        </div>
+                    </div>
+                <!--Final del Botón-->
+
+                    <p>Subtotal: ${array[i].currency} ${array[i].unitCost}</p>
+                </div>
             </div>
         `
         containerCart.innerHTML += cartUser;

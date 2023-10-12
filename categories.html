@@ -90,7 +90,7 @@
                 <div class="contenedor-orden">
 
                     <div class="search">
-                        <input type="search" class="search__input" id="searchInputP" placeholder="Buscar...">
+                        <input type="search" class="search__input" id="searchInputC" placeholder="Buscar...">
                     </div>
 
                     <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
@@ -98,7 +98,7 @@
                         <label class="btn-p border border-warning rounded" for="sortAsc"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
                         <input type="radio" class="btn-check" name="options" id="sortDesc">
                         <label class="btn-p border border-warning rounded" for="sortDesc"><i class="fas fa-sort-amount-down mr-1"></i>$</label>
-                        <input type="radio" class="btn-check" name="options" id="sortByCost" checked>
+                        <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
                         <label class="btn-p border border-warning rounded text-center" for="sortByCost"><i class="fas fa-sort-amount-down mr-1"></i>rel</label>
                     </div>
 
@@ -107,13 +107,13 @@
                 <div class="contenedor-orden">
 
                     <div class="btn-group btn-group-toggle">
-                        <p class="font-weight-normal text-end my-2">Precio</p>
-                        <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin" min=0>
-                        <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
+                        <p class="font-weight-normal text-end my-2">Cantidad</p>
+                        <input class="form-control count-filter" type="number" placeholder="min." id="rangeFilterCountMin" min=0>
+                        <input class="form-control count-filter" type="number" placeholder="máx." id="rangeFilterCountMax">
                     </div>
 
                     <div class="btn-group" role="group">
-                        <button class="btn-filtro btn-light btn-block" id="rangeFilterCost">Filtrar</button>
+                        <button class="btn-filtro btn-light btn-block" id="rangeFilterCount">Filtrar</button>
                         <button class="btn-filtro btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
                     </div>
 
@@ -122,9 +122,10 @@
         </div>
 
         <div class="container">
-            <div class="list-groupc shadow " id="cat-list-container"></div>
+            <div class="list-groupc shadow" id="cat-list-container"></div>
         </div>
     </main>
+
     <footer class="text-muted">
         <div class="container">
             <p class="float-end">

@@ -1,42 +1,45 @@
 /* Inicio dark mode */
 :root {
-    --background-light: #ffffff;
-    --text-light: #000000;
     --background-dark: 18, 18, 18;
-    --text-dark: #ffffff;
     --bs-bg-opacity: 2172201;
 }
 
-.dark-mode p {
-    color: var(--text-dark);
-}
-
-.dark-mode #toggleFilters {
-    background-color: rgb(37, 37, 37);
+/* Blanco */
+.dark-mode p,
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4 {
     color: white;
 }
 
-.dark-mode #toggleFilters:hover {
-    background-color: #ffb543;
+/* Negro */
+.dark-mode h4.card-title {
+    color: black !important;
+}
+
+/* Fondo Negro */
+.dark-mode body,
+.dark-mode .caja-negra {
+    background-color: black;
 }
 
 /* Gris Oscuro */
-.dark-mode #filterContent,
-.dark-mode input,
 .dark-mode button,
 .dark-mode label,
-.dark-mode .navbar {
-    background-color: rgb(37, 37, 37);
+.dark-mode nav,
+.dark-mode footer,
+.dark-mode .fondoCarrusel {
+    background-color: rgb(37, 37, 37) !important;
 }
 
-@media (min-width: 992px) {
-    #filterContent {
-        background-color: transparent !important;
-    }
+.dark-mode input {
+    background-color: rgb(37, 37, 37) !important;
 }
 
+/* Main con color del nav */
 .dark-mode main {
-    color: black;
+    background-color: #121212;
 }
 
 /* Gris Claro */
@@ -50,6 +53,27 @@
     color: rgba(255, 255, 255, 0.848) !important;
 }
 
+.dark-mode .caja-gris-raro,
+.dark-mode .number-quantity {
+    background-color: rgba(83, 83, 83, 0.848) !important;
+}
+
+.dark-mode #toggleFilters {
+    background-color: rgb(37, 37, 37);
+    color: white;
+}
+
+.dark-mode #toggleFilters:hover {
+    background-color: #ffb543;
+}
+
+
+@media (min-width: 992px) {
+    #filterContent {
+        background-color: transparent !important;
+    }
+}
+
 .dark-mode .titulo-cat {
     background-image: url('../img/diseño_fmbk.jpg');
 }
@@ -60,7 +84,7 @@
 }
 
 /* Gris Oscuro con Borde Blanco */
-.dark-mode .list-group-item {
+.dark-mode .caja-gris {
     background-color: rgb(37, 37, 37);
     border-color: rgb(150, 150, 150);
 }
