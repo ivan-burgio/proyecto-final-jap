@@ -26,11 +26,14 @@
 
 /* Gris Oscuro */
 .dark-mode #filterContent,
-.dark-mode input,
 .dark-mode button,
 .dark-mode label,
 .dark-mode .navbar {
     background-color: rgb(37, 37, 37);
+}
+
+.dark-mode input {
+    background-color: rgb(37, 37, 37) !important;
 }
 
 /* Gris Claro */
