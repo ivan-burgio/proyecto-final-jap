@@ -4,7 +4,6 @@ const buttonLeft = document.getElementsByClassName("number-left");
 const buttonRight = document.getElementsByClassName("number-right");
 const valueCountArticle = document.getElementsByName("number-count");
 let count = 1;
-let arrayItemCart = [];
 
 
 //Obtiene los datos del fetch del carrito y los guarda en un array
@@ -13,7 +12,8 @@ function getDataCartUser() {
     .then(response => response.json())
     .then(result => {
         arrayItemCart = result.articles
-      showCartList(arrayItemCart)
+      showCartList(arrayItemCart);
+      showCartList(cartItems)
     })
     .catch(error => {
       console.error('Error en la solicitud:', error);
