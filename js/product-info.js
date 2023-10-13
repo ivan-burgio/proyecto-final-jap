@@ -38,12 +38,12 @@ function showProductInfo(result) {
     containerInfo.innerHTML = '';
 
     let productCard = `
-    <div class="titulo-cat">
-        <h2 class="mt-5 mb-1">${result.name}</h2>
+    <div class="titulo-cat pt-5 pb-1">
+        <h2>${result.name}</h2>
         <p class="lead">Veras aquí mas detalles sobre el producto seleccionado</p>
     </div>
 
-    <div class="card-product align-items-center caja-gris product-info" id="${result.id}">
+    <div class="container-fluid card-product align-items-center caja-gris product-info" id="${result.id}">
         <div class="carrusel">
             ${getHTMLCarousel(result.images)}
         </div>
@@ -52,8 +52,8 @@ function showProductInfo(result) {
             <p><span>Descripción:</span>  ${result.description}</p>
             <p><span>Categoria:</span>  ${result.category}</p>
             <p>${result.soldCount} <span>unidades vendidas</span></p>
+            <button onclick="addCart(actualItem)" class="btn btn-primary btn-lg button-cart m-3" type="button">Agregar al carrito</button>
         </div>
-        <button onclick="addCart(actualItem)" class="btn btn-primary btn-lg" type="button">Agregar al carrito</button>
     </div>`;
     containerInfo.innerHTML += productCard;
     ;
@@ -101,7 +101,7 @@ function getHTMLCarousel(arrayImg) {
 
     for (let i = 0; i < arrayImg.length; i++) {
         productCard += `
-    <div class="carousel-item ${i === 0 ? ' active' : ''}" style="width:550px;height:350px">
+    <div class="carousel-item ${i === 0 ? ' active' : ''}">
       <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
         width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
         role="img" preserveAspectRatio="xMidYMid slice" focusable="false">

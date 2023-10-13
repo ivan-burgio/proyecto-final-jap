@@ -60,6 +60,16 @@
     color: rgba(255, 255, 255, 0.848) !important;
 }
 
+.dark-mode .button-cart {
+    background-color: #ffb543 !important;
+    color: black;
+    font-weight: 500;
+}
+
+.dark-mode .button-cart:hover {
+    background-color: #f59a12 !important;
+}
+
 .dark-mode .caja-gris-raro,
 .dark-mode .number-quantity {
     background-color: rgba(83, 83, 83, 0.848) !important;
@@ -98,7 +108,6 @@
 
 .dark-mode #navbarNav ul li a {
     color: rgba(255, 255, 255, 0.848);
-    /* Cambia el color del texto a blanco */
     border-bottom: 2px #ffb543 solid;
 }
 
