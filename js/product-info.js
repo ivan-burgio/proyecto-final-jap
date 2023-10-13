@@ -1,32 +1,41 @@
 const productID = localStorage.getItem("productID");
 const containerInfo = document.getElementById("container-Info");
 const commentsList = document.getElementById("comments-list");
-const noCommentsMessage = document.getElementById("no-comments-message");
 const submitButton = document.getElementById("submit-comment");
 const ratingLabels = document.querySelectorAll(".star-rating label");
 const buttonAddCart = document.getElementById("addCartItem");
+let apiComments = [];
+let localComments = [];
 
 document.addEventListener("DOMContentLoaded", function () {
+    // Verifica si hay comentarios en el localStorage
+    const storedComments = JSON.parse(localStorage.getItem("comments"));
+
+    if (storedComments && storedComments.length > 0) {
+        // Muestra los comentarios almacenados
+        displayComments(storedComments);
+        localComments = storedComments; // Actualiza localComments con los comentarios del localStorage
+    }
+
     getDataProduct();
 });
 
 function getDataProduct() {
-  fetch(PRODUCT_INFO_URL + productID + EXT_TYPE)
-    .then((response) => response.json())
-    .then((result) => {
-      actualItem = {name: result.name,
-      image: result.images[0],
-      currency: result.currency,
-      unitCost: result.cost};
-      showProductInfo(result);
-      getComments(result.id);
-
-      // Guardar 'result' en el local storage
-      localStorage.setItem('productData', JSON.stringify(result));
-    })
-    .catch((error) => {
-      console.error('Error en la solicitud:', error);
-    });
+    fetch(PRODUCT_INFO_URL + productID + EXT_TYPE)
+        .then((response) => response.json())
+        .then((result) => {
+            actualItem = {
+                name: result.name,
+                image: result.images[0],
+                currency: result.currency,
+                unitCost: result.cost,
+            };
+            showProductInfo(result);
+            getComments();
+        })
+        .catch((error) => {
+            console.error('Error en la solicitud:', error);
+        });
 }
 
 function addCart(){
@@ -131,12 +140,8 @@ function getComments() {
     fetch(PRODUCT_INFO_COMMENTS_URL + productID + EXT_TYPE)
         .then((response) => response.json())
         .then((comments) => {
-            if (comments.length > 0) {
-                displayComments(comments);
-                noCommentsMessage.style.display = "none"; // Ocultar el mensaje
-            } else {
-                noCommentsMessage.textContent = "No hay comentarios disponibles.";
-            }
+            apiComments = comments; // Actualiza los comentarios de la API
+            displayComments(apiComments.concat(localComments)); // Muestra todos los comentarios
         })
         .catch((error) => {
             console.error("Error al obtener los comentarios:", error);
@@ -146,11 +151,18 @@ function getComments() {
 function displayComments(comments) {
     const commentsList = document.getElementById("comments-list");
 
+    // Limpia cualquier comentario existente
+    commentsList.innerHTML = "";
+
+    // Muestra los comentarios en el orden deseado
     comments.forEach((comment) => {
         const li = document.createElement("li");
-        li.textContent = comment.user + ": " + comment.description + " " + stars(comment.score); // Mostrar nombre de usuario y comentario
+        li.textContent = comment.user + ": " + comment.description + " " + stars(comment.score);
         commentsList.appendChild(li);
     });
+
+    // Guarda los comentarios locales actualizados en el localStorage
+    localStorage.setItem("comments", JSON.stringify(localComments));
 }
 
 // Agregar un evento al botón para manejar el envío de comentarios
@@ -176,17 +188,11 @@ submitButton.addEventListener("click", function (e) {
             dateTime: new Date().toISOString(),
         };
 
-        // Obtener los comentarios existentes del localStorage
-        const existingComments = JSON.parse(localStorage.getItem("comments[comments.length - 1]")) || [];
-
-        // Agregar el nuevo comentario a la lista de comentarios
-        existingComments.push(newComment);
-
-        // Guardar la lista actualizada en el localStorage
-        localStorage.setItem("comments", JSON.stringify(existingComments));
+        // Agregar el nuevo comentario a la lista de comentarios locales
+        localComments.push(newComment);
 
         // Mostrar los comentarios actualizados
-        displayComments(existingComments);
+        displayComments(apiComments.concat(localComments));
 
         // Limpiar el campo de comentario y la selección de calificación
         document.getElementById("comment-text").value = "";
@@ -239,10 +245,22 @@ ratingLabels.forEach((starLabel) => {
 });
 
 function stars(score) {
-    const starIcon = '⭐';
-    const starsString = starIcon.repeat(score);
-    return starsString;
+    const puntuacionEntera = Math.round(score);
+    const estrellasLlenas = puntuacionEntera;
+
+    const resultado = '⭐'.repeat(estrellasLlenas);
+    return `${resultado}`;
 }
+
+// Deberia mostrar las estrellas como ese simbolo pero no funciona
+// function stars(score) {
+//     const puntuacionEntera = Math.round(score); // Redondea al entero más cercano
+//     const estrellasLlenas = puntuacionEntera; // Estrellas llenas
+//     const estrellasVacias = 5 - puntuacionEntera; // Estrellas vacías
+
+//     const resultado = '⭐'.repeat(estrellasLlenas) + `&#9733;`.repeat(estrellasVacias);
+//     return `${resultado}`;
+// }
 
 function setProductsID(id) {
   localStorage.setItem("productID", id);
