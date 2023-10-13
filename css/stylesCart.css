@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
 }
 
@@ -15,66 +15,66 @@ div h1 {
     flex-direction: column;
     max-width: 1000px;
     gap: 16px;
-    background: white;
+    background-color: rgb(233, 231, 231);
     border-radius: 10px;
     justify-content: center;
     align-items: center;
     padding: 1.5rem 0;
-   }
-   
-   .shadow {
-    box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
-                0 0  0 2px rgb(190, 190, 190),
-                0.3em 0.3em 1em rgba(0,0,0,0.3);
-   }
+}
+
+.shadow {
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+        0 0 0 2px rgb(190, 190, 190),
+        0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
 
 /*Fin del container general*/
 
 
 /*Estilos de los artículos a Comprar*/
-   .card-product {
+.card-product {
     display: flex;
     flex-direction: column;
     --gray: rgba(229, 231, 235, 1);
-    width: 95%;
     grid-gap: 2rem;
     gap: 2rem;
     border-radius: 1rem;
     margin: 1rem 0;
     padding: 1rem;
-  }
-  
-  .right {
+    background-color: white;
+}
+
+.right {
     display: flex;
     flex: 1 1 0%;
     flex-direction: column;
     grid-gap: 0.5rem;
     gap: 0.5rem;
-  }
-  
-  .card-title {
+}
+
+.card-title {
     height: 2rem;
     width: 100%;
     border-radius: 1rem;
     background-color: var(--gray);
     text-align: center;
-  }
+}
 
-  .card-count {
+.card-count {
     display: flex;
     align-items: center;
-  }
+}
 
-  /*Input de la cantidad de productos*/
+/*Input de la cantidad de productos*/
 
-  .number-control {
+.number-control {
     display: flex;
     align-items: center;
     padding-left: 15px;
-  }
-  
-  .number-left::before,
-  .number-right::after {
+}
+
+.number-left::before,
+.number-right::after {
     content: attr(data-content);
     background-color: #FD7E14;
     display: flex;
@@ -85,39 +85,43 @@ div h1 {
     color: black;
     transition: background-color 0.3s;
     cursor: pointer;
-  }
-  
-  .number-left::before {
+}
+
+.number-left::before {
     content: "-";
-  }
-  
-  .number-right::after {
+}
+
+.number-right::after {
     content: "+";
-  }
-  
-  .number-quantity{
+}
+
+.number-quantity {
     padding: 0.1rem;
     border: 0;
     width: 50px;
     border-top: 1px solid #FD7E14;
     border-bottom: 1px solid #FD7E14;
     text-align: center;
-  }
+}
 
-  input[name="number-count"]::-webkit-inner-spin-button, 
-  input[name="number-count"]::-webkit-outer-spin-button{
+input[name="number-count"]::-webkit-inner-spin-button,
+input[name="number-count"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
-  }
-  
-  .number-left:hover::before,
-  .number-right:hover::after {
-    background-color: #ffb543;
-  }
-  
-  /*Final del input*/
+}
 
-  @media (min-width: 768px) {
+.number-left:hover::before,
+.number-right:hover::after {
+    background-color: #ffb543;
+}
+
+/*Final del input*/
+
+@media (min-width: 768px) {
     .card-product {
         flex-direction: row;
     }
-  }
+}
+
+.button-cart {
+    background-color: #FD7E14 !important;
+}
