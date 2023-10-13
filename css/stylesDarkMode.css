@@ -4,6 +4,13 @@
     --bs-bg-opacity: 2172201;
 }
 
+.dark-mode .jumbotron {
+    background: url('../img/cover_backDM.png');
+    background-size: cover;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
 /* Blanco */
 .dark-mode p,
 .dark-mode h1,

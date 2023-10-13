@@ -15,7 +15,7 @@ div h1 {
     flex-direction: column;
     max-width: 1000px;
     gap: 16px;
-    background: white;
+    background-color: rgb(233, 231, 231);
     border-radius: 10px;
     justify-content: center;
     align-items: center;
@@ -42,6 +42,7 @@ div h1 {
     border-radius: 1rem;
     margin: 1rem 0;
     padding: 1rem;
+    background-color: white;
   }
   
   .right {
