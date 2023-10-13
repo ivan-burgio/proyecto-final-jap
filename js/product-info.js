@@ -157,7 +157,7 @@ function displayComments(comments) {
     // Muestra los comentarios en el orden deseado
     comments.forEach((comment) => {
         const li = document.createElement("li");
-        li.textContent = comment.user + ": " + comment.description + " " + stars(comment.score);
+        li.textContent = comment.user + ": " + comment.description + " " + stars(comment.score) + " " + comment.dateTime.split(' ')[0];
         commentsList.appendChild(li);
     });
 
@@ -185,7 +185,7 @@ submitButton.addEventListener("click", function (e) {
             user: storedUsername,
             description: commentText,
             score: parseInt(rating.value),
-            dateTime: new Date().toISOString(),
+            dateTime: new Date().toISOString().split('T')[0],
         };
 
         // Agregar el nuevo comentario a la lista de comentarios locales
