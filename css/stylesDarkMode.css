@@ -40,7 +40,8 @@
     background-color: rgb(37, 37, 37) !important;
 }
 
-.dark-mode input {
+.dark-mode input,
+.dark-mode textarea {
     background-color: rgb(37, 37, 37) !important;
 }
 
@@ -146,4 +147,10 @@
     font-weight: bolder;
 }
 
-/* Fin dark mode */
+label.stars {
+    background-color: transparent !important;
+}
+
+textarea {
+    border: solid 1px #f59a12 !important;
+}

@@ -686,7 +686,7 @@ input[type="radio"]:checked~label {
 .infoProduct {
     display: flex;
     flex-direction: column;
-    margin: 3rem;
+    margin: 2rem;
 }
 
 .infoProduct p {
@@ -702,7 +702,7 @@ input[type="radio"]:checked~label {
 .carrusel {
     display: flex;
     justify-content: center;
-    margin: 3rem;
+    margin: 2rem;
     z-index: 10;
     width: 30rem;
 }
@@ -764,14 +764,13 @@ input[type="radio"]:checked~label {
     height: 12rem;
 }
 
-@media (min-width: 778px) {
+@media (min-width: 992px) {
     .carousel-item {
         height: 20rem;
     }
 }
 
 .container-comments {
-    background-color: #e6e5e5;
     border-radius: .5rem;
     box-shadow: 0px 0px 30px 1px rgba(0,0,0,0.75);
     display: flex;
@@ -779,4 +778,8 @@ input[type="radio"]:checked~label {
     align-items: center;
     margin: 4rem;
     padding: 2rem;
+}
+
+.text-comment {
+    width: 20rem;
 }

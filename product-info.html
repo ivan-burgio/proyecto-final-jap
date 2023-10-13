@@ -94,39 +94,41 @@
     <main>
         <div id="container-Info" style></div>
 
-        <div class="container container-comments">
+        <div class="container container-comments caja-gris">
+            <h5 class="mb-5">Deja un comentario sobre el producto!</h5>
+
             <form id="commentForm">
-                <h3 class="mb-5">Comentarios</h3>
                 <!-- Campo de texto para el comentario -->
-                <textarea id="comment-text" rows="4" cols="70" placeholder="Escribe tu comentario aquí"></textarea>
+                <textarea id="comment-text" class="text-coment" rows="4" cols="40" placeholder="Escribe tu comentario aquí"></textarea>
 
                 <label for="rating"></label>
 
-                <div class="star-rating ">
+                <div class="star-rating">
                     <p>Calificación:</p>
                     <div class="clasification">
                         <input type="radio" id="star1" name="rating" value="1">
-                        <label for="star1">&#9733;</label>
+                        <label class="stars" for="star1">&#9733;</label>
 
                         <input type="radio" id="star2" name="rating" value="2">
-                        <label for="star2">&#9733;</label>
+                        <label class="stars" for="star2">&#9733;</label>
 
                         <input type="radio" id="star3" name="rating" value="3">
-                        <label for="star3">&#9733;</label>
+                        <label class="stars" for="star3">&#9733;</label>
 
                         <input type="radio" id="star4" name="rating" value="4">
-                        <label for="star4">&#9733;</label>
+                        <label class="stars" for="star4">&#9733;</label>
 
                         <input type="radio" id="star5" name="rating" value="5">
-                        <label for="star5">&#9733;</label>
+                        <label class="stars" for="star5">&#9733;</label>
                     </div>
                 </div>
 
                 <!-- Botón para enviar el comentario -->
-                <button type="submit" id="submit-comment">Enviar Comentario</button>
+                <button class="btn btn-primary btn-lg button-cart m-3" type="submit" id="submit-comment">Enviar Comentario</button>
             </form>
 
             <div id="comments-container">
+                <h3 class="mt-5 mb-3">Comentarios</h3>
                 <ul id="comments-list"></ul>
                 <p id="no-comments-message">No hay comentarios disponibles.</p>
             </div>
