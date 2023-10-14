@@ -50,10 +50,9 @@ div h1 {
     flex-direction: column;
     grid-gap: 0.5rem;
     gap: 0.5rem;
-}
-
-.card-title {
-    height: 2rem;
+  }
+  
+  .card-title {
     width: 100%;
     border-radius: 1rem;
     background-color: var(--gray);
@@ -120,7 +119,14 @@ input[name="number-count"]::-webkit-outer-spin-button {
     .card-product {
         flex-direction: row;
     }
-}
+  }
+
+  .buttonDelete{
+    color: #FD7E14;
+    
+  }
+ 
+
 
 .button-cart {
     background-color: #FD7E14 !important;

@@ -38,7 +38,11 @@ function getDataProduct() {
         });
 }
 
+
+
 function addCart(){
+  
+  if(!cartItems.includes(actualItem))
   cartItems.push(actualItem);
   localStorage.setItem('cartItem', JSON.stringify(cartItems));
 }
