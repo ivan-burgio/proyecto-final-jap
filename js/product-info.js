@@ -51,6 +51,7 @@ function showProductInfo(result) {
     containerInfo.innerHTML = '';
 
     let productCard = `
+<<<<<<< Updated upstream
     <div class="titulo-cat pt-5 pb-1">
         <h2>${result.name}</h2>
         <p class="lead">Veras aquí mas detalles sobre el producto seleccionado</p>
@@ -96,6 +97,10 @@ function getHTMLCarousel(arrayImg) {
     let productCard = `
     <div id="carouselExampleIndicators" class="carousel slide" style=" width:550px;height:350px,max-width:100%">
       <div class="carousel-indicators" style="height:20px">`;
+=======
+    <div id="carouselExampleIndicators" class="carousel slide" style="width:40%;height:150%">
+      <div class="carousel-indicators" style="background-color:black;height:20px" style="transition: opacity 5s ease-in-out;">`;
+>>>>>>> Stashed changes
 
     for (let i = 0; i < arrayImg.length; i++) {
         productCard += `
@@ -117,7 +122,7 @@ function getHTMLCarousel(arrayImg) {
       <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
         width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
         role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <image xlink:href="${arrayImg[i]}" width="100%" height="100%">
+          <image xlink:href="${arrayImg[i]}" width="100%" height="100%" style="object-fit: cover;">
       </svg>
     </div>
   `;
@@ -198,6 +203,7 @@ submitButton.addEventListener("click", function (e) {
         // Mostrar los comentarios actualizados
         displayComments(apiComments.concat(localComments));
 
+<<<<<<< Updated upstream
         // Limpiar el campo de comentario y la selección de calificación
         document.getElementById("comment-text").value = "";
         rating.checked = false; // Desmarcar la calificación seleccionada
@@ -295,4 +301,19 @@ document.getElementById('addCartItem').addEventListener('click', function() {
       console.error(error);
     });
     
+=======
+    // Guardar la lista actualizada en el localStorage
+    localStorage.setItem("comments", JSON.stringify(existingComments));
+
+    // Mostrar los comentarios actualizados
+    displayComments(existingComments);
+
+    // Limpiar el campo de comentario y la selección de calificación
+    document.getElementById("comment-text").value = "";
+    rating.checked = false; // Desmarcar la calificación seleccionada
+  } else {
+    // Si falta el comentario o la calificación, muestra un mensaje de error o toma la acción apropiada
+    alert("Por favor, ingresa un comentario y selecciona una calificación.");
+  }
+>>>>>>> Stashed changes
 });
