@@ -1,5 +1,5 @@
 const IDuser = "25801"
-const containerCart = document.getElementById("container-cart")
+const containerCart = document.getElementById("container-cart");
 const buttonLeft = document.getElementsByClassName("number-left");
 const buttonRight = document.getElementsByClassName("number-right");
 const valueCountArticle = document.getElementsByName("number-count");
@@ -11,9 +11,10 @@ function getDataCartUser() {
     fetch(CART_INFO_URL + IDuser + EXT_TYPE)
     .then(response => response.json())
     .then(result => {
-        arrayItemCart = result.articles
+      arrayItemCart = result.articles
+      arrayItemCart.push(...cartItems);
+      localStorage.setItem("cartItem",JSON.stringify(arrayItemCart))
       showCartList(arrayItemCart);
-      showCartList(cartItems)
     })
     .catch(error => {
       console.error('Error en la solicitud:', error);
@@ -39,19 +40,54 @@ function showCartList(array) {
 
                 <!--Botón de cantidades-->
                         <div class="number-control">
-                            <div class="number-left"></div>
-                            <input type="number" name="number-count" class="number-quantity" value="${count}">
-                            <div class="number-right"></div>
+                            <div onclick= "restIndividualCost(${i}, ${array[i].unitCost}, ${count}, '${array[i].currency}')" class="number-left"></div>
+                            <input id= '${i}_modified' type="number" name="number-count" class="number-quantity" value="${count}">
+                            <div onclick= "sumIndividualCost(${i}, ${array[i].unitCost}, ${count}, '${array[i].currency}')" class="number-right"></div>
                         </div>
                     </div>
                 <!--Final del Botón-->
-
-                    <p>Subtotal: ${array[i].currency} ${array[i].unitCost}</p>
+                   <p id='${i}_Subtotal' >Subtotal: ${array[i].currency} ${array[i].unitCost}</p>
+                   <div class= "d-flex justify-content-center align-items-end ">
+                   <button onclick="deleteItem('${array[i].name}')" class="btn buttonDelete" type="button"><i class="far fa-trash-alt"></i></button>
+                   </div>
                 </div>
             </div>
         `
         containerCart.innerHTML += cartUser;
     }
 }
-
 document.addEventListener("DOMContentLoaded", getDataCartUser);
+
+function sumIndividualCost(i, unitCost, count, currency){
+
+input = document.getElementById(i + "_modified");
+ input.value++
+ const subtotalCost = input.value*unitCost;
+ subtotal = document.getElementById(i + "_Subtotal");
+ subtotal.textContent = `Subtotal:  ${currency.toString()} ${subtotalCost}`
+ const cartActual = localStorage.getItem('cartItem');
+ JSON.parse(cartActual);
+}
+
+function restIndividualCost(i, unitCost, count, currency){
+
+    input = document.getElementById(i + "_modified");
+     if(input.value>0){input.value--}
+     const subtotalCost = input.value*unitCost;
+     subtotal = document.getElementById(i + "_Subtotal");
+     subtotal.textContent = `Subtotal:  ${currency.toString()} ${subtotalCost}` 
+    }
+
+    function deleteItem(Item){
+     let getLocalProduct = localStorage.getItem("cartItem");
+     getLocalProduct = JSON.parse(getLocalProduct);
+     const setLocalProduct = []
+     for (let obj of getLocalProduct){
+       if (obj.name !== Item){
+        setLocalProduct.push(obj)
+       }
+     }  
+     localStorage.setItem("cartItem", JSON.stringify(setLocalProduct))  
+     containerCart.innerHTML = ""
+     showCartList(setLocalProduct)
+    }
