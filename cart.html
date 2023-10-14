@@ -43,6 +43,7 @@
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
       </div>
     </div>
+<<<<<<< Updated upstream
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -50,6 +51,103 @@
         <a href="#">Volver arriba</a>
       </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+=======
+
+        <div class="card-container shadow mt-4 caja-gris">
+            <h3>Artículos a Comprar</h3>
+            <div class="card-product shadow align-items-center caja-gris-raro" id="container-cart"></div>
+
+            <div> <!-- Que sea obligatorio algun campo 
+              <div id="container-direccion">
+                <input type="button" id="mostrarFormulario" value="Agregar dirección de envío...">
+              </div>-->
+              <div class="row" >
+                <div class="col-md-12" id="container-direccion">
+                    <button type="button" class="btn btn-primary" id="mostrarFormulario">Agregar dirección de envío...</button>
+                </div>
+            </div>
+              <form id="formulario" class="form-cart" style="display: none;">
+                <h3>Tipo de envío</h3>
+                <div class="row form-check">
+                  <div class="col-md-12 mb-3">
+                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio1">
+                    <label class="form-check-label"  for="exampleCheck1">Premium 2 a 5 días (15%)</label>
+                  </div>
+                </div>
+                <div class="row form-check">
+                  <div class="col-md-12 mb-3">
+                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio2">
+                    <label class="form-check-label" for="exampleCheck1">Express 5 a 8 días (7%)</label>
+                  </div>
+                </div>
+                <div class="row form-check">
+                  <div class="col-md-12 mb-3">
+                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio3">
+                    <label class="form-check-label" for="exampleCheck1">Standard 12 a 15 días (5%)</label>
+                  </div>
+                </div>
+                <h3>Dirección de envío</h3>
+                <div class="row">
+                  <div class="col-sm-1 col-md-6 col-lg-4 mb-3">
+                    <label for="" class="form-label">Ciudad</label>
+                    <input type="text" class="form-control" id="ciudad">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label for="" class="form-label">Calle</label>
+                    <input type="text" class="form-control" id="calle">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label for="" class="form-label">Nro. de Puerta</label>
+                    <input type="text" class="form-control" id="nroPuerta">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label for="" class="form-label">Apartamento</label>
+                    <input type="text" class="form-control" id="apto">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label for="" class="form-label">Esquina</label>
+                    <input type="text" class="form-control" id="esquina">
+                  </div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label for="" class="form-label">Codigo Postal</label>
+                    <input type="text" class="form-control" id="codPostal">
+                  </div>
+                </div>
+                <div class="btn-direccion">
+                  <button type="submit" class="btn btn-primary" id="cancelarBtn">Cancelar</button>
+                  <button type="submit" class="btn btn-primary" id="guardarBtn">Guardar</button>
+                </div>
+              </form>
+            </div>
+        </div>
+
+    </main>
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-end">
+                <a href="#">Volver arriba</a>
+            </p>
+            <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+        </div>
+    </footer>
+    <div id="spinner-wrapper">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+>>>>>>> Stashed changes
     </div>
   </footer>
   <div id="spinner-wrapper">
