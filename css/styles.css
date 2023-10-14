@@ -582,7 +582,6 @@ input.input-login {
 
 /*Fin estilo alertas categorías vacías*/
 
-<<<<<<< Updated upstream
 /*Coloca un fondo transparente en el icono de error en la alerta*/
 .swal2-x-mark {
     background-color: transparent;
@@ -830,12 +829,3 @@ input[type="radio"]:checked~label {
 .text-comment {
     width: 20rem;
 }
-=======
-.carousel-item {
-  transition: opacity 5s ease-in-out;
-}
-
-.carousel-item.active {
-  opacity: 1;
-}
->>>>>>> Stashed changes

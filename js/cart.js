@@ -4,7 +4,6 @@ const buttonLeft = document.getElementsByClassName("number-left");
 const buttonRight = document.getElementsByClassName("number-right");
 const valueCountArticle = document.getElementsByName("number-count");
 let count = 1;
-let arrayItemCart = [];
 
 
 //Obtiene los datos del fetch del carrito y los guarda en un array
@@ -12,6 +11,7 @@ function getDataCartUser() {
     fetch(CART_INFO_URL + IDuser + EXT_TYPE)
     .then(response => response.json())
     .then(result => {
+      debugger;
       arrayItemCart = result.articles
       arrayItemCart.push(...cartItems);
       localStorage.setItem("cartItem",JSON.stringify(arrayItemCart))
@@ -24,6 +24,7 @@ function getDataCartUser() {
 
 //Muestra el contenido de un array
 function showCartList(array) {
+  debugger;
     let cartUser = ``;
     for (i= 0; i < array.length; i++) {
         cartUser = `
@@ -57,19 +58,6 @@ function showCartList(array) {
         containerCart.innerHTML += cartUser;
     }
 }
-
-document.addEventListener("DOMContentLoaded", getDataCartUser);
-
-const botonMostrarFormulario = document.getElementById("mostrarFormulario");
-const formulario = document.getElementById("formulario");
-
-botonMostrarFormulario.addEventListener("click", function() {
-    if (formulario.style.display === "none" || formulario.style.display === "") {
-      formulario.style.display = "block";
-    } else {
-      formulario.style.display = "none";
-    }
-  });
 document.addEventListener("DOMContentLoaded", getDataCartUser);
 
 function sumIndividualCost(i, unitCost, count, currency){
@@ -105,3 +93,15 @@ function restIndividualCost(i, unitCost, count, currency){
      containerCart.innerHTML = ""
      showCartList(setLocalProduct)
     }
+
+
+const botonMostrarFormulario = document.getElementById("mostrarFormulario");
+const formulario = document.getElementById("formulario");
+
+botonMostrarFormulario.addEventListener("click", function() {
+    if (formulario.style.display === "none" || formulario.style.display === "") {
+      formulario.style.display = "block";
+    } else {
+      formulario.style.display = "none";
+    }
+  });
