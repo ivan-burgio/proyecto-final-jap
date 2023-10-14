@@ -2,126 +2,162 @@
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>eMercado - Todo lo que busques está aquí</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+    <!-- DARK / LIGHT-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-  <!-- bibliotecas de Bootstrap y jQuery -->
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/stylesDarkMode.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<link
-href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-rel="stylesheet"
-/>
-<link
-href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
-rel="stylesheet"
-/>
-<title>Bootstrap Example</title>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- bibliotecas de Bootstrap y jQuery -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
 
+    <style>
+        .custom-card {
+            height: auto !important;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet" />
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark  pb-2">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between flex">
-          <li class="nav-item"> <a class="nav-link active" href="index.html">Inicio <ion-icon name="home-outline"></ion-icon></a></li>
-          <li class="nav-item"> <a class="nav-link" href="categories.html">Categorías <ion-icon name="compass-outline"></ion-icon></a></li>
-          <li class="nav-item"> <a class="nav-link" href="sell.html">Vender <ion-icon name="pricetag-outline"></ion-icon></a></li>
-          <!--Se crea un menu desplegable al hacer click al usuario-->
-          <li class="nav-item"><div class="dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Bienvenido <span id="correoUsuario"></span></a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="cart.html"><ion-icon name="cart-outline"></ion-icon>  Mi Carrito</a></li>
-                  <li><a class="dropdown-item" href="my-profile.html"><ion-icon name="person-circle-outline"></ion-icon>  Mi Perfil</a></li>
-                  <li><a id="logout" class="dropdown-item" href="login.html"><ion-icon name="exit-outline"></ion-icon>  Cerrar Sesión</a></li>
+<body data-bs-theme="light">
+    <nav class="navbar navbar-expand-md navbar-dark pb-2">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav w-100 justify-content-between flex">
+                    <li class="nav-item"> <a class="nav-link active" href="index.html">Inicio <ion-icon
+                                name="home-outline"></ion-icon></a></li>
+
+                    <!--Se crea un menu desplegable de categorías-->
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Categorías <ion-icon name="compass-outline"></ion-icon></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="categories.html">Todas las Categorías</a></li>
+                                <li><a class="dropdown-item" onclick="copiarID(101)">Autos</a></li>
+                                <li><a class="dropdown-item" onclick="copiarID(109)">Celulares</a></li>
+                                <li><a class="dropdown-item" onclick="copiarID(105)">Computadoras</a></li>
+                                <li><a class="dropdown-item" onclick="copiarID(108)">Deporte</a></li>
+                                <li><a class="dropdown-item" onclick="copiarID(107)">Electrodomésticos</a></li>
+                                <li><a class="dropdown-item" onclick="copiarID(104)">Herramientas</a></li>
+                                <li><a class="dropdown-item" onclick="copiarID(102)">Juguetes</a></li>
+                                <li><a class="dropdown-item" onclick="copiarID(103)">Muebles</a></li>
+                                <li><a class="dropdown-item" onclick="copiarID(106)">Vestimenta</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!--Termina menu desplegable-->
+
+                    <li class="nav-item"> <a class="nav-link" href="sell.html">Vender <ion-icon
+                                name="pricetag-outline"></ion-icon></a></li>
+
+                    <!--Se crea un menu desplegable al hacer click al usuario-->
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Bienvenido <span id="correoUsuario"></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a id="btnSwitch" class="dropdown-item" href="#"></a></li>
+                                <li><a class="dropdown-item" href="cart.html"><ion-icon name="cart-outline"></ion-icon>
+                                        Mi Carrito</a></li>
+                                <li><a class="dropdown-item" href="my-profile.html"><ion-icon
+                                            name="person-circle-outline"></ion-icon> Mi Perfil</a></li>
+                                <li><a id="logout" class="dropdown-item" href="login.html"><ion-icon
+                                            name="exit-outline"></ion-icon> Cerrar Sesión</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!--Termina el menu desplegable-->
                 </ul>
             </div>
-          </li>
-          <!--Termina el menu desplegable-->
-        </ul>
-      </div>
+        </div>
+    </nav>
+
+    <main>
+        <div id="container-Info" style></div>
+
+        <div class="container container-comments caja-gris">
+            <h5 class="mb-5">Deja un comentario sobre el producto!</h5>
+
+            <form id="commentForm">
+                <!-- Campo de texto para el comentario -->
+                <textarea id="comment-text" class="text-coment" rows="4" cols="40" placeholder="Escribe tu comentario aquí"></textarea>
+
+                <label for="rating"></label>
+
+                <div class="star-rating">
+                    <p>Calificación:</p>
+                    <div class="clasification">
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label class="stars" for="star5">&#9733;</label>
+
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label class="stars" for="star4">&#9733;</label>
+                        
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label class="stars" for="star3">&#9733;</label>
+
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label class="stars" for="star2">&#9733;</label>
+                        
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label class="stars" for="star1">&#9733;</label>
+                    </div>
+                </div>
+
+                <!-- Botón para enviar el comentario -->
+                <button class="btn btn-primary btn-lg button-cart m-3" type="submit" id="submit-comment">Enviar Comentario</button>
+            </form>
+
+            <div id="comments-container">
+                <h3 class="mt-5 mb-3">Comentarios</h3>
+                <ul id="comments-list"></ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-end">
+                <a href="#">Volver arriba</a>
+            </p>
+            <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a
+                    Programar</a></p>
+        </div>
+    </footer>
+    <div id="spinner-wrapper">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
-  </nav>
-  
-  <main>
-    <div id="container-Info"></div>
-
-    <form id="commentForm">
-      <!-- Campo de texto para el comentario -->
-      <textarea id="comment-text" rows="4" cols="70" placeholder="Escribe tu comentario aquí"></textarea>
-    
-      <label for="rating"></label>
-      
-      <div class="star-rating">
-        <p>Calificación:</p>
-        <input type="radio" id="star1" name="rating" value="1">
-        <label for="star1">&#9733;</label>
-        
-        <input type="radio" id="star2" name="rating" value="2">
-        <label for="star2">&#9733;</label>
-        
-        <input type="radio" id="star3" name="rating" value="3">
-        <label for="star3">&#9733;</label>
-        
-        <input type="radio" id="star4" name="rating" value="4">
-        <label for="star4">&#9733;</label>
-        
-        <input type="radio" id="star5" name="rating" value="5">
-        <label for="star5">&#9733;</label>
-
-      </div>
-    
-      <!-- Botón para enviar el comentario -->
-      <button type="submit" id="submit-comment">Enviar Comentario</button>
-    </form>
-    
-    
-
-   
-
-    <div id="comments-container">
-      <h4><b>Comentarios: </b></h4>
-      <ul id="comments-list"></ul>
-      <p id="no-comments-message">No hay comentarios disponibles.</p>
-    </div>
-
-  </main>
-
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
-    </div>
-  </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/product-info.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/product-info.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
