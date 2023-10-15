@@ -11,7 +11,6 @@ function getDataCartUser() {
     fetch(CART_INFO_URL + IDuser + EXT_TYPE)
     .then(response => response.json())
     .then(result => {
-      debugger;
       arrayItemCart = result.articles
       arrayItemCart.push(...cartItems);
       localStorage.setItem("cartItem",JSON.stringify(arrayItemCart))
@@ -24,11 +23,10 @@ function getDataCartUser() {
 
 //Muestra el contenido de un array
 function showCartList(array) {
-  debugger;
     let cartUser = ``;
     for (i= 0; i < array.length; i++) {
         cartUser = `
-            <div class="card-product shadow align-items-center caja-gris-raro" id="container-cart">
+            <div class="card-product shadow align-items-center caja-gris-raro">
                 <div class="card-1 container-fluid">
                     <img class="img-fluid" src="${array[i].image}" alt="${array[i].name}" style="width: 100%; height: auto; max-width: 30rem;">
                 </div>
