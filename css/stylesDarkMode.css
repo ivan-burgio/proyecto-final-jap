@@ -154,3 +154,17 @@ label.stars {
 textarea {
     border: solid 1px #f59a12 !important;
 }
+
+.dark-mode input:focus{
+    box-shadow: 0 0 5px #ffb543;
+    outline:none; 
+    border: thin #ffb543;
+    background-color: rgb(37, 37, 37);
+    color: rgb(195, 194, 194);
+}
+
+.dark-mode label,
+.dark-mode input[type="radio"]{
+    border-color: rgb(195, 194, 194);
+    color: rgb(195, 194, 194);
+}

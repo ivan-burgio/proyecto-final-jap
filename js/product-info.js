@@ -117,7 +117,7 @@ function getHTMLCarousel(arrayImg) {
       <svg class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
         width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
         role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <image xlink:href="${arrayImg[i]}" width="100%" height="100%">
+          <image xlink:href="${arrayImg[i]}" width="100%" height="100%" style="object-fit: cover;">
       </svg>
     </div>
   `;

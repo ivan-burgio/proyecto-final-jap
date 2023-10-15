@@ -28,27 +28,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between flex">
           <li class="nav-item"> <a class="nav-link active" href="index.html">Inicio <ion-icon name="home-outline"></ion-icon></a></li>
-         
-      <!--Se crea un menu desplegable de categorías-->
-          <li class="nav-item"><div class="dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorías <ion-icon name="compass-outline"></ion-icon></a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="categories.html">Todas las Categorías</a></li>
-                <li><a class="dropdown-item" onclick="copiarID(101)">Autos</a></li>
-                <li><a class="dropdown-item" onclick="copiarID(109)">Celulares</a></li>
-                <li><a class="dropdown-item" onclick="copiarID(105)">Computadoras</a></li>
-                <li><a class="dropdown-item" onclick="copiarID(108)">Deporte</a></li>
-                <li><a class="dropdown-item" onclick="copiarID(107)">Electrodomésticos</a></li>
-                <li><a class="dropdown-item" onclick="copiarID(104)">Herramientas</a></li>
-                <li><a class="dropdown-item" onclick="copiarID(102)">Juguetes</a></li>
-                <li><a class="dropdown-item" onclick="copiarID(103)">Muebles</a></li>
-                <li><a class="dropdown-item" onclick="copiarID(106)">Vestimenta</a></li>
-              </ul>
-            </div>
-          </li>
-      <!--Termina menu desplegable-->
-
-
+          <li class="nav-item"> <a class="nav-link" href="categories.html">Categorías <ion-icon name="compass-outline"></ion-icon></a></li>
           <li class="nav-item"> <a class="nav-link" href="sell.html">Vender <ion-icon name="pricetag-outline"></ion-icon></a></li>
           <!--Se crea un menu desplegable al hacer click al usuario-->
           <li class="nav-item"><div class="dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Bienvenido <span id="correoUsuario"></span></a>
@@ -70,11 +50,87 @@
       <h1 class="text-center">Carrito de Compras</h1>
       <p class="lead">Verás aquí los articulos añadidos a tu carrito.</p>
     </div>
-        <div class="card-container shadow mt-4 caja-gris" id="container-cart">
-            <h2>Artículos a Comprar</h2>
+
+        <div class="card-container shadow mt-4 caja-gris">
+            <h3>Artículos a Comprar</h3>
+            <div class="card-product shadow align-items-center caja-gris-raro" id="container-cart" style=" display: flex;
+            flex-wrap: wrap; /* Permite que las imágenes se envuelvan a la siguiente fila */
+            /*max-width: 100%;  Evita que el contenedor sea más ancho que su contenedor padre */
+            overflow: auto; /* Agrega una barra de desplazamiento si el contenido se desborda */
+            white-space: nowrap; /* Evita que los elementos hijos se envuelvan en el contenedor */"></div>
+            <div>
+              <div class="row" >
+                <div class="col-md-12" id="container-direccion">
+                    <button type="button" class="btn btn-primary" id="mostrarFormulario">Agregar dirección de envío...</button>
+                </div>
+            </div>
+              <form id="formulario" class="form-cart" style="display: none;">
+                <h3>Tipo de envío</h3>
+                <div class="row form-check">
+                  <div class="col-md-12 mb-3">
+                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio1">
+                    <label class="form-check-label"  for="exampleCheck1">Premium 2 a 5 días (15%)</label>
+                  </div>
+                </div>
+                <div class="row form-check">
+                  <div class="col-md-12 mb-3">
+                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio2">
+                    <label class="form-check-label" for="exampleCheck1">Express 5 a 8 días (7%)</label>
+                  </div>
+                </div>
+                <div class="row form-check">
+                  <div class="col-md-12 mb-3">
+                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio3">
+                    <label class="form-check-label" for="exampleCheck1">Standard 12 a 15 días (5%)</label>
+                  </div>
+                </div>
+                <h3>Dirección de envío</h3>
+                <div class="row">
+                  <div class="col-sm-1 col-md-6 col-lg-4 mb-3">
+                    <label for="" class="form-label">Ciudad</label>
+                    <input type="text" class="form-control" id="ciudad">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label for="" class="form-label">Calle</label>
+                    <input type="text" class="form-control" id="calle">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label for="" class="form-label">Nro. de Puerta</label>
+                    <input type="text" class="form-control" id="nroPuerta">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label for="" class="form-label">Apartamento</label>
+                    <input type="text" class="form-control" id="apto">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label for="" class="form-label">Esquina</label>
+                    <input type="text" class="form-control" id="esquina">
+                  </div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-12 mb-3">
+                    <label for="" class="form-label">Codigo Postal</label>
+                    <input type="text" class="form-control" id="codPostal">
+                  </div>
+                </div>
+                <div class="btn-direccion">
+                  <button type="submit" class="btn btn-primary" id="cancelarBtn">Cancelar</button>
+                  <button type="submit" class="btn btn-primary" id="guardarBtn">Guardar</button>
+                </div>
+              </form>
+          </div>
         </div>
+
     </main>
-    <footer>
+    <footer class="text-muted">
         <div class="container">
             <p class="float-end">
                 <a href="#">Volver arriba</a>
@@ -90,11 +146,20 @@
             <div></div>
         </div>
     </div>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/cart.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/cart.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
