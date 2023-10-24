@@ -65,7 +65,7 @@ function showProductInfo(result) {
             <p><span>Descripción:</span>  ${result.description}</p>
             <p><span>Categoria:</span>  ${result.category}</p>
             <p>${result.soldCount} <span>unidades vendidas</span></p>
-            <button onclick="addCart(actualItem)" class="btn btn-primary btn-lg button-cart m-3" type="button">Agregar al carrito</button>
+            <button onclick="addCart(actualItem)" class="btn btn-primary btn-lg button-cart m-3 add-to-cart-button" type="button">Agregar al carrito</button>
         </div>
     </div>`;
     containerInfo.innerHTML += productCard;

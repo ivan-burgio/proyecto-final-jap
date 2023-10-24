@@ -800,3 +800,9 @@ input[type="radio"]:checked~label {
 .text-comment {
     width: 20rem;
 }
+
+@media (min-width: 992px) {
+    .add-to-cart-button {
+        width: 12rem;
+    }
+}
