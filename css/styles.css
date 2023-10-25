@@ -200,11 +200,31 @@ h3:hover {
 
 /*Categorias*/
 .btn-group {
+    display: flex;
+    justify-content: flex-end;
     font-family: 'Poppins';
-    text-align: center;
-    align-items: center;
     cursor: pointer;
     transition: all 0.6s ease;
+}
+
+.btn-group-toggle.botones {
+    justify-content: flex-start;
+}
+
+@media (max-width: 992px) {
+    .btn-group-toggle.botones {
+        margin-bottom: 2rem; 
+        justify-content: center;
+    }
+
+    .btn-group {
+        justify-content: center;
+    }
+
+    div.search {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .titulo-cat {
@@ -526,6 +546,7 @@ input.input-login {
         border: 1px solid black;
         box-shadow: 7px 15px 17px 0px rgba(0, 0, 0, 0.59);
         margin: 1rem;
+        width: 25rem;
     }
 }
 
@@ -536,10 +557,6 @@ input.input-login {
 }
 
 .contenedor-orden {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     margin: .5rem;
     margin-bottom: 1rem;
 }
@@ -547,7 +564,7 @@ input.input-login {
 @media (min-width: 992px) {
     .contenedor-orden {
         flex-direction: row;
-        align-items: normal;
+        align-items: center;
         align-content: space-between;
     }
 }
@@ -760,52 +777,6 @@ input[type="radio"]:checked~label {
     justify-content: space-between;
 }
 
-/* CARRITO */
-.form-cart{
-    width: 600px;
-    margin-top: 15px;
-}
-
-#container-direccion{
-    text-align: center;
-    margin: 20px;
-}
-
-#mostrarFormulario{
-    width: auto;
-    padding: 0 15px;
-    border: none;
-    border-bottom: solid 1px  rgba(255, 165, 0, 0.8);
-}
-
-.form-cart .form-label, 
-.form-cart .form-check{
-    margin-left: 10px;
-}
-
-.form-control{
-    width: 550px;
-}
-
-.btn-direccion{
-    display: flex;
-    justify-content:space-evenly;
-}
-
-.btn-direccion button{
-    width: 25%;
-}
-
-.btn-direccion #cancelarBtn{
-    border:rgb(112, 112, 114);
-    background-color: rgb(112, 112, 114);
-}
-
-
-.btn-direccion #guardarBtn{
-    border:rgba(255, 165, 0, 0.8);
-    background-color: rgba(255, 165, 0, 0.8);
-}
 .carousel-item {
     height: 12rem;
 }
@@ -828,4 +799,10 @@ input[type="radio"]:checked~label {
 
 .text-comment {
     width: 20rem;
+}
+
+@media (min-width: 992px) {
+    .add-to-cart-button {
+        width: 12rem;
+    }
 }

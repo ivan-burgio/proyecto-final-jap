@@ -3,7 +3,6 @@ const containerInfo = document.getElementById("container-Info");
 const commentsList = document.getElementById("comments-list");
 const submitButton = document.getElementById("submit-comment");
 const ratingLabels = document.querySelectorAll(".star-rating label");
-const buttonAddCart = document.getElementById("addCartItem");
 let apiComments = [];
 let localComments = [];
 
@@ -40,11 +39,19 @@ function getDataProduct() {
 
 
 
-function addCart(){
-  
-  if(!cartItems.includes(actualItem))
-  cartItems.push(actualItem);
-  localStorage.setItem('cartItem', JSON.stringify(cartItems));
+function addCart() {
+    const buttonAddCart = document.getElementById("addCartItem");
+
+    if (!cartItems.includes(actualItem))
+        cartItems.push(actualItem);
+    localStorage.setItem('cartItem', JSON.stringify(cartItems));
+
+    // Deshabilita el botón
+    buttonAddCart.disabled = true;
+    // Cambia el texto del botón
+    buttonAddCart.textContent = "Añadido al carrito";
+    buttonAddCart.style.color = "black";
+    buttonAddCart.style.backgroundColor = "#ffb543";
 }
 
 function showProductInfo(result) {
@@ -65,7 +72,7 @@ function showProductInfo(result) {
             <p><span>Descripción:</span>  ${result.description}</p>
             <p><span>Categoria:</span>  ${result.category}</p>
             <p>${result.soldCount} <span>unidades vendidas</span></p>
-            <button onclick="addCart(actualItem)" class="btn btn-primary btn-lg button-cart m-3" type="button">Agregar al carrito</button>
+            <button onclick="addCart(actualItem)" class="btn btn-primary btn-lg button-cart m-3 add-to-cart-button" id="addCartItem" type="button">Agregar al carrito</button>
         </div>
     </div>`;
     containerInfo.innerHTML += productCard;
@@ -267,32 +274,31 @@ function stars(score) {
 // }
 
 function setProductsID(id) {
-  localStorage.setItem("productID", id);
-  window.location = "product-info.html"
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html"
 }
 
-document.getElementById('addCartItem').addEventListener('click', function() {
-  let url = 'PRODUCT_INFO_URL' + productID + 'EXT_TYPE';
+buttonAddCart.addEventListener('click', function () {
+    let url = 'PRODUCT_INFO_URL' + productID + 'EXT_TYPE';
 
-  getJSONData(url)
-    .then(function(response) {
-      if (response.status === 'ok') {
-        // Procesa la data aquí si la solicitud fue exitosa
-        console.log(response.data);
+    getJSONData(url)
+        .then(function (response) {
+            if (response.status === 'ok') {
+                // Procesa la data aquí si la solicitud fue exitosa
+                console.log(response.data);
 
-        // Agrega la data a la variable global arrayItemCart
-        arrayItemCart.push(response.data);
+                // Agrega la data a la variable global arrayItemCart
+                arrayItemCart.push(response.data);
 
-        // Verifica que se haya guardado correctamente
-        console.log(arrayItemCart);
-      } else {
-        // Procesa el error aquí si la solicitud falló
-        console.error(response.data);
-      }
-    })
-    .catch(function(error) {
-      // Maneja errores en la petición o parseo del JSON
-      console.error(error);
-    });
-    
+                // Verifica que se haya guardado correctamente
+                console.log(arrayItemCart);
+            } else {
+                // Procesa el error aquí si la solicitud falló
+                console.error(response.data);
+            }
+        })
+        .catch(function (error) {
+            // Maneja errores en la petición o parseo del JSON
+            console.error(error);
+        });
 });
