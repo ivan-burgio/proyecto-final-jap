@@ -78,6 +78,7 @@ function restIndividualCost(i, unitCost, count, currency){
      subtotal.textContent = `Subtotal:  ${currency.toString()} ${subtotalCost}` 
     }
 
+    
     function deleteItem(Item){
      let getLocalProduct = localStorage.getItem("cartItem");
      getLocalProduct = JSON.parse(getLocalProduct);
@@ -89,8 +90,8 @@ function restIndividualCost(i, unitCost, count, currency){
      }  
      localStorage.setItem("cartItem", JSON.stringify(setLocalProduct))  
      containerCart.innerHTML = ""
-     showCartList(setLocalProduct)
-    }
+     showCartList(setLocalProduct)}
+    
 
 
 const botonMostrarFormulario = document.getElementById("mostrarFormulario");
