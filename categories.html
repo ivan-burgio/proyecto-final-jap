@@ -85,15 +85,14 @@
                 Mostrar Filtros
             </button>
             
-            <div id="filterContent" class="d-lg-block" style="display: none;">
+            <div id="filterContent" class="d-lg-flex col" style="display: none;">
 
-                <div class="contenedor-orden">
-
+                <div class="contenedor-orden row">
                     <div class="search">
                         <input type="search" class="search__input" id="searchInputC" placeholder="Buscar...">
                     </div>
 
-                    <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
+                    <div class="btn-group btn-group-toggle botones" data-bs-toggle="buttons">
                         <input type="radio" class="btn-check" name="options" id="sortAsc">
                         <label class="btn-p border border-warning rounded" for="sortAsc"><i class="fas fa-sort-amount-up mr-1"></i>$</label>
                         <input type="radio" class="btn-check" name="options" id="sortDesc">
@@ -101,11 +100,9 @@
                         <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
                         <label class="btn-p border border-warning rounded text-center" for="sortByCost"><i class="fas fa-sort-amount-down mr-1"></i>rel</label>
                     </div>
-
                 </div>
 
-                <div class="contenedor-orden">
-
+                <div class="contenedor-orden row">
                     <div class="btn-group btn-group-toggle">
                         <p class="font-weight-normal text-end my-2">Cantidad</p>
                         <input class="form-control count-filter" type="number" placeholder="min." id="rangeFilterCountMin" min=0>
@@ -116,7 +113,6 @@
                         <button class="btn-filtro btn-light btn-block" id="rangeFilterCount">Filtrar</button>
                         <button class="btn-filtro btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
                     </div>
-
                 </div>
             </div>
         </div>
