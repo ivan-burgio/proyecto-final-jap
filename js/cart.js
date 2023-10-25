@@ -11,10 +11,9 @@ function getDataCartUser() {
     fetch(CART_INFO_URL + IDuser + EXT_TYPE)
     .then(response => response.json())
     .then(result => {
-      debugger;
       arrayItemCart = result.articles
       arrayItemCart.push(...cartItems);
-      localStorage.setItem("cartItem",JSON.stringify(arrayItemCart))
+    //   localStorage.setItem("cartItem",JSON.stringify(arrayItemCart))
       showCartList(arrayItemCart);
     })
     .catch(error => {
@@ -80,19 +79,19 @@ function restIndividualCost(i, unitCost, count, currency){
      subtotal.textContent = `Subtotal:  ${currency.toString()} ${subtotalCost}` 
     }
 
-    function deleteItem(Item){
-     let getLocalProduct = localStorage.getItem("cartItem");
-     getLocalProduct = JSON.parse(getLocalProduct);
-     const setLocalProduct = []
-     for (let obj of getLocalProduct){
-       if (obj.name !== Item){
-        setLocalProduct.push(obj)
-       }
-     }  
-     localStorage.setItem("cartItem", JSON.stringify(setLocalProduct))  
-     containerCart.innerHTML = ""
-     showCartList(setLocalProduct)
-    }
+  function deleteItem(Item){
+  let getLocalProduct = localStorage.getItem("cartItem");
+  getLocalProduct = JSON.parse(getLocalProduct);
+  const setLocalProduct = []
+  for (let obj of getLocalProduct){
+  if (obj.name !== Item){
+  setLocalProduct.push(obj)
+  }
+  }  
+  localStorage.setItem("cartItem", JSON.stringify(setLocalProduct))  
+  containerCart.innerHTML = ""
+  showCartList(setLocalProduct)
+  }
 
 
 const botonMostrarFormulario = document.getElementById("mostrarFormulario");
