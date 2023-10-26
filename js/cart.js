@@ -65,7 +65,7 @@ function showCartList(array) {
     }
     //tarjeta de precios
     let cardPrice = `<div><h3>Costos</h3></div> <br>
-    <div><h4>Subtotal: USD ${subTotal}</h4></div> <br>
+    <div id="subTotal"><h4>Subtotal: USD ${subTotal}</h4></div> <br>
     <div id="envio"><h4>Costo de envio: USD ${costoDeEnvio}</h4></div> <br>
     <div id="total"><h4>Total: USD ${Total} </h4></div>
     `
@@ -87,11 +87,7 @@ input = document.getElementById(i + "_modified");
  const cartActual = localStorage.getItem('cartItem');
  JSON.parse(cartActual);
  
- Total = subTotal + costoDeEnvio;
-    const costoDeEnvioElement = document.getElementById('envio');
-    const totalElement = document.getElementById('total');
-    costoDeEnvioElement.textContent = `Costo de envio: USD ${costoDeEnvio}`;
-    totalElement.textContent = `Total: USD ${Total}`;
+ updateTotal()
 }
 
 function restIndividualCost(i, unitCost, count, currency){
@@ -104,11 +100,7 @@ function restIndividualCost(i, unitCost, count, currency){
      subtotal = document.getElementById(i + "_Subtotal");
      subtotal.textContent = `Subtotal:  ${currency.toString()} ${subtotalCost}`
      
-     Total = subTotal + costoDeEnvio;
-    const costoDeEnvioElement = document.getElementById('envio');
-    const totalElement = document.getElementById('total');
-    costoDeEnvioElement.textContent = `Costo de envio: USD ${costoDeEnvio}`;
-    totalElement.textContent = `Total: USD ${Total}`;
+     updateTotal()
     }
 
     function deleteItem(Item){
@@ -123,6 +115,7 @@ function restIndividualCost(i, unitCost, count, currency){
      localStorage.setItem("cartItem", JSON.stringify(setLocalProduct))  
      containerCart.innerHTML = ""
      showCartList(setLocalProduct)
+     updateTotal();
     }
 
 const botonMostrarFormulario = document.getElementById("mostrarFormulario");
@@ -153,8 +146,10 @@ function envioPremium(){
 
   function updateTotal() {
     Total = subTotal + costoDeEnvio;
+    const subTotalElement = document.getElementById('subTotal');
     const costoDeEnvioElement = document.getElementById('envio');
     const totalElement = document.getElementById('total');
+    subTotalElement.textContent = `Subtotal: USD ${subTotal}`;
     costoDeEnvioElement.textContent = `Costo de envio: USD ${costoDeEnvio}`;
     totalElement.textContent = `Total: USD ${Total}`;
 }
