@@ -4,6 +4,7 @@ const buttonLeft = document.getElementsByClassName("number-left");
 const buttonRight = document.getElementsByClassName("number-right");
 const valueCountArticle = document.getElementsByName("number-count");
 const cardPriceContainer= document.getElementById("cardTotalPrice");
+const containerCost = document.getElementById("cardPrice")
 let count = 1;
 let subTotal = 0;
 let costoDeEnvio = 0;
@@ -64,14 +65,14 @@ function showCartList(array) {
         containerCart.innerHTML += cartUser;
     }
     //tarjeta de precios
-    let cardPrice = `<div><h3>Costos</h3></div> <br>
-    <div id="subTotal"><h4>Subtotal: USD ${subTotal}</h4></div> <br>
-    <div id="envio"><h4>Costo de envio: USD ${costoDeEnvio}</h4></div> <br>
-    <div id="total"><h4>Total: USD ${Total} </h4></div>
+    let cardPrice = `
+    <div id="subTotal" class="cardBody"><p><strong>Subtotal:</strong> USD ${subTotal}</p></div>
+    <div id="envio" class="cardBody"><p><strong>Costo de envio:</strong> USD ${costoDeEnvio}</p></div>
+    <div id="total" class="cardBody"><p><strong>Total:</strong> USD ${Total} </p></div>
     `
     
         
-              containerCart.innerHTML += cardPrice; 
+              containerCost.innerHTML += cardPrice; 
 }
 
 
@@ -146,9 +147,9 @@ function envioPremium(){
     const subTotalElement = document.getElementById('subTotal');
     const costoDeEnvioElement = document.getElementById('envio');
     const totalElement = document.getElementById('total');
-    subTotalElement.textContent = `Subtotal: USD ${subTotal}`
-    costoDeEnvioElement.textContent = `Costo de envio: USD ${costoDeEnvio}`;
-    totalElement.textContent = `Total: USD ${Total}`;
+    subTotalElement.innerHTML =  `<p><strong>Subtotal:</strong> USD ${subTotal}</p>`
+    costoDeEnvioElement.innerHTML = `<p><strong>Costo de envio:</strong> USD ${costoDeEnvio}</p>`;
+    totalElement.innerHTML = `<p><strong>Total:</strong> USD ${Total} </p>`;
 }
 
 
