@@ -93,13 +93,135 @@ function restIndividualCost(i, unitCost, count, currency){
     }
 
 
-const botonMostrarFormulario = document.getElementById("mostrarFormulario");
-const formulario = document.getElementById("formulario");
+  const paymentMethodSelect = document.getElementById('paymentMethod');
+  const cuotasField = document.getElementById('cuotasField');
+  const cuotasInput = document.getElementById('cuotas');
 
-botonMostrarFormulario.addEventListener("click", function() {
-    if (formulario.style.display === "none" || formulario.style.display === "") {
-      formulario.style.display = "block";
+  paymentMethodSelect.addEventListener('change', function() {
+    if (paymentMethodSelect.value === 'credito') {
+      cuotasField.style.display = 'block';
+      cuotasInput.setAttribute('required', 'required');
     } else {
-      formulario.style.display = "none";
+      cuotasField.style.display = 'none';
+      cuotasInput.removeAttribute('required');
     }
   });
+
+
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (() => {
+    'use strict';
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms           = document.querySelectorAll('.needs-validation');
+    const nombreInput     = document.getElementById('nombre');
+    const nroTarjetaInput = document.getElementById('nroTarjeta');
+    const codigoInput     = document.getElementById('codigo');
+
+    nombreInput.addEventListener('input', function () {
+        if (nombreInput.value.trim() === '' || !/^[A-Za-z]+$/.test(nombreInput.value) || nombreInput.value.length != 5) {
+            nombreInput.setCustomValidity('El nombre no puede estar vacío y debe contener solo letras.');
+        } else {
+            nombreInput.setCustomValidity('');
+        }
+    });
+
+    nroTarjetaInput.addEventListener('input', function () {
+      if (nroTarjetaInput.value.trim() === '' || /^[0-9]{16}$/.test(nroTarjetaInput.value) || nroTarjetaInput.value.length < 15) {
+        nroTarjetaInput.setCustomValidity('Número incorrecto');
+      } else {
+        nroTarjetaInput.setCustomValidity('');
+      }
+    });
+
+    codigoInput.addEventListener('input', function () {
+      if (codigoInput.value.trim() === '' || /^[0-9]{16}$/.test(codigoInput.value) || !(codigoInput.value.length === 3)) {
+        codigoInput.setCustomValidity('Código incorrecto');
+      } else {
+        codigoInput.setCustomValidity('');
+      }
+    });
+
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            form.classList.add('was-validated');
+        }, false);
+    });
+})();
+
+const vencimientoInput = document.getElementById('vencimiento');
+
+vencimientoInput.addEventListener('input', function () {
+  let inputValue = vencimientoInput.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+  const maxLength = 4; // Longitud máxima del campo (MM/YY)
+
+  if (inputValue.length > maxLength) {
+    inputValue = inputValue.slice(0, maxLength); // Limitar a la longitud máxima
+  }
+
+  if (inputValue.length >= 2) {
+    // Insertar una barra ("/") después de los primeros dos dígitos (mes)
+    inputValue = inputValue.slice(0, 2) + '/' + inputValue.slice(2);
+  }
+
+  vencimientoInput.value = inputValue;
+
+  if (inputValue.length === 5) {
+  
+    const month = parseInt(inputValue.slice(0, 2), 10);
+    const year = parseInt(inputValue.slice(2), 10);
+  
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear() % 100; // Obtener los últimos dos dígitos del año actual
+  
+    if (month < 1 || month > 12 || year < currentYear) {
+      vencimientoInput.setCustomValidity('Fecha no válida');
+    } else {
+      vencimientoInput.setCustomValidity('');
+    }
+  } else {
+    vencimientoInput.setCustomValidity('Formato incorrecto');
+  }
+});
+
+vencimientoInput.addEventListener('keydown', function (e) {
+  if (e.key === 'Backspace' && vencimientoInput.value.slice(-1) === '/') {
+    // Permitir borrar la barra ("/") con la tecla Backspace
+    vencimientoInput.value = vencimientoInput.value.slice(0, -1);
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  paypal.Buttons({
+    style: {
+        shape: 'rect',
+        color: 'blue',
+        layout: 'vertical',
+        label: 'pay',
+    },
+    funding: {
+        disallowed: [paypal.FUNDING.CARD],
+    }
+}).render('#paypal-button-container');
+
+paypal.Buttons({
+    style: {
+        shape: 'rect',
+        color: 'blue',
+        layout: 'vertical',
+        label: 'pay',
+    },
+    funding: {
+        disallowed: [paypal.FUNDING.CARD],
+    }
+}).render('#paypal-button-container-virtual');
+
+});
