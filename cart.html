@@ -31,7 +31,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav w-100 justify-content-between flex">
-                    <li class="nav-item"> <a class="nav-link active" href="index.html">Inicio <ion-icon name="home-outline"></ion-icon></a></li>
+                    <li class="nav-item"> <a class="" href="index.html">Inicio <ion-icon name="home-outline"></ion-icon></a></li>
 
             <!--Se crea un menu desplegable de categorías-->
                     <li class="nav-item"><div class="dropdown">
@@ -80,98 +80,197 @@
             <p class="lead">Verás aquí los articulos añadidos a tu carrito.</p>
         </div>
 
-            <div class="card-container shadow mt-4 caja-gris" id="container-cart">
+        <div class="shadow mt-4 caja-gris">
+            <div id="container-cart"><h3>Artículos a Comprar</h3></div>
+        
+       <!--     <div class="card-container shadow mt-4 caja-gris" id="container-cart">
                 <h3>Artículos a Comprar</h3>
+            </div>-->
+
+        <div class="shadow mt-4 d-flex justify-content-center row">
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item tab-carrito" role="presentation">
+                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Datos de envío</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link tab-carrito" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Método de pago</button>
+                </li>
+              </ul>
+
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0"> 
+                    <!-- TAB 1 -> Datos de envio -->
+                    <form id="formulario" class="form-cart container-fluid">
+                        <h3 class="title-envio">Tipo de envío</h3>
+        
+                        <div class="filtros-cart">
+                            <div class="row form-check">
+                                <div class="col-md-12 mb-3">
+                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio1" onclick="envioPremium()">
+                                    <label class="form-check-label" for="exampleCheck1">Premium 2 a 5 días (15%)</label>
+                                </div>
+                            </div>
+                            
+                            <div class="row form-check">
+                                <div class="col-md-12 mb-3">
+                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio2" onclick="envioExpress()">
+                                    <label class="form-check-label" for="exampleCheck1">Express 5 a 8 días (7%)</label>
+                                </div>
+                            </div>
+                            
+                            <div class="row form-check">
+                                <div class="col-md-12 mb-3">
+                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio3" onclick="envioStandard()">
+                                    <label class="form-check-label" for="exampleCheck1">Standard 12 a 15 días (5%)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr_debitoCredito">
+                        <h3 class="title-envio">Dirección de envío</h3>
+        
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="ciudad" class="form-label">Ciudad</label>
+                                <input type="text" class="form-control form-control-direction" id="ciudad">
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="calle" class="form-label">Calle</label>
+                                <input type="text" class="form-control form-control-direction" id="calle">
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="nroPuerta" class="form-label">Nro. de Puerta</label>
+                                <input type="text" class="form-control form-control-direction" id="nroPuerta">
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="apto" class="form-label">Apartamento</label>
+                                <input type="text" class="form-control form-control-direction" id="apto">
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="esquina" class="form-label">Esquina</label>
+                                <input type="text" class="form-control form-control-direction" id="esquina">
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label for="codPostal" class="form-label">Codigo Postal</label>
+                                <input type="text" class="form-control form-control-direction" id="codPostal">
+                            </div>
+                        </div>
+                        
+                        <div class="btn-direccion">
+                            <button type="submit" class="btn btn-primary" id="cancelarBtn">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" id="guardarBtn">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                  
+                    <div class="accordion" >
+                        <div class="accordion-item">
+                          <h2 class="accordion-header accordion-headerOne">
+                            <button class="accordion-button collapsed" id="accordion-button-one" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="accordion-icon bi bi-credit-card"  width="15" height="15" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
+                                    <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
+                                  </svg>
+                                Tarjeta de débito y crédito
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <!-- Selector de Debito o crédito -->
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <label for="inputState" class="form-label">Seleccionar tarjeta</label>
+                                    <select class="form-select" id="paymentMethod">
+                                      <option value="debito">Tarjeta débito</option>
+                                      <option value="credito">Tarjeta crédito</option>
+                                    </select>
+                                  </div>
+                                <hr class="hr_debitoCredito">
+                                <!-- Form validation Debito -->
+                                <form action="#" method="get" class="row mt-3 needs-validation formDebitoCredito" novalidate>
+                                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                                      <label for="validationServer01" class="form-label">Nombre</label>
+                                      <input type="text" class="form-control" minlength="5" id="nombre" required>
+                                      <div class="invalid-feedback">
+                                        El nombre no puede estar vacío y debe contener solo letras.
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                                        <label for="validationServer02" class="form-label">Número de tarjeta</label>
+                                        <input type="number" class="form-control count-number" id="nroTarjeta" required>
+                                        <div class="invalid-feedback">
+                                            Número incorrecto
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                        <label for="validationServer03" class="form-label">Vencimiento</label>
+                                        <input type="text" class="form-control" id="vencimiento" placeholder="MM/YY" required>
+                                        <div class="invalid-feedback">
+                                            Fecha incorrecta
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                        <label for="validationServer03" class="form-label">Código</label>
+                                        <input type="number" class="form-control count-number" id="codigo"  autocomplete="off" placeholder="CVV" required>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" id="cuotasField">
+                                        <label for="validationTooltip04" class="form-label">Cuotas</label>
+                                        <select class="form-control form-select" id="validationTooltip04" >
+                                          <option>1</option>
+                                          <option>2</option>
+                                          <option>3</option>
+                                          <option>4</option>
+                                          <option>5</option>
+                                          <option>6</option>
+                                        </select>
+                                    </div>                                      
+                                    <div class="col-12" id="contenedorBtn-cerrarCompra">
+                                      <button class="btn btn-primary btn-cerrarCompra" type="submit">Finalizar compra</button>
+                                    </div>
+                                  </form>
+                                  <!-- FIN Form validation Debito -->
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" id="accordion-button-two" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-controls="collapseTwo">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="accordion-icon bi bi-paypal" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M14.06 3.713c.12-1.071-.093-1.832-.702-2.526C12.628.356 11.312 0 9.626 0H4.734a.7.7 0 0 0-.691.59L2.005 13.509a.42.42 0 0 0 .415.486h2.756l-.202 1.28a.628.628 0 0 0 .62.726H8.14c.429 0 .793-.31.862-.731l.025-.13.48-3.043.03-.164.001-.007a.351.351 0 0 1 .348-.297h.38c1.266 0 2.425-.256 3.345-.91.379-.27.712-.603.993-1.005a4.942 4.942 0 0 0 .88-2.195c.242-1.246.13-2.356-.57-3.154a2.687 2.687 0 0 0-.76-.59l-.094-.061ZM6.543 8.82a.695.695 0 0 1 .321-.079H8.3c2.82 0 5.027-1.144 5.672-4.456l.003-.016c.217.124.4.27.548.438.546.623.679 1.535.45 2.71-.272 1.397-.866 2.307-1.663 2.874-.802.57-1.842.815-3.043.815h-.38a.873.873 0 0 0-.863.734l-.03.164-.48 3.043-.024.13-.001.004a.352.352 0 0 1-.348.296H5.595a.106.106 0 0 1-.105-.123l.208-1.32.845-5.214Z"/>
+                                </svg>
+                                PayPal
+                            </button>
+                          </h2>
+                          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div id="smart-button-container">
+                                        <div id="paypal-button-container"></div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
             </div>
-
-        <div class="d-flex justify-content-center row">
-            <div class="row">
-                <div class="col-md-12" id="container-direccion">
-                    <button type="button" class="btn btn-primary" id="mostrarFormulario">Agregar dirección de envío...</button>
-                </div>
-            </div>
         </div>
-            <form id="formulario" class="form-cart container-fluid" style="display: none;">
-                <h3>Tipo de envío</h3>
-            
-                <div class="filtros-cart">
-                    <div class="row form-check">
-                        <div class="col-md-12 mb-3">
-                            <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio1" onclick="envioPremium()">
-                            <label class="form-check-label" for="exampleCheck1">Premium 2 a 5 días (15%)</label>
-                        </div>
-                    </div>
-                                
-                    <div class="row form-check">
-                        <div class="col-md-12 mb-3">
-                            <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio2" onclick="envioExpress()">
-                            <label class="form-check-label" for="exampleCheck1">Express 5 a 8 días (7%)</label>
-                        </div>
-                    </div>
-                                
-                    <div class="row form-check">
-                        <div class="col-md-12 mb-3">
-                            <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio3" onclick="envioStandard()">
-                            <label class="form-check-label" for="exampleCheck1">Standard 12 a 15 días (5%)</label>
-                        </div>
-                    </div>
-            
-                    
-                <h3>Dirección de envío</h3>
-
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <label for="ciudad" class="form-label">Ciudad</label>
-                        <input type="text" class="form-control form-control-direction" id="ciudad">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <label for="calle" class="form-label">Calle</label>
-                        <input type="text" class="form-control form-control-direction" id="calle">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <label for="nroPuerta" class="form-label">Nro. de Puerta</label>
-                        <input type="text" class="form-control form-control-direction" id="nroPuerta">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <label for="apto" class="form-label">Apartamento</label>
-                        <input type="text" class="form-control form-control-direction" id="apto">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <label for="esquina" class="form-label">Esquina</label>
-                        <input type="text" class="form-control form-control-direction" id="esquina">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 mb-3">
-                        <label for="codPostal" class="form-label">Codigo Postal</label>
-                        <input type="text" class="form-control form-control-direction" id="codPostal">
-                    </div>
-                </div>
-                
-                <div class="btn-direccion">
-                    <button type="submit" class="btn btn-primary" id="cancelarBtn">Cancelar</button>
-                    <button type="submit" class="btn btn-primary" id="guardarBtn">Guardar</button>
-                </div>
-            </form>
-        </div>
-
-        <div id="cardPrice" class="shadow cardPrice">
-            <h3>Costos</h3>
-        </div>
-
     </main>
     <footer class="text-muted">
         <div class="container">
@@ -203,6 +302,10 @@
     <script src="js/cart.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AX4-jGuYIEXdK-eRpZgG_2UNKpU5_NaTbSpmLgVjrK6Yc41g-py4FJVxK_jpWEALYItxxAHNjq752bRv&enable-funding=venmo&currency=USD"
+    data-sdk-integration-source="button-factory"></script>
+    
+    </script>
 </body>
 
 </html>

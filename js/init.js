@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // JavaScript para manejar el botón de mostrar/ocultar filtros
-    const toggleFiltersButton = document.getElementById('toggleFilters');
+   /*const toggleFiltersButton = document.getElementById('toggleFilters');
     const filterContent = document.getElementById('filterContent');
 
     toggleFiltersButton.addEventListener('click', () => {
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
             filterContent.style.display = 'none';
             toggleFiltersButton.textContent = 'Mostrar Filtros';
         }
-    });
+    });*/
 })
 
 //Segun el localStorage o el boton cliceado, muestra el tema oscuro o claro
