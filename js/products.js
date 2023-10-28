@@ -80,7 +80,7 @@ function showProductList(currentProductsFilter) {
               </div>
               <div class="col align-items-center">
                 <div class="d-flex w-100 justify-content-between align-items-center">
-                  <h4 class="my-3">${producto.name} <br> USD ${producto.cost}</h5>
+                  <h4 class="my-3">${producto.name} <br> ${producto.currency} ${producto.cost}</h5>
                   <small class="text-center ms-3">${producto.soldCount} vendidos</small>
                 </div>
                 <p>${producto.description}</p>
