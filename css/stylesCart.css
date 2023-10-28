@@ -190,3 +190,57 @@ input[name="number-count"]::-webkit-outer-spin-button {
     border:rgba(255, 165, 0, 0.8);
     background-color: rgba(255, 165, 0, 0.8);
 }
+
+/*Costos totales*/
+
+.cardPrice {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    margin: 2rem;
+    padding: 0.8rem;
+    width: 380px;
+    height: 350px;
+    justify-content: center;
+    background-color: #fff;
+    position: relative;
+    bottom: 500px;
+    left: 650px;
+}
+
+.cardBody {
+    padding: 0.6rem;
+    margin: 0.7rem;
+}
+
+.cardBody p {
+    margin: 0 !important;
+    font-size: 19px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardBody p[class="description"] {
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.cardBody p>span {
+    text-align: end;
+}
+
+.cardBody p>span[class="priceTotal"] {
+    font-weight: bold;
+}
+
+.cardPriceResponsive {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    margin: 2rem;
+    padding: 0.8rem;
+    width: 380px;
+    height: 350px;
+    justify-content: center;
+    background-color: #fff;
+}

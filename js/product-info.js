@@ -26,8 +26,9 @@ function getDataProduct() {
             actualItem = {
                 name: result.name,
                 image: result.images[0],
-                currency: result.currency,
-                unitCost: result.cost,
+                currency: result.currency === "UYU" ? "USD" : result.currency,
+                unitCost: result.currency === "UYU" ? (result.cost / 40) : result.cost,
+
             };
             showProductInfo(result);
             getComments();
