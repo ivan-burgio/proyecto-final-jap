@@ -266,9 +266,9 @@ margin: 1%;
     height: 350px;
     justify-content: center;
     background-color: #fff;
-    position: relative;
-    bottom: 500px;
-    left: 650px;
+    position: fixed;
+    bottom: 240px;
+    left: 73%;
 }
 
 .cardBody {
