@@ -83,6 +83,9 @@
         <div class="shadow mt-4 caja-gris">
             <div id="container-cart"><h3>Artículos a Comprar</h3></div>
         
+       <!--     <div class="card-container shadow mt-4 caja-gris" id="container-cart">
+                <h3>Artículos a Comprar</h3>
+            </div>-->
 
         <div class="shadow mt-4 d-flex justify-content-center row">
 
@@ -104,21 +107,21 @@
                         <div class="filtros-cart">
                             <div class="row form-check">
                                 <div class="col-md-12 mb-3">
-                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio1">
+                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio1" onclick="envioPremium()">
                                     <label class="form-check-label" for="exampleCheck1">Premium 2 a 5 días (15%)</label>
                                 </div>
                             </div>
                             
                             <div class="row form-check">
                                 <div class="col-md-12 mb-3">
-                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio2">
+                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio2" onclick="envioExpress()">
                                     <label class="form-check-label" for="exampleCheck1">Express 5 a 8 días (7%)</label>
                                 </div>
                             </div>
                             
                             <div class="row form-check">
                                 <div class="col-md-12 mb-3">
-                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio3">
+                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio3" onclick="envioStandard()">
                                     <label class="form-check-label" for="exampleCheck1">Standard 12 a 15 días (5%)</label>
                                 </div>
                             </div>
