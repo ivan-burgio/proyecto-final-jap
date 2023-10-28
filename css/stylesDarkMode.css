@@ -41,7 +41,8 @@
 }
 
 .dark-mode input,
-.dark-mode textarea {
+.dark-mode textarea,
+.dark-mode select {
     background-color: rgb(37, 37, 37) !important;
 }
 
@@ -57,7 +58,8 @@
 .dark-mode .form-control,
 .dark-mode .row,
 .dark-mode .titulo-cat,
-.dark-mode small {
+.dark-mode small,
+.dark-mode select {
     color: rgba(255, 255, 255, 0.848) !important;
 }
 
@@ -168,3 +170,8 @@ textarea {
     border-color: rgb(195, 194, 194);
     color: rgb(195, 194, 194);
 }
+
+.dark-mode .hr_debitoCredito{
+    background-color: #dbdbdb;
+   }
+   

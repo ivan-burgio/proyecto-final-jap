@@ -225,3 +225,50 @@ paypal.Buttons({
 }).render('#paypal-button-container-virtual');
 
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Agregar un evento clic a los botones
+  const debitCreditButton = document.getElementById('accordion-button-one');
+  const paypalButton = document.getElementById('accordion-button-two');
+  const collapseOne = document.getElementById('collapseOne');
+  const collapseTwo = document.getElementById('collapseTwo');
+
+
+  debitCreditButton.addEventListener('click', () => {
+    // Verificar si el botón ya tiene la clase 'show'
+      // Mostrar el contenido de tarjeta de débito y crédito y ocultar PayPal
+      if(collapseTwo.classList.contains('show')){
+          collapseTwo.classList.remove('show');
+          collapseOne.classList.add('show');
+          paypalButton.classList.add('collapsed');
+          debitCreditButton.classList.remove('collapsed');
+        }else{
+          collapseOne.classList.remove('show');
+            if(debitCreditButton.classList.contains('collapsed')){
+              debitCreditButton.classList.add('collapsed');
+            }else{
+              debitCreditButton.classList.remove('collapsed');
+            }
+        }
+  });
+
+  paypalButton.addEventListener('click', () => {
+    // Verificar si el botón ya tiene la clase 'show'
+    if(collapseOne.classList.contains('show')){
+       collapseOne.classList.remove('show');
+       collapseTwo.classList.add('show');
+       paypalButton.classList.remove('collapsed');
+       debitCreditButton.classList.add('collapsed');
+    }else{
+      collapseTwo.classList.remove('show');
+        if(paypalButton.classList.contains('collapsed')){
+          paypalButton.classList.add('collapsed');
+        }else{
+          paypalButton.classList.remove('collapsed');
+        }
+    }
+  });
+});
+
+

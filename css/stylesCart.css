@@ -101,9 +101,24 @@ input[name="number-count"]::-webkit-outer-spin-button {
 
 /*Final del input*/
 
-@media (min-width: 768px) {
+@media (min-width: 738px) {
     .card-product {
         flex-direction: row;
+        border: solid white;
+    }
+}
+
+@media (max-width: 577px) {
+    .btn-cerrarCompra{
+        width: 100% !important;
+
+    }
+}
+
+@media (min-width: 577px) {
+    .btn-cerrarCompra{
+        width: 66% !important;
+
     }
 }
 
@@ -130,6 +145,7 @@ input[name="number-count"]::-webkit-outer-spin-button {
     .filtros-cart {
         flex-direction: row;
     }
+    
 }
 
 .form-cart{
@@ -193,7 +209,9 @@ input[name="number-count"]::-webkit-outer-spin-button {
 }
 
 .caja-gris{
-    width: 50%;
+    max-width: 850px; 
+    width: 100%;
+    padding: 1%;
 }
 
 /* ACORDION DE METODO DE PAGO */
@@ -201,7 +219,11 @@ input[name="number-count"]::-webkit-outer-spin-button {
 margin: 1%;
 }
 
-.accordion-header{
+.accordion-item{
+    background-color:transparent;
+}
+
+.accordion-headerOne{
     margin:0;
 }
 
@@ -209,4 +231,25 @@ margin: 1%;
     margin-right: 5px;
 }
 
+.formDebitoCredito div input,
+.formDebitoCredito div select{
+    width: 100%;
+}
 
+#cuotasField{
+    display: none;
+}
+
+#collapseOne{
+    border-left: 0.5px solid #dbdbdb64;
+    border-right: 0.5px solid #dbdbdb64;
+    border-bottom: 0.5px solid #dbdbdb64;
+}
+
+.hr_debitoCredito{
+ background-color: #2d2d2d64;
+}
+
+.contenedorBtn-cerrarCompra{
+    margin-left:8px;
+}
