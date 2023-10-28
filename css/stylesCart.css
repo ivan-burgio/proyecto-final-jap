@@ -193,16 +193,19 @@ input[name="number-count"]::-webkit-outer-spin-button {
 
 /*Costos totales*/
 
-#cardPrice {
+.cardPrice {
     display: flex;
     flex-direction: column;
     border-radius: 1rem;
     margin: 2rem;
     padding: 0.8rem;
-    width: 350px;
+    width: 380px;
     height: 350px;
-    text-align: center;
     justify-content: center;
+    background-color: #fff;
+    position: relative;
+    bottom: 500px;
+    left: 650px;
 }
 
 .cardBody {
@@ -213,4 +216,31 @@ input[name="number-count"]::-webkit-outer-spin-button {
 .cardBody p {
     margin: 0 !important;
     font-size: 19px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardBody p[class="description"] {
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.cardBody p>span {
+    text-align: end;
+}
+
+.cardBody p>span[class="priceTotal"] {
+    font-weight: bold;
+}
+
+.cardPriceResponsive {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    margin: 2rem;
+    padding: 0.8rem;
+    width: 380px;
+    height: 350px;
+    justify-content: center;
+    background-color: #fff;
 }

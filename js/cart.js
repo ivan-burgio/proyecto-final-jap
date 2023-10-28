@@ -66,9 +66,17 @@ function showCartList(array) {
     }
     //tarjeta de precios
     let cardPrice = `
-    <div id="subTotal" class="cardBody"><p><strong>Subtotal:</strong> USD ${subTotal}</p></div>
-    <div id="envio" class="cardBody"><p><strong>Costo de envio:</strong> USD ${costoDeEnvio}</p></div>
-    <div id="total" class="cardBody"><p><strong>Total:</strong> USD ${Total} </p></div>
+    <div id="subTotal" class="cardBody">
+      <p><strong>Subtotal:</strong> <span>USD ${subTotal}</span></p>
+      <p class="description">Costo unitario del producto por cantidad</p>
+    </div>
+    <div id="envio" class="cardBody">
+      <p><strong>Costo de envió:</strong> <span>USD ${costoDeEnvio}</span></p>
+      <p class="description">Según el tipo de envió seleccionado</p>
+    </div>
+    <div id="total" class="cardBody">
+      <p><strong>Total:</strong> <span class="priceTotal">USD ${Total} </span></p>
+    </div>
     `
     
         
@@ -147,10 +155,24 @@ function envioPremium(){
     const subTotalElement = document.getElementById('subTotal');
     const costoDeEnvioElement = document.getElementById('envio');
     const totalElement = document.getElementById('total');
-    subTotalElement.innerHTML =  `<p><strong>Subtotal:</strong> USD ${subTotal}</p>`
-    costoDeEnvioElement.innerHTML = `<p><strong>Costo de envio:</strong> USD ${costoDeEnvio}</p>`;
-    totalElement.innerHTML = `<p><strong>Total:</strong> USD ${Total} </p>`;
+    subTotalElement.innerHTML =  `<p><strong>Subtotal:</strong> <span>USD ${subTotal}</span></p>
+                                  <p class="description">Costo unitario del producto por cantidad</p>`
+    costoDeEnvioElement.innerHTML = `<p><strong>Costo de envió:</strong> <span>USD ${costoDeEnvio}</span></p>
+                                     <p class="description">Según el tipo de envió seleccionado</p>`;
+    totalElement.innerHTML = `<p><strong>Total:</strong> <span class="priceTotal">USD ${Total} </span></p>`;
 }
 
 
   document.addEventListener("DOMContentLoaded", getDataCartUser);
+
+  //Evento que según el tamaño, cambia las clases del container de los costos totales
+
+  window.addEventListener("resize", () => {
+    if(document.documentElement.clientWidth <= 1704) {
+      containerCost.classList.remove("cardPrice");
+      containerCost.classList.add("cardPriceResponsive")
+    } else if(document.documentElement.clientWidth >= 1704) {
+      containerCost.classList.add("cardPrice");
+      containerCost.classList.remove("cardPriceResponsive")
+    }
+  })
