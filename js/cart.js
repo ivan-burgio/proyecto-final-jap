@@ -345,3 +345,37 @@ function envioPremium(){
       containerCost.classList.remove("cardPriceResponsive")
     }
   })
+
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    // Obtén el elemento select para el método de pago
+    const paymentMethodSelect = document.getElementById("paymentMethod");
+  
+    // Obtén los elementos de los campos de formulario
+    const nombreInput = document.getElementById("nombre");
+    const nroTarjetaInput = document.getElementById("nroTarjeta");
+    const vencimientoInput = document.getElementById("vencimiento");
+    const codigoInput = document.getElementById("codigo");
+    const cuotasSelect = document.getElementById("validationTooltip04");
+  
+    // Manejador de evento para detectar cambios en el método de pago
+    paymentMethodSelect.addEventListener("change", function () {
+      // Obtén el valor seleccionado (debito o credito)
+      const selectedPaymentMethod = paymentMethodSelect.value;
+  
+      // Restablece los campos del formulario si cambias de tarjeta de crédito a tarjeta de débito o viceversa
+      if (selectedPaymentMethod === "debito") {
+        nombreInput.value = "";
+        nroTarjetaInput.value = "";
+        vencimientoInput.value = "";
+        codigoInput.value = "";
+        cuotasSelect.selectedIndex = 0;
+      } else if (selectedPaymentMethod === "credito") {
+        nombreInput.value = "";
+        nroTarjetaInput.value = "";
+        vencimientoInput.value = "";
+        codigoInput.value = "";
+        cuotasSelect.selectedIndex = 0;
+      }
+    });
+  });
