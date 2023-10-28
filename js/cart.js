@@ -110,19 +110,21 @@ function restIndividualCost(i, unitCost, count, currency){
      updateTotal()
     }
 
-  function deleteItem(Item){
-  let getLocalProduct = localStorage.getItem("cartItem");
-  getLocalProduct = JSON.parse(getLocalProduct);
-  const setLocalProduct = []
-  for (let obj of getLocalProduct){
-  if (obj.name !== Item){
-  setLocalProduct.push(obj)
-  }
-  }  
-  localStorage.setItem("cartItem", JSON.stringify(setLocalProduct))  
-  containerCart.innerHTML = ""
-  showCartList(setLocalProduct)
-  }
+    
+    function deleteItem(Item){
+     let getLocalProduct = localStorage.getItem("cartItem");
+     getLocalProduct = JSON.parse(getLocalProduct);
+     const setLocalProduct = []
+     for (let obj of getLocalProduct){
+       if (obj.name !== Item){
+        setLocalProduct.push(obj)
+       }
+     }  
+     localStorage.setItem("cartItem", JSON.stringify(setLocalProduct))  
+     containerCart.innerHTML = ""
+     showCartList(setLocalProduct)
+    }
+    
 
   const paymentMethodSelect = document.getElementById('paymentMethod');
   const cuotasField = document.getElementById('cuotasField');
