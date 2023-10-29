@@ -139,12 +139,12 @@ function restIndividualCost(i, unitCost, count, currency){
   });
 
 
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  // Validación de datos del formulario de pago con tarjeta de crédito o débito
   (() => {
     'use strict';
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms           = document.querySelectorAll('.needs-validation');
+
+    const forms           = document.querySelectorAll('#debito-credito');
     const nombreInput     = document.getElementById('nombre');
     const nroTarjetaInput = document.getElementById('nroTarjeta');
     const codigoInput     = document.getElementById('codigo');
@@ -173,8 +173,6 @@ function restIndividualCost(i, unitCost, count, currency){
       }
     });
 
-
-    // Loop over them and prevent submission
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
             if (!form.checkValidity()) {
@@ -185,6 +183,25 @@ function restIndividualCost(i, unitCost, count, currency){
             form.classList.add('was-validated');
         }, false);
     });
+})();
+
+//Validacion de datos del formulario de transferencia bancaria
+(() => {
+  'use strict';
+
+
+  const forms2           = document.querySelectorAll('#transfer');
+
+  Array.from(forms2).forEach(form => {
+      form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+      }, false);
+  });
 })();
 
 const vencimientoInput = document.getElementById('vencimiento');
@@ -230,49 +247,49 @@ vencimientoInput.addEventListener('keydown', function (e) {
 });
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  paypal.Buttons({
-    style: {
-        shape: 'rect',
-        color: 'blue',
-        layout: 'vertical',
-        label: 'pay',
-    },
-    funding: {
-        disallowed: [paypal.FUNDING.CARD],
-    }
-}).render('#paypal-button-container');
+// document.addEventListener('DOMContentLoaded', function() {
+//   paypal.Buttons({
+//     style: {
+//         shape: 'rect',
+//         color: 'blue',
+//         layout: 'vertical',
+//         label: 'pay',
+//     },
+//     funding: {
+//         disallowed: [paypal.FUNDING.CARD],
+//     }
+// }).render('#paypal-button-container');
 
-paypal.Buttons({
-    style: {
-        shape: 'rect',
-        color: 'blue',
-        layout: 'vertical',
-        label: 'pay',
-    },
-    funding: {
-        disallowed: [paypal.FUNDING.CARD],
-    }
-}).render('#paypal-button-container-virtual');
+// paypal.Buttons({
+//     style: {
+//         shape: 'rect',
+//         color: 'blue',
+//         layout: 'vertical',
+//         label: 'pay',
+//     },
+//     funding: {
+//         disallowed: [paypal.FUNDING.CARD],
+//     }
+// }).render('#paypal-button-container-virtual');
 
-});
+// });
 
 
 document.addEventListener("DOMContentLoaded", function () {
   // Agregar un evento clic a los botones
   const debitCreditButton = document.getElementById('accordion-button-one');
-  const paypalButton = document.getElementById('accordion-button-two');
+  const transferButton = document.getElementById('accordion-button-two');
   const collapseOne = document.getElementById('collapseOne');
   const collapseTwo = document.getElementById('collapseTwo');
 
 
   debitCreditButton.addEventListener('click', () => {
     // Verificar si el botón ya tiene la clase 'show'
-      // Mostrar el contenido de tarjeta de débito y crédito y ocultar PayPal
+      // Mostrar el contenido de tarjeta de débito y crédito y ocultar transferencia bancaria
       if(collapseTwo.classList.contains('show')){
           collapseTwo.classList.remove('show');
           collapseOne.classList.add('show');
-          paypalButton.classList.add('collapsed');
+          transferButton.classList.add('collapsed');
           debitCreditButton.classList.remove('collapsed');
         }else{
           collapseOne.classList.remove('show');
@@ -284,19 +301,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
   });
 
-  paypalButton.addEventListener('click', () => {
+  transferButton.addEventListener('click', () => {
     // Verificar si el botón ya tiene la clase 'show'
     if(collapseOne.classList.contains('show')){
        collapseOne.classList.remove('show');
        collapseTwo.classList.add('show');
-       paypalButton.classList.remove('collapsed');
+       transferButton.classList.remove('collapsed');
        debitCreditButton.classList.add('collapsed');
     }else{
       collapseTwo.classList.remove('show');
-        if(paypalButton.classList.contains('collapsed')){
-          paypalButton.classList.add('collapsed');
+        if(transferButton.classList.contains('collapsed')){
+          transferButton.classList.add('collapsed');
         }else{
-          paypalButton.classList.remove('collapsed');
+          transferButton.classList.remove('collapsed');
         }
     }
   });
