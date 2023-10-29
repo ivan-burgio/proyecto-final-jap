@@ -104,6 +104,10 @@ function restIndividualCost(i, unitCost, count, currency){
     input = document.getElementById(i + "_modified");
      if (input.value>0){subTotal -= unitCost}
      if(input.value>0){input.value--}
+     if(input.value <= 0) {
+      input.value = 1;
+      subTotal = unitCost;
+    }
      const subtotalCost = input.value*unitCost;
      subtotal = document.getElementById(i + "_Subtotal");
      subtotal.textContent = `Subtotal:  ${currency.toString()} ${subtotalCost}`
@@ -138,19 +142,45 @@ function restIndividualCost(i, unitCost, count, currency){
     }
   });
 
-
   // Validación de datos del formulario de pago con tarjeta de crédito o débito
   (() => {
     'use strict';
 
-
-    const forms           = document.querySelectorAll('#debito-credito');
+    const forms           = document.querySelectorAll('.needs-validation');
     const nombreInput     = document.getElementById('nombre');
     const nroTarjetaInput = document.getElementById('nroTarjeta');
     const codigoInput     = document.getElementById('codigo');
+    const nroCuenta = document.getElementById('nroCuenta');
+    const buttonTransfer = document.getElementById('transfer-button');
+    const buttonCreditoDebito = document.getElementById('credito-debito')
+    const formularioEnvio = document.getElementById('formulario');
+
+    //Evento que al presionar la opción de transferencia deshabilita las opciones de crédito o débito
+    buttonTransfer.addEventListener('click', ()=> {
+      if(buttonTransfer.checked = true) {
+        nroCuenta.disabled = false;
+        nombreInput.disabled = true;
+        nroTarjetaInput.disabled = true;
+        vencimientoInput.disabled = true;
+        codigoInput.disabled = true;
+        paymentMethodSelect.disabled = true;
+      }
+    })
+
+    //Evento que al presionar la opción de crédito o débito deshabilita las opciones de transferencia
+    buttonCreditoDebito.addEventListener('click', ()=>  {
+      if(buttonCreditoDebito.checked = true) {
+        nroCuenta.disabled = true;
+        nombreInput.disabled = false;
+        nroTarjetaInput.disabled = false;
+        vencimientoInput.disabled = false;
+        codigoInput.disabled = false;
+        paymentMethodSelect.disabled = false;
+      }
+    })
 
     nombreInput.addEventListener('input', function () {
-        if (nombreInput.value.trim() === '' || !/^[A-Za-z]+$/.test(nombreInput.value) || nombreInput.value.length != 5) {
+        if (nombreInput.value.trim() === '' || !/^[A-Za-z]+$/.test(nombreInput.value)) {
             nombreInput.setCustomValidity('El nombre no puede estar vacío y debe contener solo letras.');
         } else {
             nombreInput.setCustomValidity('');
@@ -164,6 +194,14 @@ function restIndividualCost(i, unitCost, count, currency){
         nroTarjetaInput.setCustomValidity('');
       }
     });
+
+    nroCuenta.addEventListener('input', ()=> {
+      if(nroCuenta.value.trim() === '' || /^[0-9]{10}$/.test(nroCuenta.value) || nroCuenta.value.length < 9){
+        nroCuenta.setCustomValidity('Número incorrecto');
+      } else {
+        nroCuenta.setCustomValidity('');
+      }
+    })
 
     codigoInput.addEventListener('input', function () {
       if (codigoInput.value.trim() === '' || /^[0-9]{16}$/.test(codigoInput.value) || !(codigoInput.value.length === 3)) {
@@ -180,28 +218,16 @@ function restIndividualCost(i, unitCost, count, currency){
                 event.stopPropagation();
             }
 
+            //Se asegura que se validen los datos del formulario de datos del envio y que cantidad de producto sea mayor a cero
+            if (!formularioEnvio.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            
+            formularioEnvio.classList.add('was-validated')
             form.classList.add('was-validated');
         }, false);
     });
-})();
-
-//Validacion de datos del formulario de transferencia bancaria
-(() => {
-  'use strict';
-
-
-  const forms2           = document.querySelectorAll('#transfer');
-
-  Array.from(forms2).forEach(form => {
-      form.addEventListener('submit', event => {
-          if (!form.checkValidity()) {
-              event.preventDefault();
-              event.stopPropagation();
-          }
-
-          form.classList.add('was-validated');
-      }, false);
-  });
 })();
 
 const vencimientoInput = document.getElementById('vencimiento');
@@ -275,49 +301,49 @@ vencimientoInput.addEventListener('keydown', function (e) {
 // });
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Agregar un evento clic a los botones
-  const debitCreditButton = document.getElementById('accordion-button-one');
-  const transferButton = document.getElementById('accordion-button-two');
-  const collapseOne = document.getElementById('collapseOne');
-  const collapseTwo = document.getElementById('collapseTwo');
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Agregar un evento clic a los botones
+//   const debitCreditButton = document.getElementById('accordion-button-one');
+//   const transferButton = document.getElementById('accordion-button-two');
+//   const collapseOne = document.getElementById('collapseOne');
+//   const collapseTwo = document.getElementById('collapseTwo');
 
 
-  debitCreditButton.addEventListener('click', () => {
-    // Verificar si el botón ya tiene la clase 'show'
-      // Mostrar el contenido de tarjeta de débito y crédito y ocultar transferencia bancaria
-      if(collapseTwo.classList.contains('show')){
-          collapseTwo.classList.remove('show');
-          collapseOne.classList.add('show');
-          transferButton.classList.add('collapsed');
-          debitCreditButton.classList.remove('collapsed');
-        }else{
-          collapseOne.classList.remove('show');
-            if(debitCreditButton.classList.contains('collapsed')){
-              debitCreditButton.classList.add('collapsed');
-            }else{
-              debitCreditButton.classList.remove('collapsed');
-            }
-        }
-  });
+//   debitCreditButton.addEventListener('click', () => {
+//     // Verificar si el botón ya tiene la clase 'show'
+//       // Mostrar el contenido de tarjeta de débito y crédito y ocultar transferencia bancaria
+//       if(collapseTwo.classList.contains('show')){
+//           collapseTwo.classList.remove('show');
+//           collapseOne.classList.add('show');
+//           transferButton.classList.add('collapsed');
+//           debitCreditButton.classList.remove('collapsed');
+//         }else{
+//           collapseOne.classList.remove('show');
+//             if(debitCreditButton.classList.contains('collapsed')){
+//               debitCreditButton.classList.add('collapsed');
+//             }else{
+//               debitCreditButton.classList.remove('collapsed');
+//             }
+//         }
+//   });
 
-  transferButton.addEventListener('click', () => {
-    // Verificar si el botón ya tiene la clase 'show'
-    if(collapseOne.classList.contains('show')){
-       collapseOne.classList.remove('show');
-       collapseTwo.classList.add('show');
-       transferButton.classList.remove('collapsed');
-       debitCreditButton.classList.add('collapsed');
-    }else{
-      collapseTwo.classList.remove('show');
-        if(transferButton.classList.contains('collapsed')){
-          transferButton.classList.add('collapsed');
-        }else{
-          transferButton.classList.remove('collapsed');
-        }
-    }
-  });
-});
+//   transferButton.addEventListener('click', () => {
+//     // Verificar si el botón ya tiene la clase 'show'
+//     if(collapseOne.classList.contains('show')){
+//        collapseOne.classList.remove('show');
+//        collapseTwo.classList.add('show');
+//        transferButton.classList.remove('collapsed');
+//        debitCreditButton.classList.add('collapsed');
+//     }else{
+//       collapseTwo.classList.remove('show');
+//         if(transferButton.classList.contains('collapsed')){
+//           transferButton.classList.add('collapsed');
+//         }else{
+//           transferButton.classList.remove('collapsed');
+//         }
+//     }
+//   });
+// });
 
 
 // calculadora de envios

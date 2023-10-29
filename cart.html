@@ -103,22 +103,23 @@
                         <div class="filtros-cart">
                             <div class="row form-check">
                                 <div class="col-md-12 mb-3">
-                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio1" onclick="envioPremium()">
-                                    <label class="form-check-label" for="exampleCheck1">Premium 2 a 5 días (15%)</label>
+                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio1" onclick="envioPremium()" required>
+                                    <label class="form-check-label" for="tipoEnvio1">Premium 2 a 5 días (15%)</label>
                                 </div>
                             </div>
                             
                             <div class="row form-check">
                                 <div class="col-md-12 mb-3">
-                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio2" onclick="envioExpress()">
-                                    <label class="form-check-label" for="exampleCheck1">Express 5 a 8 días (7%)</label>
+                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio2" onclick="envioExpress()" required>
+                                    <label class="form-check-label" for="tipoEnvio2">Express 5 a 8 días (7%)</label>
                                 </div>
                             </div>
                             
                             <div class="row form-check">
                                 <div class="col-md-12 mb-3">
-                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio3" onclick="envioStandard()">
-                                    <label class="form-check-label" for="exampleCheck1">Standard 12 a 15 días (5%)</label>
+                                    <input type="radio" name="tipoEnvio" class="form-check-input" id="tipoEnvio3" onclick="envioStandard()" required>
+                                    <label class="form-check-label" for="tipoEnvio3">Standard 12 a 15 días (5%)</label>
+                                    <div class="invalid-feedback">Debe de elegir un tipo de envió</div>
                                 </div>
                             </div>
                         </div>
@@ -128,21 +129,30 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="ciudad" class="form-label">Ciudad</label>
-                                <input type="text" class="form-control form-control-direction" id="ciudad">
+                                <input type="text" class="form-control form-control-direction" minlength="5" id="ciudad" required>
+                                <div class="invalid-feedback">
+                                    Ingrese una cuidad
+                                  </div>
                             </div>
                         </div>
         
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="calle" class="form-label">Calle</label>
-                                <input type="text" class="form-control form-control-direction" id="calle">
+                                <input type="text" class="form-control form-control-direction" minlength="5" id="calle" required>
+                                <div class="invalid-feedback">
+                                    Ingrese una calle
+                                  </div>
                             </div>
                         </div>
         
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="nroPuerta" class="form-label">Nro. de Puerta</label>
-                                <input type="text" class="form-control form-control-direction" id="nroPuerta">
+                                <input type="text" class="form-control form-control-direction" id="nroPuerta" required>
+                                <div class="invalid-feedback">
+                                    Ingrese el numero de puerta
+                                  </div>
                             </div>
                         </div>
         
@@ -156,7 +166,10 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="esquina" class="form-label">Esquina</label>
-                                <input type="text" class="form-control form-control-direction" id="esquina">
+                                <input type="text" class="form-control form-control-direction" minlength="5" id="esquina" required>
+                                <div class="invalid-feedback">
+                                    Ingrese una esquina
+                                  </div>
                             </div>
                         </div>
         
@@ -166,28 +179,20 @@
                                 <input type="text" class="form-control form-control-direction" id="codPostal">
                             </div>
                         </div>
-                        
-                        <div class="btn-direccion">
-                            <button type="submit" class="btn btn-primary" id="cancelarBtn">Cancelar</button>
-                            <button type="submit" class="btn btn-primary" id="guardarBtn">Guardar</button>
-                        </div>
                     </form>
                 </div>
                 <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                  
-                    <div class="accordion" >
-                        <div class="accordion-item">
-                          <h2 class="accordion-header accordion-headerOne">
-                            <button class="accordion-button collapsed" id="accordion-button-one" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne">
+                    <form action="#" method="get" class="row mt-3 needs-validation formDebitoCredito" novalidate>
+                        <label for="credito-debito" class="form-check-label">
+                            <input id="credito-debito" class="form-check-input" type="radio" name="methodPay" required>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="accordion-icon bi bi-credit-card"  width="15" height="15" fill="currentColor" viewBox="0 0 16 16">
                                     <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
                                     <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
                                   </svg>
                                 Tarjeta de débito y crédito
-                            </button>
-                          </h2>
-                          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
+                                </label>
+                          <div id="collapseOne">
+                            <div>
                                 <!-- Selector de Debito o crédito -->
                                 <div class="col-xs-12 col-sm-6 col-md-3">
                                     <label for="inputState" class="form-label">Seleccionar tarjeta</label>
@@ -198,10 +203,9 @@
                                   </div>
                                 <hr class="hr_debitoCredito">
                                 <!-- Form validation Debito -->
-                                <form action="#" method="get" class="row mt-3 needs-validation formDebitoCredito" id="debito-credito" novalidate>
                                     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
                                       <label for="validationServer01" class="form-label">Nombre</label>
-                                      <input type="text" class="form-control" minlength="5" id="nombre" required>
+                                      <input type="text" class="form-control" minlength="3" maxlength="12" id="nombre" required>
                                       <div class="invalid-feedback">
                                         El nombre no puede estar vacío y debe contener solo letras.
                                       </div>
@@ -237,42 +241,35 @@
                                           <option>6</option>
                                         </select>
                                     </div>                                      
-                                    <div class="col-12" id="contenedorBtn-cerrarCompra">
-                                      <button class="btn btn-primary btn-cerrarCompra" type="submit">Finalizar compra</button>
-                                    </div>
-                                  </form>
                                   <!-- FIN Form validation Debito -->
                             </div>
                           </div>
-                        </div>
-
-                        
-                        <div class="accordion-item">
-                          <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" id="accordion-button-two" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-controls="collapseTwo">
-                            Transferencia Bancaria
-                            </button>
-                          </h2>
-                          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <form action="#" method="get" class="row mt-3 needs-validation formDebitoCredito" id="transfer" novalidate>
-                                <div id="smart-button-container">
-                                        <div id="transfer-button-container">
-                                            <label for="nroCuenta" class="form-label">
-                                                Numero de cuenta
-                                                <input type="text" class="form-control" id="nroCuenta" minlength="10" required> 
-                                                <div class="invalid-feedback">
-                                                    Ingrese un numero de cuenta
-                                                </div>
-                                            </label>
-                                        </div>
-                                </div>
-                                <div class="col-12" id="contenedor-cerrarCompra">
-                                    <button class="btn btn-primary btn-cerrarCompra" type="submit">Finalizar compra</button>
-                                </div>
-                            </form>
+                            <label for="trasnfer-button" class="form-check-label">
+                              <input id="transfer-button" type="radio" name="methodPay" class="form-check-input" required>
+                              <ion-icon name="cash-outline"></ion-icon> 
+                              Transferencia Bancaria
+                              <div class="invalid-feedback">Debe elegir un metodo de pago</div>
+                            </label>
+                            <div id="collapseTwo">
+                              <div class="accordion-body">
+                                  <div id="smart-button-container">
+                                          <div id="transfer-button-container">
+                                              <label for="nroCuenta" class="form-label">
+                                                  Numero de cuenta
+                                                  <input type="number" class="form-control count-number" id="nroCuenta" minlength="10" required> 
+                                                  <div class="invalid-feedback">
+                                                      Ingrese un numero de cuenta
+                                                  </div>
+                                              </label>
+                                          </div>
+                                  </div>
+                                  <div class="col-12" id="contenedor-cerrarCompra">
+                                      <button class="btn btn-primary btn-cerrarCompra" type="submit">Finalizar compra</button>
+                                  </div>
+                              </form>
                             </div>
-                          </div>
+
+                        </div>
                             
                         </div>
     

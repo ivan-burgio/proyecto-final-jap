@@ -154,11 +154,10 @@ input[name="number-count"]::-webkit-outer-spin-button {
     width: 100%;
 }
 
-/*
 #container-direccion{
     text-align: center;
     margin: 20px;
-}*/
+}
 
 #mostrarFormulario{
     width: auto;
@@ -180,26 +179,6 @@ input[name="number-count"]::-webkit-outer-spin-button {
 
 .form-control-direction {
     width: 100%;
-}
-
-.btn-direccion{
-    display: flex;
-    justify-content:space-evenly;
-}
-
-.btn-direccion button{
-    width: 25%;
-}
-
-.btn-direccion #cancelarBtn{
-    border:rgb(112, 112, 114);
-    background-color: rgb(112, 112, 114);
-}
-
-
-.btn-direccion #guardarBtn{
-    border:rgba(255, 165, 0, 0.8);
-    background-color: rgba(255, 165, 0, 0.8);
 }
 
 /* Cambiar el color de los botones de aumento y disminución en input[type="number"] */
