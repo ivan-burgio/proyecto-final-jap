@@ -376,17 +376,17 @@ function updateSendCost() {
 
 // calculadora de envios
 function envioStandard() {
-    costoDeEnvio = subTotal * 0.15;
+    costoDeEnvio = Math.round(subTotal * 0.15);
     updateTotal();
 }
 
 function envioExpress() {
-    costoDeEnvio = subTotal * 0.07;
+    costoDeEnvio = Math.round(subTotal * 0.07);
     updateTotal();
 }
 
 function envioPremium() {
-    costoDeEnvio = subTotal * 0.05;
+    costoDeEnvio = Math.round(subTotal * 0.05);
     updateTotal();
 }
 
