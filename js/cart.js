@@ -45,7 +45,7 @@ function showCartList(array) {
         updateCost(array)
     }
     for (i = 0; i < array.length; i++) {
-        Total = subTotal + costoDeEnvio;
+        Total = Math.round(subTotal + costoDeEnvio);
 
         cartUser = `
             <div class="card-product shadow align-items-center caja-gris-raro">
@@ -80,7 +80,7 @@ function showCartList(array) {
     //tarjeta de precios
     let cardPrice = `
     <div id="subTotal" class="cardBody">
-      <p><strong>Subtotal:</strong> <span>USD ${subTotal}</span></p>
+      <p><strong>Subtotal:</strong> <span>USD ${Math.round(subTotal)}</span></p>
       <p class="description">Costo unitario del producto por cantidad</p>
     </div>
     <div id="envio" class="cardBody">
@@ -91,7 +91,6 @@ function showCartList(array) {
       <p><strong>Total:</strong> <span class="priceTotal">USD ${Total} </span></p>
     </div>
     `
-
 
     containerCost.innerHTML = cardPrice;
 }
@@ -392,15 +391,15 @@ function envioPremium() {
 }
 
 function updateTotal() {
-    const total = subTotal + costoDeEnvio;
+    Total = Math.round(subTotal + costoDeEnvio);
     const subTotalElement = document.getElementById('subTotal');
     const costoDeEnvioElement = document.getElementById('envio');
     const totalElement = document.getElementById('total');
-    subTotalElement.innerHTML = `<p><strong>Subtotal:</strong> <span>USD ${subTotal}</span></p>
+    subTotalElement.innerHTML = `<p><strong>Subtotal:</strong> <span>USD ${Math.round(subTotal)}</span></p>
                                   <p class="description">Costo unitario del producto por cantidad</p>`
     costoDeEnvioElement.innerHTML = `<p><strong>Costo de envió:</strong> <span>USD ${costoDeEnvio}</span></p>
                                      <p class="description">Según el tipo de envió seleccionado</p>`;
-    totalElement.innerHTML = `<p><strong>Total:</strong> <span class="priceTotal">USD ${total} </span></p>`;
+    totalElement.innerHTML = `<p><strong>Total:</strong> <span class="priceTotal">USD ${Total} </span></p>`;
     updateSendCost()
 }
 
