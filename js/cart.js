@@ -3,7 +3,7 @@ const containerCart = document.getElementById("container-cart");
 const buttonLeft = document.getElementsByClassName("number-left");
 const buttonRight = document.getElementsByClassName("number-right");
 const valueCountArticle = document.getElementsByName("number-count");
-const cardPriceContainer= document.getElementById("cardTotalPrice");
+const cardPriceContainer = document.getElementById("cardTotalPrice");
 const containerCost = document.getElementById("cardPrice")
 const envioStandard1 = document.getElementById("tipoEnvio1");
 const envioExpress2 = document.getElementById("tipoEnvio2");
@@ -17,35 +17,36 @@ let Total = 0;
 //Obtiene los datos del fetch del carrito y los guarda en un array
 function getDataCartUser() {
     fetch(CART_INFO_URL + IDuser + EXT_TYPE)
-    .then(response => response.json())
-    .then(result => {
-      arrayItemCart = result.articles
-      arrayItemCart.push(...cartItems);
-    //   localStorage.setItem("cartItem",JSON.stringify(arrayItemCart))
-      showCartList(arrayItemCart);
-    })
-    .catch(error => {
-      console.error('Error en la solicitud:', error);
-    });
-    
+        .then(response => response.json())
+        .then(result => {
+            arrayItemCart = result.articles
+            arrayItemCart.push(...cartItems);
+            //   localStorage.setItem("cartItem",JSON.stringify(arrayItemCart))
+            showCartList(arrayItemCart);
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+        });
+
 }
 
 // hace la suma inicial del subTotal
-function updateCost(array){
-  for (let i=0; i<array.length; i++){
-  subTotal += array[i].unitCost;
-}}
+function updateCost(array) {
+    for (let i = 0; i < array.length; i++) {
+        subTotal += array[i].unitCost;
+    }
+}
 
 //Muestra el contenido de un array
 function showCartList(array) {
     let cartUser = ``;
     //verificación para que no sume si ya se calculó
-    if (subTotal === 0){
-      updateCost(array)
+    if (subTotal === 0) {
+        updateCost(array)
     }
-    for (i= 0; i < array.length; i++) {
-      Total = subTotal + costoDeEnvio;
-    
+    for (i = 0; i < array.length; i++) {
+        Total = subTotal + costoDeEnvio;
+
         cartUser = `
             <div class="card-product shadow align-items-center caja-gris-raro">
                 <div class="card-1 container-fluid">
@@ -90,105 +91,102 @@ function showCartList(array) {
       <p><strong>Total:</strong> <span class="priceTotal">USD ${Total} </span></p>
     </div>
     `
-    
-        
-              containerCost.innerHTML = cardPrice; 
+
+
+    containerCost.innerHTML = cardPrice;
 }
 
 
-function sumIndividualCost(i, unitCost, count, currency){
-
-input = document.getElementById(i + "_modified");
- input.value++
- subTotal += unitCost
- Total += unitCost
- const subtotalCost = input.value*unitCost;
- subtotal = document.getElementById(i + "_Subtotal");
- subtotal.textContent = `Subtotal:  ${currency.toString()} ${subtotalCost}`
- const cartActual = localStorage.getItem('cartItem');
- JSON.parse(cartActual);
- updateTotal()
-
-}
-
-function restIndividualCost(i, unitCost, count, currency){
-
+function sumIndividualCost(i, unitCost, count, currency) {
     input = document.getElementById(i + "_modified");
-     if (input.value>1){subTotal -= unitCost}
-     if(input.value>1){input.value--}
-     const subtotalCost = input.value*unitCost;
-     subtotal = document.getElementById(i + "_Subtotal");
-     subtotal.textContent = `Subtotal:  ${currency.toString()} ${subtotalCost}`
-     updateTotal()
+    input.value++
+    subTotal += unitCost
+    Total += unitCost
+    const subtotalCost = input.value * unitCost;
+    subtotal = document.getElementById(i + "_Subtotal");
+    subtotal.textContent = `Subtotal:  ${currency.toString()} ${subtotalCost}`
+    const cartActual = localStorage.getItem('cartItem');
+    JSON.parse(cartActual);
+    updateTotal()
+}
+
+function restIndividualCost(i, unitCost, count, currency) {
+    input = document.getElementById(i + "_modified");
+    if (input.value > 1) { subTotal -= unitCost }
+    if (input.value > 1) { input.value-- }
+    const subtotalCost = input.value * unitCost;
+    subtotal = document.getElementById(i + "_Subtotal");
+    subtotal.textContent = `Subtotal:  ${currency.toString()} ${subtotalCost}`
+    updateTotal()
+}
+
+function deleteItem(Item, i, unitCost) {
+    input = document.getElementById(i + "_modified");
+    let getLocalProduct = localStorage.getItem("cartItem");
+    getLocalProduct = JSON.parse(getLocalProduct);
+    const setLocalProduct = []
+    for (let obj of getLocalProduct) {
+        if (obj.name !== Item) {
+            setLocalProduct.push(obj)
+        }
     }
+    localStorage.setItem("cartItem", JSON.stringify(setLocalProduct))
+    containerCart.innerHTML = ""
+    let subTotalCost = input.value * unitCost
+    subTotal -= subTotalCost //resta el subTotal del producto eliminado
+    showCartList(setLocalProduct)
+    updateTotal()
+}
 
-    function deleteItem(Item, i, unitCost){
-     input = document.getElementById(i + "_modified");
-     let getLocalProduct = localStorage.getItem("cartItem");
-     getLocalProduct = JSON.parse(getLocalProduct);
-     const setLocalProduct = []
-     for (let obj of getLocalProduct){
-       if (obj.name !== Item){
-        setLocalProduct.push(obj)
-       }
-     }  
-     localStorage.setItem("cartItem", JSON.stringify(setLocalProduct))  
-     containerCart.innerHTML = ""
-     let subTotalCost = input.value*unitCost
-     subTotal -= subTotalCost //resta el subTotal del producto eliminado
-     showCartList(setLocalProduct)
-     updateTotal()
-    }
+const paymentMethodSelect = document.getElementById('paymentMethod');
+const cuotasField = document.getElementById('cuotasField');
+const cuotasInput = document.getElementById('cuotas');
 
-  const paymentMethodSelect = document.getElementById('paymentMethod');
-  const cuotasField = document.getElementById('cuotasField');
-  const cuotasInput = document.getElementById('cuotas');
-
-  paymentMethodSelect.addEventListener('change', function() {
+paymentMethodSelect.addEventListener('change', function () {
     if (paymentMethodSelect.value === 'credito') {
-      cuotasField.style.display = 'block';
-      cuotasInput.setAttribute('required', 'required');
+        cuotasField.style.display = 'block';
+        cuotasInput.setAttribute('required', 'required');
     } else {
-      cuotasField.style.display = 'none';
-      cuotasInput.removeAttribute('required');
+        cuotasField.style.display = 'none';
+        cuotasInput.removeAttribute('required');
     }
-  });
+});
 
-  // Validación de datos del formulario de pago con tarjeta de crédito o débito
-  (() => {
+// Validación de datos del formulario de pago con tarjeta de crédito o débito
+(() => {
     'use strict';
 
-    const forms           = document.querySelectorAll('.needs-validation');
-    const nombreInput     = document.getElementById('nombre');
+    const forms = document.querySelectorAll('.needs-validation');
+    const nombreInput = document.getElementById('nombre');
     const nroTarjetaInput = document.getElementById('nroTarjeta');
-    const codigoInput     = document.getElementById('codigo');
+    const codigoInput = document.getElementById('codigo');
     const nroCuenta = document.getElementById('nroCuenta');
     const buttonTransfer = document.getElementById('transfer-button');
     const buttonCreditoDebito = document.getElementById('credito-debito')
     const formularioEnvio = document.getElementById('formulario');
 
     //Evento que al presionar la opción de transferencia deshabilita las opciones de crédito o débito
-    buttonTransfer.addEventListener('click', ()=> {
-      if(buttonTransfer.checked = true) {
-        nroCuenta.disabled = false;
-        nombreInput.disabled = true;
-        nroTarjetaInput.disabled = true;
-        vencimientoInput.disabled = true;
-        codigoInput.disabled = true;
-        paymentMethodSelect.disabled = true;
-      }
+    buttonTransfer.addEventListener('click', () => {
+        if (buttonTransfer.checked = true) {
+            nroCuenta.disabled = false;
+            nombreInput.disabled = true;
+            nroTarjetaInput.disabled = true;
+            vencimientoInput.disabled = true;
+            codigoInput.disabled = true;
+            paymentMethodSelect.disabled = true;
+        }
     })
 
     //Evento que al presionar la opción de crédito o débito deshabilita las opciones de transferencia
-    buttonCreditoDebito.addEventListener('click', ()=>  {
-      if(buttonCreditoDebito.checked = true) {
-        nroCuenta.disabled = true;
-        nombreInput.disabled = false;
-        nroTarjetaInput.disabled = false;
-        vencimientoInput.disabled = false;
-        codigoInput.disabled = false;
-        paymentMethodSelect.disabled = false;
-      }
+    buttonCreditoDebito.addEventListener('click', () => {
+        if (buttonCreditoDebito.checked = true) {
+            nroCuenta.disabled = true;
+            nombreInput.disabled = false;
+            nroTarjetaInput.disabled = false;
+            vencimientoInput.disabled = false;
+            codigoInput.disabled = false;
+            paymentMethodSelect.disabled = false;
+        }
     })
 
     nombreInput.addEventListener('input', function () {
@@ -200,27 +198,27 @@ function restIndividualCost(i, unitCost, count, currency){
     });
 
     nroTarjetaInput.addEventListener('input', function () {
-      if (nroTarjetaInput.value.trim() === '' || /^[0-9]{16}$/.test(nroTarjetaInput.value) || nroTarjetaInput.value.length < 15) {
-        nroTarjetaInput.setCustomValidity('Número incorrecto');
-      } else {
-        nroTarjetaInput.setCustomValidity('');
-      }
+        if (nroTarjetaInput.value.trim() === '' || /^[0-9]{16}$/.test(nroTarjetaInput.value) || nroTarjetaInput.value.length < 15) {
+            nroTarjetaInput.setCustomValidity('Número incorrecto');
+        } else {
+            nroTarjetaInput.setCustomValidity('');
+        }
     });
 
-    nroCuenta.addEventListener('input', ()=> {
-      if(nroCuenta.value.trim() === '' || /^[0-9]{10}$/.test(nroCuenta.value) || nroCuenta.value.length < 9){
-        nroCuenta.setCustomValidity('Número incorrecto');
-      } else {
-        nroCuenta.setCustomValidity('');
-      }
+    nroCuenta.addEventListener('input', () => {
+        if (nroCuenta.value.trim() === '' || /^[0-9]{10}$/.test(nroCuenta.value) || nroCuenta.value.length < 9) {
+            nroCuenta.setCustomValidity('Número incorrecto');
+        } else {
+            nroCuenta.setCustomValidity('');
+        }
     })
 
     codigoInput.addEventListener('input', function () {
-      if (codigoInput.value.trim() === '' || /^[0-9]{16}$/.test(codigoInput.value) || !(codigoInput.value.length === 3)) {
-        codigoInput.setCustomValidity('Código incorrecto');
-      } else {
-        codigoInput.setCustomValidity('');
-      }
+        if (codigoInput.value.trim() === '' || /^[0-9]{16}$/.test(codigoInput.value) || !(codigoInput.value.length === 3)) {
+            codigoInput.setCustomValidity('Código incorrecto');
+        } else {
+            codigoInput.setCustomValidity('');
+        }
     });
 
     Array.from(forms).forEach(form => {
@@ -232,19 +230,19 @@ function restIndividualCost(i, unitCost, count, currency){
 
             //Se asegura que se validen los datos del formulario de datos del envio y que cantidad de producto sea mayor a cero
             if (!formularioEnvio.checkValidity()) {
-              event.preventDefault();
-              event.stopPropagation();
+                event.preventDefault();
+                event.stopPropagation();
             }
-            
+
             formularioEnvio.classList.add('was-validated')
             form.classList.add('was-validated');
-            
-            if(form.checkValidity() === true && formularioEnvio.checkValidity() === true){
-              Swal.fire(
-                'Compra realizada con exito!',
-                'Haz click en el boton para cerrar!',
-                'success'
-              )
+
+            if (form.checkValidity() === true && formularioEnvio.checkValidity() === true) {
+                Swal.fire(
+                    'Compra realizada con exito!',
+                    'Haz click en el boton para cerrar!',
+                    'success'
+                )
             }
         }, false);
     });
@@ -253,43 +251,43 @@ function restIndividualCost(i, unitCost, count, currency){
 const vencimientoInput = document.getElementById('vencimiento');
 
 vencimientoInput.addEventListener('input', function () {
-  let inputValue = vencimientoInput.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
-  const maxLength = 4; // Longitud máxima del campo (MM/YY)
+    let inputValue = vencimientoInput.value.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+    const maxLength = 4; // Longitud máxima del campo (MM/YY)
 
-  if (inputValue.length > maxLength) {
-    inputValue = inputValue.slice(0, maxLength); // Limitar a la longitud máxima
-  }
-
-  if (inputValue.length >= 2) {
-    // Insertar una barra ("/") después de los primeros dos dígitos (mes)
-    inputValue = inputValue.slice(0, 2) + '/' + inputValue.slice(2);
-  }
-
-  vencimientoInput.value = inputValue;
-
-  if (inputValue.length === 5) {
-  
-    const month = parseInt(inputValue.slice(0, 2), 10);
-    const year = parseInt(inputValue.slice(2), 10);
-  
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear() % 100; // Obtener los últimos dos dígitos del año actual
-  
-    if (month < 1 || month > 12 || year < currentYear) {
-      vencimientoInput.setCustomValidity('Fecha no válida');
-    } else {
-      vencimientoInput.setCustomValidity('');
+    if (inputValue.length > maxLength) {
+        inputValue = inputValue.slice(0, maxLength); // Limitar a la longitud máxima
     }
-  } else {
-    vencimientoInput.setCustomValidity('Formato incorrecto');
-  }
+
+    if (inputValue.length >= 2) {
+        // Insertar una barra ("/") después de los primeros dos dígitos (mes)
+        inputValue = inputValue.slice(0, 2) + '/' + inputValue.slice(2);
+    }
+
+    vencimientoInput.value = inputValue;
+
+    if (inputValue.length === 5) {
+
+        const month = parseInt(inputValue.slice(0, 2), 10);
+        const year = parseInt(inputValue.slice(2), 10);
+
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear() % 100; // Obtener los últimos dos dígitos del año actual
+
+        if (month < 1 || month > 12 || year < currentYear) {
+            vencimientoInput.setCustomValidity('Fecha no válida');
+        } else {
+            vencimientoInput.setCustomValidity('');
+        }
+    } else {
+        vencimientoInput.setCustomValidity('Formato incorrecto');
+    }
 });
 
 vencimientoInput.addEventListener('keydown', function (e) {
-  if (e.key === 'Backspace' && vencimientoInput.value.slice(-1) === '/') {
-    // Permitir borrar la barra ("/") con la tecla Backspace
-    vencimientoInput.value = vencimientoInput.value.slice(0, -1);
-  }
+    if (e.key === 'Backspace' && vencimientoInput.value.slice(-1) === '/') {
+        // Permitir borrar la barra ("/") con la tecla Backspace
+        vencimientoInput.value = vencimientoInput.value.slice(0, -1);
+    }
 });
 
 
@@ -366,91 +364,91 @@ vencimientoInput.addEventListener('keydown', function (e) {
 // });
 
 
-  // Actualiza el costo de envio automaticamente cuando cambia el subtotal
-  function updateSendCost(){
-    if(envioStandard1.checked === true){
-      envioStandard()
-    } else if (envioExpress2.checked === true) {
-      envioExpress()
-      } else if (envioPremium3.checked === true) {
-      envioPremium()
-      }
-      }
-    
+// Actualiza el costo de envio automaticamente cuando cambia el subtotal
+function updateSendCost() {
+    if (envioStandard1.checked) {
+        envioStandard()
+    } else if (envioExpress2.checked) {
+        envioExpress()
+    } else if (envioPremium3.checked) {
+        envioPremium()
+    }
+}
+
 // calculadora de envios
-  function envioStandard(){
-    costoDeEnvio = subTotal * 0.05;
+function envioStandard() {
+    costoDeEnvio = Math.round(subTotal * 0.15);
     updateTotal();
 }
 
-function envioExpress(){
-    costoDeEnvio = subTotal * 0.07;
+function envioExpress() {
+    costoDeEnvio = Math.round(subTotal * 0.07);
     updateTotal();
 }
 
-function envioPremium(){
-    costoDeEnvio = subTotal * 0.15;
+function envioPremium() {
+    costoDeEnvio = Math.round(subTotal * 0.05);
     updateTotal();
 }
 
-  function updateTotal() {
-    Total = subTotal + costoDeEnvio;
+function updateTotal() {
+    const total = subTotal + costoDeEnvio;
     const subTotalElement = document.getElementById('subTotal');
     const costoDeEnvioElement = document.getElementById('envio');
     const totalElement = document.getElementById('total');
-    subTotalElement.innerHTML =  `<p><strong>Subtotal:</strong> <span>USD ${subTotal}</span></p>
+    subTotalElement.innerHTML = `<p><strong>Subtotal:</strong> <span>USD ${subTotal}</span></p>
                                   <p class="description">Costo unitario del producto por cantidad</p>`
     costoDeEnvioElement.innerHTML = `<p><strong>Costo de envió:</strong> <span>USD ${costoDeEnvio}</span></p>
                                      <p class="description">Según el tipo de envió seleccionado</p>`;
-    totalElement.innerHTML = `<p><strong>Total:</strong> <span class="priceTotal">USD ${Total} </span></p>`;
+    totalElement.innerHTML = `<p><strong>Total:</strong> <span class="priceTotal">USD ${total} </span></p>`;
     updateSendCost()
 }
 
 
-  document.addEventListener("DOMContentLoaded", getDataCartUser);
+document.addEventListener("DOMContentLoaded", getDataCartUser);
 
-  //Evento que según el tamaño, cambia las clases del container de los costos totales
+//Evento que según el tamaño, cambia las clases del container de los costos totales
 
-  window.addEventListener("resize", () => {
-    if(document.documentElement.clientWidth <= 1704) {
-      containerCost.classList.remove("cardPrice");
-      containerCost.classList.add("cardPriceResponsive")
-    } else if(document.documentElement.clientWidth >= 1704) {
-      containerCost.classList.add("cardPrice");
-      containerCost.classList.remove("cardPriceResponsive")
+window.addEventListener("resize", () => {
+    if (document.documentElement.clientWidth <= 1704) {
+        containerCost.classList.remove("cardPrice");
+        containerCost.classList.add("cardPriceResponsive")
+    } else if (document.documentElement.clientWidth >= 1704) {
+        containerCost.classList.add("cardPrice");
+        containerCost.classList.remove("cardPriceResponsive")
     }
-  })
+})
 
-  
-  document.addEventListener("DOMContentLoaded", function () {
+
+document.addEventListener("DOMContentLoaded", function () {
     // Obtén el elemento select para el método de pago
     const paymentMethodSelect = document.getElementById("paymentMethod");
-  
+
     // Obtén los elementos de los campos de formulario
     const nombreInput = document.getElementById("nombre");
     const nroTarjetaInput = document.getElementById("nroTarjeta");
     const vencimientoInput = document.getElementById("vencimiento");
     const codigoInput = document.getElementById("codigo");
     const cuotasSelect = document.getElementById("validationTooltip04");
-  
+
     // Manejador de evento para detectar cambios en el método de pago
     paymentMethodSelect.addEventListener("change", function () {
-      // Obtén el valor seleccionado (debito o credito)
-      const selectedPaymentMethod = paymentMethodSelect.value;
-  
-      // Restablece los campos del formulario si cambias de tarjeta de crédito a tarjeta de débito o viceversa
-      if (selectedPaymentMethod === "debito") {
-        nombreInput.value = "";
-        nroTarjetaInput.value = "";
-        vencimientoInput.value = "";
-        codigoInput.value = "";
-        cuotasSelect.selectedIndex = 0;
-      } else if (selectedPaymentMethod === "credito") {
-        nombreInput.value = "";
-        nroTarjetaInput.value = "";
-        vencimientoInput.value = "";
-        codigoInput.value = "";
-        cuotasSelect.selectedIndex = 0;
-      }
+        // Obtén el valor seleccionado (debito o credito)
+        const selectedPaymentMethod = paymentMethodSelect.value;
+
+        // Restablece los campos del formulario si cambias de tarjeta de crédito a tarjeta de débito o viceversa
+        if (selectedPaymentMethod === "debito") {
+            nombreInput.value = "";
+            nroTarjetaInput.value = "";
+            vencimientoInput.value = "";
+            codigoInput.value = "";
+            cuotasSelect.selectedIndex = 0;
+        } else if (selectedPaymentMethod === "credito") {
+            nombreInput.value = "";
+            nroTarjetaInput.value = "";
+            vencimientoInput.value = "";
+            codigoInput.value = "";
+            cuotasSelect.selectedIndex = 0;
+        }
     });
-  });
+});
