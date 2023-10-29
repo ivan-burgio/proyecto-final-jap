@@ -26,8 +26,8 @@ function getDataProduct() {
             actualItem = {
                 name: result.name,
                 image: result.images[0],
-                currency: result.currency === "UYU" ? "USD" : result.currency,
-                unitCost: result.currency === "UYU" ? (result.cost / 40) : result.cost,
+                currency: result.currency === "UYU" ? "USD" : result.currency, //si es peso pasa a dolares 
+                unitCost: result.currency === "UYU" ? (result.cost / 40) : result.cost, //convierte el dolar con el supuesto de que sea 40 UYU
 
             };
             showProductInfo(result);
