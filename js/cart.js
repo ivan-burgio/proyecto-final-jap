@@ -226,6 +226,14 @@ function restIndividualCost(i, unitCost, count, currency){
             
             formularioEnvio.classList.add('was-validated')
             form.classList.add('was-validated');
+            
+            if(form.checkValidity() === true && formularioEnvio.checkValidity() === true){
+              Swal.fire(
+                'Compra realizada con exito!',
+                'Haz click en el boton para cerrar!',
+                'success'
+              )
+            }
         }, false);
     });
 })();
