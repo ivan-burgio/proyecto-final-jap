@@ -4,6 +4,9 @@ const buttonLeft = document.getElementsByClassName("number-left");
 const buttonRight = document.getElementsByClassName("number-right");
 const valueCountArticle = document.getElementsByName("number-count");
 const cardPriceContainer= document.getElementById("cardTotalPrice");
+const envioStandard1 = document.getElementById("tipoEnvio1");
+const envioExpress2 = document.getElementById("tipoEnvio2");
+const envioPremium3 = document.getElementById("tipoEnvio3");
 let count = 1;
 let subTotal = 0;
 let costoDeEnvio = 0;
@@ -26,11 +29,20 @@ function getDataCartUser() {
     
 }
 
+// hace la suma inicial del subTotal
+function updateCost(array){
+  for (let i=0; i<array.length; i++){
+  subTotal += array[i].unitCost;
+}}
+
 //Muestra el contenido de un array
 function showCartList(array) {
     let cartUser = ``;
+    //verificación para que no sume si ya se calculó
+    if (subTotal === 0){
+      updateCost(array)
+    }
     for (i= 0; i < array.length; i++) {
-      subTotal  += arrayItemCart[i].unitCost;
       Total = subTotal + costoDeEnvio;
     
         cartUser = `
@@ -56,7 +68,7 @@ function showCartList(array) {
                 <!--Final del Botón-->
                    <p id='${i}_Subtotal' >Subtotal: ${array[i].currency} ${array[i].unitCost}</p>
                    <div class= "d-flex justify-content-center align-items-end ">
-                   <button onclick="deleteItem('${array[i].name}') ; showCartList()" class="btn buttonDelete" type="button"><i class="far fa-trash-alt"></i></button>
+                   <button onclick="deleteItem('${array[i].name}',${i},${array[i].unitCost}) ; showCartList()" class="btn buttonDelete" type="button"><i class="far fa-trash-alt"></i></button>
                    </div>
                 </div>
             </div>
@@ -101,7 +113,8 @@ function restIndividualCost(i, unitCost, count, currency){
      updateTotal()
     }
 
-    function deleteItem(Item){
+    function deleteItem(Item, i, unitCost){
+     input = document.getElementById(i + "_modified");
      let getLocalProduct = localStorage.getItem("cartItem");
      getLocalProduct = JSON.parse(getLocalProduct);
      const setLocalProduct = []
@@ -112,7 +125,10 @@ function restIndividualCost(i, unitCost, count, currency){
      }  
      localStorage.setItem("cartItem", JSON.stringify(setLocalProduct))  
      containerCart.innerHTML = ""
+     let subTotalCost = input.value*unitCost
+     subTotal -= subTotalCost //resta el subTotal del producto eliminado
      showCartList(setLocalProduct)
+     updateTotal()
     }
 
 const botonMostrarFormulario = document.getElementById("mostrarFormulario");
@@ -125,6 +141,18 @@ botonMostrarFormulario.addEventListener("click", function() {
       formulario.style.display = "none";
     }
   });
+
+  // Actualiza el costo de envio automaticamente cuando cambia el subtotal
+  function updateSendCost(){
+    if(envioStandard1.checked === true){
+      envioStandard()
+    } else if (envioExpress2.checked === true) {
+      envioExpress()
+      } else if (envioPremium3.checked === true) {
+      envioPremium()
+      }
+      }
+    
 // calculadora de envios
   function envioStandard(){
     costoDeEnvio = subTotal * 0.05;
@@ -149,6 +177,7 @@ function envioPremium(){
     subTotalElement.textContent = `Subtotal: USD ${subTotal}`
     costoDeEnvioElement.textContent = `Costo de envio: USD ${costoDeEnvio}`;
     totalElement.textContent = `Total: USD ${Total}`;
+    updateSendCost();
 }
 
 
