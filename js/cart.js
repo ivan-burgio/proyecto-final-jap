@@ -80,7 +80,7 @@ function showCartList(array) {
     `
     
         
-              containerCost.innerHTML += cardPrice; 
+              containerCost.innerHTML = cardPrice; 
 }
 
 
