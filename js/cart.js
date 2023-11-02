@@ -1,4 +1,3 @@
-const IDuser = "25801"
 const containerCart = document.getElementById("container-cart");
 const buttonLeft = document.getElementsByClassName("number-left");
 const buttonRight = document.getElementsByClassName("number-right");
