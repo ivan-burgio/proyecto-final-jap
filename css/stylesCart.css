@@ -233,6 +233,10 @@ margin: 1%;
     margin-left:8px;
 }
 
+.formDebitoCredito input[type='radio'] {
+    width: unset;
+    min-width: 15px;
+}
 /*Costos totales*/
 
 .cardPrice {

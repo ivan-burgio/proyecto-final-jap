@@ -137,6 +137,42 @@ function deleteItem(Item, i, unitCost) {
     updateTotal()
 }
 
+
+// Validación de datos del formulario
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Obtén el elemento select para el método de pago
+    const paymentMethodSelect = document.getElementById("paymentMethod");
+
+    // Obtén los elementos de los campos de formulario
+    const nombreInput = document.getElementById("nombre");
+    const nroTarjetaInput = document.getElementById("nroTarjeta");
+    const vencimientoInput = document.getElementById("vencimiento");
+    const codigoInput = document.getElementById("codigo");
+    const cuotasSelect = document.getElementById("validationTooltip04");
+
+    // Manejador de evento para detectar cambios en el método de pago
+    paymentMethodSelect.addEventListener("change", function () {
+        // Obtén el valor seleccionado (debito o credito)
+        const selectedPaymentMethod = paymentMethodSelect.value;
+
+        // Restablece los campos del formulario si cambias de tarjeta de crédito a tarjeta de débito o viceversa
+        if (selectedPaymentMethod === "debito") {
+            nombreInput.value = "";
+            nroTarjetaInput.value = "";
+            vencimientoInput.value = "";
+            codigoInput.value = "";
+            cuotasSelect.selectedIndex = 0;
+        } else if (selectedPaymentMethod === "credito") {
+            nombreInput.value = "";
+            nroTarjetaInput.value = "";
+            vencimientoInput.value = "";
+            codigoInput.value = "";
+            cuotasSelect.selectedIndex = 0;
+        }
+    });
+});
+
 const paymentMethodSelect = document.getElementById('paymentMethod');
 const cuotasField = document.getElementById('cuotasField');
 const cuotasInput = document.getElementById('cuotas');
@@ -150,19 +186,18 @@ paymentMethodSelect.addEventListener('change', function () {
         cuotasInput.removeAttribute('required');
     }
 });
-
-// Validación de datos del formulario de pago con tarjeta de crédito o débito
-(() => {
+//Validacion del formulario de pagos
+ (()=> {
     'use strict';
 
-    const forms = document.querySelectorAll('.needs-validation');
+    const forms = document.querySelectorAll('.needs-validation')
+    const formEnvio = document.getElementById('formulario');
     const nombreInput = document.getElementById('nombre');
     const nroTarjetaInput = document.getElementById('nroTarjeta');
     const codigoInput = document.getElementById('codigo');
     const nroCuenta = document.getElementById('nroCuenta');
     const buttonTransfer = document.getElementById('transfer-button');
     const buttonCreditoDebito = document.getElementById('credito-debito')
-    const formularioEnvio = document.getElementById('formulario');
 
     //Evento que al presionar la opción de transferencia deshabilita las opciones de crédito o débito
     buttonTransfer.addEventListener('click', () => {
@@ -222,21 +257,20 @@ paymentMethodSelect.addEventListener('change', function () {
 
     Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-
             //Se asegura que se validen los datos del formulario de datos del envio y que cantidad de producto sea mayor a cero
-            if (!formularioEnvio.checkValidity()) {
+            if (!formEnvio.checkValidity()) {
                 event.preventDefault();
                 event.stopPropagation();
             }
 
-            formularioEnvio.classList.add('was-validated')
-            form.classList.add('was-validated');
+            if(!form.checkValidity()){
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated')
+            formEnvio.classList.add('was-validated')
 
-            if (form.checkValidity() === true && formularioEnvio.checkValidity() === true) {
+            if (formEnvio.checkValidity() === true && forms.checkValidity() === true) {
                 Swal.fire(
                     'Compra realizada con exito!',
                     'Haz click en el boton para cerrar!',
@@ -289,79 +323,43 @@ vencimientoInput.addEventListener('keydown', function (e) {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+   paypal.Buttons({
+        style: {
+        shape: 'rect',
+        color: 'blue',
+        layout: 'vertical',
+        label: 'pay',
+    },
+   funding: {
+       disallowed: [paypal.FUNDING.CARD],
+    }
+}).render('#paypal-button-container');
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   paypal.Buttons({
-//     style: {
-//         shape: 'rect',
-//         color: 'blue',
-//         layout: 'vertical',
-//         label: 'pay',
-//     },
-//     funding: {
-//         disallowed: [paypal.FUNDING.CARD],
-//     }
-// }).render('#paypal-button-container');
+ paypal.Buttons({
+     style: {
+         shape: 'rect',
+         color: 'blue',
+         layout: 'vertical',
+         label: 'pay',
+     },
+     funding: {
+         disallowed: [paypal.FUNDING.CARD],
+     }
+ }).render('#paypal-button-container-virtual');
 
-// paypal.Buttons({
-//     style: {
-//         shape: 'rect',
-//         color: 'blue',
-//         layout: 'vertical',
-//         label: 'pay',
-//     },
-//     funding: {
-//         disallowed: [paypal.FUNDING.CARD],
-//     }
-// }).render('#paypal-button-container-virtual');
+});
 
-// });
-
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   // Agregar un evento clic a los botones
-//   const debitCreditButton = document.getElementById('accordion-button-one');
-//   const transferButton = document.getElementById('accordion-button-two');
-//   const collapseOne = document.getElementById('collapseOne');
-//   const collapseTwo = document.getElementById('collapseTwo');
-
-
-//   debitCreditButton.addEventListener('click', () => {
-//     // Verificar si el botón ya tiene la clase 'show'
-//       // Mostrar el contenido de tarjeta de débito y crédito y ocultar transferencia bancaria
-//       if(collapseTwo.classList.contains('show')){
-//           collapseTwo.classList.remove('show');
-//           collapseOne.classList.add('show');
-//           transferButton.classList.add('collapsed');
-//           debitCreditButton.classList.remove('collapsed');
-//         }else{
-//           collapseOne.classList.remove('show');
-//             if(debitCreditButton.classList.contains('collapsed')){
-//               debitCreditButton.classList.add('collapsed');
-//             }else{
-//               debitCreditButton.classList.remove('collapsed');
-//             }
-//         }
-//   });
-
-//   transferButton.addEventListener('click', () => {
-//     // Verificar si el botón ya tiene la clase 'show'
-//     if(collapseOne.classList.contains('show')){
-//        collapseOne.classList.remove('show');
-//        collapseTwo.classList.add('show');
-//        transferButton.classList.remove('collapsed');
-//        debitCreditButton.classList.add('collapsed');
-//     }else{
-//       collapseTwo.classList.remove('show');
-//         if(transferButton.classList.contains('collapsed')){
-//           transferButton.classList.add('collapsed');
-//         }else{
-//           transferButton.classList.remove('collapsed');
-//         }
-//     }
-//   });
-// });
-
+//Desaparecer contenido al abrir un método de pago
+document.addEventListener("DOMContentLoaded", function () {
+    // Agregar un evento clic a los botones
+   const debitCreditButton = document.getElementById('accordion-button-one');
+   const transferButton = document.getElementById('accordion-button-two');
+   const paypalButton = document.getElementById('accordion-button-three')
+   const collapseOne = document.getElementById('collapseOne');
+   const collapseTwo = document.getElementById('collapseTwo');
+   const collapseThree = document.getElementById('collapseThree');
+});
 
 // Actualiza el costo de envio automaticamente cuando cambia el subtotal
 function updateSendCost() {
@@ -419,35 +417,3 @@ window.addEventListener("resize", () => {
 })
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Obtén el elemento select para el método de pago
-    const paymentMethodSelect = document.getElementById("paymentMethod");
-
-    // Obtén los elementos de los campos de formulario
-    const nombreInput = document.getElementById("nombre");
-    const nroTarjetaInput = document.getElementById("nroTarjeta");
-    const vencimientoInput = document.getElementById("vencimiento");
-    const codigoInput = document.getElementById("codigo");
-    const cuotasSelect = document.getElementById("validationTooltip04");
-
-    // Manejador de evento para detectar cambios en el método de pago
-    paymentMethodSelect.addEventListener("change", function () {
-        // Obtén el valor seleccionado (debito o credito)
-        const selectedPaymentMethod = paymentMethodSelect.value;
-
-        // Restablece los campos del formulario si cambias de tarjeta de crédito a tarjeta de débito o viceversa
-        if (selectedPaymentMethod === "debito") {
-            nombreInput.value = "";
-            nroTarjetaInput.value = "";
-            vencimientoInput.value = "";
-            codigoInput.value = "";
-            cuotasSelect.selectedIndex = 0;
-        } else if (selectedPaymentMethod === "credito") {
-            nombreInput.value = "";
-            nroTarjetaInput.value = "";
-            vencimientoInput.value = "";
-            codigoInput.value = "";
-            cuotasSelect.selectedIndex = 0;
-        }
-    });
-});
