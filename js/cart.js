@@ -271,23 +271,17 @@ paymentMethodSelect.addEventListener('change', function () {
             form.classList.add('was-validated')
             formEnvio.classList.add('was-validated')
 
-            if(buttonCreditoDebito.checked == false && buttonTransfer.checked == false){
-                Swal.fire({
-                    title: 'Debe de elegir un método de pago',
-                    confirmButtonColor: '#fd7e14',
-                    confirmButtonText: 'Entendido',
-                    icon: 'error',
-                    iconColor: '#fd7e14',
-                    background: '#fffaff',
-                  })
-            }
-
-            if (formEnvio.checkValidity() === true && forms.checkValidity() === true) {
+            if (formEnvio.checkValidity() === true && form.checkValidity() === true) {
                 Swal.fire(
-                    'Compra realizada con exito!',
-                    'Haz click en el boton para cerrar!',
-                    'success'
-                )
+                    {
+                        title: 'Compra realizada con exito!',
+                        confirmButtonColor: '#fd7e14',
+                        confirmButtonText: 'Entendido',
+                        icon: 'success',
+                        iconColor: '#fd7e14',
+                        background: '#fffaff',
+                        timer: 9000
+                    })
             }
         }, false);
     });
