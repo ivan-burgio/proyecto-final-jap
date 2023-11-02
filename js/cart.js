@@ -14,29 +14,6 @@ let costoDeEnvio = 0;
 let Total = 0;
 
 
-//Obtiene los datos del fetch del carrito y los guarda en un array
-function getDataCartUser() {
-    fetch(CART_INFO_URL + IDuser + EXT_TYPE)
-        .then(response => response.json())
-        .then(result => {
-            arrayItemCart = result.articles
-            arrayItemCart.push(...cartItems);
-            //   localStorage.setItem("cartItem",JSON.stringify(arrayItemCart))
-            showCartList(arrayItemCart);
-        })
-        .catch(error => {
-            console.error('Error en la solicitud:', error);
-        });
-
-}
-
-// hace la suma inicial del subTotal
-function updateCost(array) {
-    for (let i = 0; i < array.length; i++) {
-        subTotal += array[i].unitCost;
-    }
-}
-
 //Muestra el contenido de un array
 function showCartList(array) {
     let cartUser = ``;
@@ -94,6 +71,56 @@ function showCartList(array) {
 
     containerCost.innerHTML = cardPrice;
 }
+
+
+// hace la suma inicial del subTotal
+function updateCost(array) {
+    for (let i = 0; i < array.length; i++) {
+        subTotal += array[i].unitCost;
+    }
+}
+
+function updateTotal() {
+    Total = Math.round(subTotal + costoDeEnvio);
+    const subTotalElement = document.getElementById('subTotal');
+    const costoDeEnvioElement = document.getElementById('envio');
+    const totalElement = document.getElementById('total');
+    subTotalElement.innerHTML = `<p><strong>Subtotal:</strong> <span>USD ${Math.round(subTotal)}</span></p>
+                                  <p class="description">Costo unitario del producto por cantidad</p>`
+    costoDeEnvioElement.innerHTML = `<p><strong>Costo de envió:</strong> <span>USD ${costoDeEnvio}</span></p>
+                                     <p class="description">Según el tipo de envió seleccionado</p>`;
+    totalElement.innerHTML = `<p><strong>Total:</strong> <span class="priceTotal">USD ${Total} </span></p>`;
+    updateSendCost()
+}
+
+
+// Actualiza el costo de envio automaticamente cuando cambia el subtotal
+function updateSendCost() {
+    if (envioStandard1.checked) {
+        envioStandard()
+    } else if (envioExpress2.checked) {
+        envioExpress()
+    } else if (envioPremium3.checked) {
+        envioPremium()
+    }
+}
+
+// calculadora de envios
+function envioStandard() {
+    costoDeEnvio = Math.round(subTotal * 0.05);
+    updateTotal();
+}
+
+function envioExpress() {
+    costoDeEnvio = Math.round(subTotal * 0.07);
+    updateTotal();
+}
+
+function envioPremium() {
+    costoDeEnvio = Math.round(subTotal * 0.15);
+    updateTotal();
+}
+
 
 
 function sumIndividualCost(i, unitCost, count, currency) {
@@ -367,48 +394,8 @@ document.addEventListener("DOMContentLoaded", function () {
    const collapseThree = document.getElementById('collapseThree');
 });
 
-// Actualiza el costo de envio automaticamente cuando cambia el subtotal
-function updateSendCost() {
-    if (envioStandard1.checked) {
-        envioStandard()
-    } else if (envioExpress2.checked) {
-        envioExpress()
-    } else if (envioPremium3.checked) {
-        envioPremium()
-    }
-}
 
-// calculadora de envios
-function envioStandard() {
-    costoDeEnvio = Math.round(subTotal * 0.15);
-    updateTotal();
-}
-
-function envioExpress() {
-    costoDeEnvio = Math.round(subTotal * 0.07);
-    updateTotal();
-}
-
-function envioPremium() {
-    costoDeEnvio = Math.round(subTotal * 0.05);
-    updateTotal();
-}
-
-function updateTotal() {
-    Total = Math.round(subTotal + costoDeEnvio);
-    const subTotalElement = document.getElementById('subTotal');
-    const costoDeEnvioElement = document.getElementById('envio');
-    const totalElement = document.getElementById('total');
-    subTotalElement.innerHTML = `<p><strong>Subtotal:</strong> <span>USD ${Math.round(subTotal)}</span></p>
-                                  <p class="description">Costo unitario del producto por cantidad</p>`
-    costoDeEnvioElement.innerHTML = `<p><strong>Costo de envió:</strong> <span>USD ${costoDeEnvio}</span></p>
-                                     <p class="description">Según el tipo de envió seleccionado</p>`;
-    totalElement.innerHTML = `<p><strong>Total:</strong> <span class="priceTotal">USD ${Total} </span></p>`;
-    updateSendCost()
-}
-
-
-document.addEventListener("DOMContentLoaded", getDataCartUser);
+document.addEventListener("DOMContentLoaded", showCartList(cartItems));
 
 //Evento que según el tamaño, cambia las clases del container de los costos totales
 
