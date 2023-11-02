@@ -198,6 +198,7 @@ paymentMethodSelect.addEventListener('change', function () {
     const nroCuenta = document.getElementById('nroCuenta');
     const buttonTransfer = document.getElementById('transfer-button');
     const buttonCreditoDebito = document.getElementById('credito-debito')
+    const buttonBuy = document.getElementById('buttonBuy');
 
     //Evento que al presionar la opción de transferencia deshabilita las opciones de crédito o débito
     buttonTransfer.addEventListener('click', () => {
@@ -269,6 +270,17 @@ paymentMethodSelect.addEventListener('change', function () {
             }
             form.classList.add('was-validated')
             formEnvio.classList.add('was-validated')
+
+            if(buttonCreditoDebito.checked == false && buttonTransfer.checked == false){
+                Swal.fire({
+                    title: 'Debe de elegir un método de pago',
+                    confirmButtonColor: '#fd7e14',
+                    confirmButtonText: 'Entendido',
+                    icon: 'error',
+                    iconColor: '#fd7e14',
+                    background: '#fffaff',
+                  })
+            }
 
             if (formEnvio.checkValidity() === true && forms.checkValidity() === true) {
                 Swal.fire(
