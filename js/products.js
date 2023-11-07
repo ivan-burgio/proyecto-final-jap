@@ -11,16 +11,16 @@ const ORDER_BY_PROD_SOLDCOUNT = "Cant.";
 
 function getDataProduct() {
   //Consulta a la API que trae los datos 'Producto' a mostrar
-  fetch(PRODUCTS_URL + catID + EXT_TYPE)
-    .then(response => response.json())
+  getJSONData(PRODUCTS_URL + catID + EXT_TYPE)
     .then(result => {
-      currentProductsArray = result.products;
+      currentProductsArray = result.data.products;
       showProductList();
     })
     .catch(error => {
       console.error('Error en la solicitud:', error);
     });
 }
+
 
 //cambia de valor los precios ingresados cuando el min es mayor al max y los filtra 
 function changeValues() {

@@ -7,6 +7,7 @@ let currentSortCriteria = ORDER_ASC_BY_NAME;
 let minCount = undefined;
 let maxCount = undefined;
 
+
 function sortCategories(criteria, array) {
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME) {

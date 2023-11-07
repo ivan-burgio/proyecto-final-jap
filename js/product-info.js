@@ -20,24 +20,22 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function getDataProduct() {
-    fetch(PRODUCT_INFO_URL + productID + EXT_TYPE)
-        .then((response) => response.json())
-        .then((result) => {
-            actualItem = {
-                name: result.name,
-                image: result.images[0],
-                currency: result.currency === "UYU" ? "USD" : result.currency, //si es peso pasa a dolares 
-                unitCost: result.currency === "UYU" ? (result.cost / 40) : result.cost, //convierte el dolar con el supuesto de que sea 40 UYU
-
-            };
-            showProductInfo(result);
-            getComments();
-        })
-        .catch((error) => {
-            console.error('Error en la solicitud:', error);
-        });
-}
-
+    getJSONData(PRODUCT_INFO_URL + productID + EXT_TYPE)
+      .then(result => {
+        actualItem = {
+          name: result.data.name,
+          image: result.data.images[0],
+          currency: result.data.currency === "UYU" ? "USD" : result.data.currency,
+          unitCost: result.data.currency === "UYU" ? (result.data.cost / 40) : result.data.cost
+        };
+        showProductInfo(result.data);
+        getComments();
+      })
+      .catch(error => {
+        console.error('Error en la solicitud:', error);
+      });
+  }
+  
 
 
 function addCart() {
