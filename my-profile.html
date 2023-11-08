@@ -9,7 +9,6 @@
     <!-- DARK / LIGHT-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
@@ -92,43 +91,54 @@
     <main>
         <div class="container">
             <div class="list-groupc shadow" id="cat-list-container">
-            <form class="needs-validation" novalidate>
-                <div class="form-group">
-                    <label for="primernombre" class="form-label">Primer nombre</label>
-                    <input type="text" class="form-control" id="perfilPrimerNombre" minlength="3" maxlength="10" required>
-                    <div class="invalid-feedback">
-                        Ingrese su primer nombre
-                      </div>
-                  </div>
-                <div class="form-group">
-                    <label for="segundonombre" class="form-label">Segundo nombre</label>
-                    <input type="text" class="form-control" id="perfilSegundoNombre"  minlength="3" maxlength="10">
-                  </div>
-                <div class="form-group">
-                    <label for="primerapellido" class="form-label">Primer apellido</label>
-                    <input type="text" class="form-control" id="perfilPrimerApellido" required  minlength="3" maxlength="10">
-                    <div class="invalid-feedback">
-                        Ingrese su primer apellido
-                      </div>
-                  </div>
-                <div class="form-group">
-                    <label for="segundoapellido" class="form-label">Segundo apellido</label>
-                    <input type="text" class="form-control" id="perfilSegundoApellido"  minlength="3" maxlength="10">
-                  </div>
-                <div class="form-group">
-                  <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="perfilEmail" required> 
-                </div>
-                <div class="form-group">
-                    <label for="archivo" class="form-label">Imagen de perfil</label>
-                    <input type="file" class="form-control-file" id="perfilArchivo">
-                  </div>
-                <div class="form-group">
-                  <label for="telefono" class="form-label">Telefono de contacto</label>
-                  <input type="text" class="form-control" id="perfilTelefono" minlength="9" pattern="[+]?[0-9]{9,}">
-                </div>
-                <button type="submit" class="btn btn-primary" id="guardarPerfil">Guardar cambios</button>
-              </form>
+                <h3 class="titulo-perfil">Perfil</h3>
+
+                <form class="form-myprofile row needs-validation" novalidate>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <div clas="">
+                            <label for="primernombre" class="form-label">Primer nombre</label>
+                            <input type="text" class="form-control" id="perfilPrimerNombre" value="" minlength="3" maxlength="10" required>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <div clas="">
+                            <label for="segundonombre" class="form-label">Segundo nombre</label>
+                            <input type="text" class="form-control" id="perfilSegundoNombre" minlength="3" maxlength="10" value="">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="primerapellido" class="form-label">Primer apellido</label>
+                        <input type="text" class="form-control" id="perfilPrimerApellido" minlength="3" maxlength="10" value="" required>   
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="segundoapellido" class="form-label">Segundo apellido</label>
+                        <input type="text" class="form-control" id="perfilSegundoApellido" minlength="3" maxlength="10" value="">
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="perfilEmail" value="" required>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="archivo" class="form-label">Imagen de perfil</label>
+                        <input type="file" class="form-control-file" value="" id="perfilArchivo">
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="telefono" class="form-label">Telefono de contacto</label>
+                        <input type="tel" class="form-control" value="" id="perfilTelefono" pattern="[0-9]{9}">
+                    </div>
+
+                    <div class="col-12">
+                        <div class="btnFormProfile col-xs-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                            <button type="submit" class="btn btn-primary" id="guardarPerfil">Guardar cambios</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
