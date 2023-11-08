@@ -95,37 +95,47 @@
                 <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
             </div>-->
             <div class="list-groupc shadow" id="cat-list-container">
-            <form>
-                <div class="form-group">
-                    <label for="primernombre">Primer nombre</label>
-                    <input type="text" class="form-control" id="perfilPrimerNombre">
-                  </div>
-                <div class="form-group">
-                    <label for="segundonombre">Segundo nombre</label>
-                    <input type="text" class="form-control" id="perfilSegundoNombre">
-                  </div>
-                <div class="form-group">
-                    <label for="primerapellido">Primer apellido</label>
-                    <input type="text" class="form-control" id="perfilPrimerApellido">
-                  </div>
-                <div class="form-group">
-                    <label for="segundoapellido">Segundo apellido</label>
-                    <input type="text" class="form-control" id="perfilSegundoApellido">
-                  </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" id="perfilEmail">
-                </div>
-                <div class="form-group">
-                    <label for="archivo">Imagen de perfil</label>
-                    <input type="file" class="form-control-file" id="perfilArchivo">
-                  </div>
-                <div class="form-group">
-                  <label for="telefono">Telefono de contacto</label>
-                  <input type="text" class="form-control" id="perfilTelefono">
-                </div>
-                <button type="submit" class="btn btn-primary">Guardar cambios</button>
-              </form>
+                <h3>Perfil</h3>
+                <form class="form-myprofile">
+                    <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <div clas="">
+                            <label for="primernombre">Primer nombre</label>
+                            <input type="text" class="form-control" id="perfilPrimerNombre" required>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <div clas="">
+                            <label for="segundonombre">Segundo nombre</label>
+                            <input type="text" class="form-control" id="perfilSegundoNombre">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="primerapellido">Primer apellido</label>
+                        <input type="text" class="form-control" id="perfilPrimerApellido" required>   
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="segundoapellido">Segundo apellido</label>
+                        <input type="text" class="form-control" id="perfilSegundoApellido">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="perfilEmail" required>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="archivo">Imagen de perfil</label>
+                        <input type="file" class="form-control-file" id="perfilArchivo">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="telefono">Telefono de contacto</label>
+                        <input type="text" class="form-control" id="perfilTelefono">
+                    </div>
+                    <div class="col-12">
+                        <div class="btnFormProfile col-xs-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
