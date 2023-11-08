@@ -843,3 +843,7 @@ input[type="radio"]:checked~label {
     
 }
 /* fin my-profile.html*/
+
+.clickable-link {
+    cursor: pointer;
+}
