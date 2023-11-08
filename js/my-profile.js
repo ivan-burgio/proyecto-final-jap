@@ -38,6 +38,7 @@ let perfilUsuario;
   })()
 
 
+  //Coloca datos en los input
   function addForm(perfil) {
     primerNombre.value = perfil.name;
     segundoNombre.value = perfil.middleName;
@@ -46,6 +47,7 @@ let perfilUsuario;
     telefonoContacto.value = perfil.phone;
   }
 
+  //Si hay un dato en el localstorage lo coloca en los input llamando a una funcion
 document.addEventListener('DOMContentLoaded', function () {
   const perfil = JSON.parse(localStorage.getItem("perfil"));
     addForm(perfil);
