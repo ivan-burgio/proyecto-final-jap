@@ -298,6 +298,8 @@ paymentMethodSelect.addEventListener('change', function () {
             formEnvio.classList.add('was-validated')
 
             if (formEnvio.checkValidity() === true && form.checkValidity() === true) {
+                event.stopPropagation()
+                event.preventDefault()
                 Swal.fire(
                     {
                         title: 'Compra realizada con exito!',
