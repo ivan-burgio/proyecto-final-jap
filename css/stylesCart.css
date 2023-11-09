@@ -244,14 +244,20 @@ margin: 1%;
     flex-direction: column;
     border-radius: 1rem;
     margin: 2rem;
-    padding: 0.8rem;
-    width: 380px;
-    height: 350px;
+    margin-top: 5rem;
+    padding: 1rem;
+    width: 25rem;
+    height: 15rem;
     justify-content: center;
     background-color: #fff;
     position: fixed;
-    bottom: 240px;
-    left: 73%;
+    top: 0;
+    right: 0;
+}
+
+.contenedor-cerrarCompra {
+    display: flex;
+    align-items: center;
 }
 
 .cardBody {

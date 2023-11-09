@@ -401,10 +401,10 @@ document.addEventListener("DOMContentLoaded", showCartList(cartItems));
 //Evento que según el tamaño, cambia las clases del container de los costos totales
 
 window.addEventListener("resize", () => {
-    if (document.documentElement.clientWidth <= 1704) {
+    if (document.documentElement.clientWidth <= 992) {
         containerCost.classList.remove("cardPrice");
         containerCost.classList.add("cardPriceResponsive")
-    } else if (document.documentElement.clientWidth >= 1704) {
+    } else if (document.documentElement.clientWidth >= 992) {
         containerCost.classList.add("cardPrice");
         containerCost.classList.remove("cardPriceResponsive")
     }
