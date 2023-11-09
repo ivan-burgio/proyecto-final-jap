@@ -36,7 +36,10 @@
 .dark-mode label,
 .dark-mode nav,
 .dark-mode footer,
-.dark-mode .fondoCarrusel {
+.dark-mode .fondoCarrusel,
+.dark-mode .swal2-popup,
+.dark-mode .cardPrice,
+.dark-mode .cardPriceResponsive {
     background-color: rgb(37, 37, 37) !important;
 }
 
