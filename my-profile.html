@@ -9,7 +9,6 @@
     <!-- DARK / LIGHT-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
@@ -55,15 +54,15 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorías <ion-icon name="compass-outline"></ion-icon></a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="categories.html">Todas las Categorías</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(101)">Autos</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(109)">Celulares</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(105)">Computadoras</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(108)">Deporte</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(107)">Electrodomésticos</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(104)">Herramientas</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(102)">Juguetes</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(103)">Muebles</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(106)">Vestimenta</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(101)">Autos</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(109)">Celulares</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(105)">Computadoras</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(108)">Deporte</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(107)">Electrodomésticos</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(104)">Herramientas</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(102)">Juguetes</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(103)">Muebles</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(106)">Vestimenta</a></li>
                             </ul>
                         </div>
                     </li>
@@ -72,7 +71,10 @@
                     <!--Se crea un menu desplegable al hacer click al usuario-->
                     <li class="nav-item">
                         <div class="dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle d-flex gap-2 align-items-center" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="d-flex justify-content-center">
+                                    <img id="imgProfileNav" class="rounded-circle" width="45" height="45">
+                                </div>
                                 Bienvenido <span id="correoUsuario"></span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -91,8 +93,57 @@
 
     <main>
         <div class="container">
-            <div class="alert alert-danger text-center" role="alert">
-                <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+            <div class="list-groupc shadow caja-gris" id="cat-list-container">
+                <h3 class="titulo-perfil">Perfil</h3>
+                <div class="d-flex justify-content-center">
+                <img id="imgProfile" class="rounded-circle" width="200" height="200">
+            </div>
+                <form class="form-myprofile row needs-validation" novalidate>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <div clas="">
+                            <label for="primernombre" class="form-label">Primer nombre</label>
+                            <input type="text" class="form-control" id="perfilPrimerNombre" value="" minlength="3" maxlength="10" required>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <div clas="">
+                            <label for="segundonombre" class="form-label">Segundo nombre</label>
+                            <input type="text" class="form-control" id="perfilSegundoNombre" minlength="3" maxlength="10" value="">
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="primerapellido" class="form-label">Primer apellido</label>
+                        <input type="text" class="form-control" id="perfilPrimerApellido" minlength="3" maxlength="10" value="" required>   
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="segundoapellido" class="form-label">Segundo apellido</label>
+                        <input type="text" class="form-control" id="perfilSegundoApellido" minlength="3" maxlength="10" value="">
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="perfilEmail" value="" required>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="archivo" class="form-control-file  form-label">Imagen de perfil</label>
+                        <input type="file" class="form-control-file" value="" id="perfilArchivo">
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 form-group">
+                        <label for="telefono" class="form-label">Telefono de contacto</label>
+                        <input type="tel" class="form-control" value="" id="perfilTelefono" pattern="[0-9]{9}">
+                    </div>
+
+                    <div class="col-12">
+                        <div class="btnFormProfile col-xs-12 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                            <button type="submit" class="btn btn-primary" id="guardarPerfil">Guardar cambios</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
@@ -111,5 +162,6 @@
     <script src="js/my-profile.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

@@ -806,3 +806,54 @@ input[type="radio"]:checked~label {
         width: 12rem;
     }
 }
+
+
+/* my-profile.html*/
+
+.form-myprofile{
+ padding: 2% 5%;
+}
+
+.form-myprofile input{
+    width: 100%;
+}
+
+.form-myprofile label{
+    margin-left: 15px;
+    margin-bottom: 3px;
+}
+
+.form-myprofile button{
+    width: 40% !important;
+}
+
+.btnFormProfile{
+    width: 100%;
+    text-align: center;
+    
+}
+
+
+
+.titulo-perfil {
+    margin-top: 1rem;
+    padding-top: 2rem;
+}
+
+
+
+@media (max-width: 768px) {
+    .form-myprofile button{
+        width: 100% !important;
+    }    
+
+    .titulo-perfil {
+        margin-top: 2rem;
+    }
+    
+}
+/* fin my-profile.html*/
+
+.clickable-link {
+    cursor: pointer;
+}

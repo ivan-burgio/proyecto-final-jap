@@ -36,7 +36,10 @@
 .dark-mode label,
 .dark-mode nav,
 .dark-mode footer,
-.dark-mode .fondoCarrusel {
+.dark-mode .fondoCarrusel,
+.dark-mode .swal2-popup,
+.dark-mode .cardPrice,
+.dark-mode .cardPriceResponsive {
     background-color: rgb(37, 37, 37) !important;
 }
 
@@ -76,6 +79,10 @@
 .dark-mode .caja-gris-raro,
 .dark-mode .number-quantity {
     background-color: rgba(83, 83, 83, 0.848) !important;
+}
+
+.dark-mode #cardPriceBtn {
+    border: 2px solid white;
 }
 
 .dark-mode #toggleFilters {
@@ -174,4 +181,3 @@ textarea {
 .dark-mode .hr_debitoCredito{
     background-color: #dbdbdb;
    }
-   

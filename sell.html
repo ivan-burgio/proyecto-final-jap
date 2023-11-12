@@ -37,15 +37,15 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorías <ion-icon name="compass-outline"></ion-icon></a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="categories.html">Todas las Categorías</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(101)">Autos</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(109)">Celulares</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(105)">Computadoras</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(108)">Deporte</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(107)">Electrodomésticos</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(104)">Herramientas</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(102)">Juguetes</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(103)">Muebles</a></li>
-                                <li><a class="dropdown-item" onclick="copiarID(106)">Vestimenta</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(101)">Autos</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(109)">Celulares</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(105)">Computadoras</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(108)">Deporte</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(107)">Electrodomésticos</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(104)">Herramientas</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(102)">Juguetes</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(103)">Muebles</a></li>
+                                <li><a class="dropdown-item clickable-link" onclick="copiarID(106)">Vestimenta</a></li>
                             </ul>
                         </div>
                     </li>
@@ -55,7 +55,10 @@
                     <!--Se crea un menu desplegable al hacer click al usuario-->
                     <li class="nav-item">
                         <div class="dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle d-flex gap-2 align-items-center" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="d-flex justify-content-center">
+                                    <img id="imgProfileNav" class="rounded-circle" width="45" height="45">
+                                </div>
                                 Bienvenido <span id="correoUsuario"></span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">

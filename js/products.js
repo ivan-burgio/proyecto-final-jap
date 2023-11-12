@@ -92,23 +92,17 @@ function showProductList(currentProductsFilter) {
           count += 1;
         }
       });
+    } else {
+      Swal.fire({
+        title:'No hay productos para esta categoría!',
+        confirmButtonColor: '#FD7E14'
+      })
     }
   }
 
-  /*if (minCost>maxCost){ alert("hola")
-  };*/
-
-  if (count == 0) {
-    //alertNoData();    //Función por arreglar
-  }
-
-  //} else {
-  // No hay productos disponibles
-  //alertNoData(); //Funcion por arreglar
-
 }
 
-function colorCelda(valor) { //Funcion por arreglar
+function colorCelda(valor) { 
   minCost = document.getElementById("rangeFilterCostMin");
   maxCost = document.getElementById("rangeFilterCostMax");
 
