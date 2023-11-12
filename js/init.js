@@ -148,3 +148,11 @@ function copiarID(id) {
   localStorage.setItem("catID", id);
   window.location = "products.html"
 }
+
+const imgProfileNav = document.getElementById("imgProfileNav");
+if(!localStorage.getItem("imgProfile")){
+  localStorage.setItem("imgProfile", "");
+  imgProfileNav.src = '/img/defaultProfile.png';
+} else {
+  imgProfileNav.src = localStorage.getItem('imgProfile');
+}

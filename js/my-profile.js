@@ -6,6 +6,8 @@ let segundoApellido = document.getElementById('perfilSegundoApellido');
 let perfilEmail = document.getElementById('perfilEmail');
 let telefonoContacto = document.getElementById('perfilTelefono');
 let buttonGuardar = document.getElementById('guardarPerfil');
+let perfilArchivo = document.getElementById('perfilArchivo');
+let profileImage = document.getElementById("imgProfile");
 let perfilUsuario;
 
   //Coloca datos en los input
@@ -17,8 +19,59 @@ function addForm(perfil) {
   telefonoContacto.value = perfil.phone;
 }
 
+// Insertar imagen
+function imageProfile() {
+ perfilArchivo.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const profileImg = e.target.result;
+
+        // guardar la imagen en el localStorage
+        localStorage.setItem('imgProfile', profileImg);
+        displayImgProfile();
+        displayImgProfileNav();
+      };
+      
+      reader.readAsDataURL(file);
+     
+    }
+
+  });
+}
+
+// Mostrar imagen de perfil
+function displayImgProfile() {
+
+  if (localStorage.getItem('imgProfile')!=="") {
+    profileImage.src = localStorage.getItem('imgProfile');
+  } else {
+    profileImage.src = '/img/defaultProfile.png';
+  }
+}
+
+//cambia profile del nav
+function displayImgProfileNav() {
+ const imgProfileNav = document.getElementById("imgProfileNav")
+  if (localStorage.getItem('imgProfile')!=="") {
+    imgProfileNav.src = localStorage.getItem('imgProfile');
+  } else {
+    imgProfileNav.src = '/img/defaultProfile.png';
+  }
+}
+
+//borrar imagen de perfil hacer para proxima entrega Valeria(yo)
+
+
+
+
 //Si hay un dato en el localstorage lo coloca en los input llamando a una funcion
 document.addEventListener('DOMContentLoaded', function () {
+imageProfile();
+displayImgProfile();
 const perfil = JSON.parse(localStorage.getItem("perfil"));
   addForm(perfil);
 });
