@@ -253,6 +253,44 @@ margin: 1%;
     position: fixed;
     top: 0;
     right: 0;
+    
+}
+
+.opacity1 {
+    opacity: 1;
+}
+
+.opacity0 {
+    opacity: 0;
+}
+
+#cardPriceBtn {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: .6rem;
+    margin: 3rem;
+    opacity: 0;
+}
+
+#cardPriceBtn:hover {
+    cursor: pointer;
+}
+
+@media (min-width: 992px) {
+    #cardPriceBtn {
+        opacity: 1;
+    }
 }
 
 .contenedor-cerrarCompra {
@@ -295,4 +333,5 @@ margin: 1%;
     height: 350px;
     justify-content: center;
     background-color: #fff;
+    opacity: 1;
 }
