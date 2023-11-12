@@ -81,6 +81,10 @@
     background-color: rgba(83, 83, 83, 0.848) !important;
 }
 
+.dark-mode #cardPriceBtn {
+    border: 2px solid white;
+}
+
 .dark-mode #toggleFilters {
     background-color: rgb(37, 37, 37);
     color: white;
