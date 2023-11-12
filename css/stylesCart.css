@@ -253,6 +253,7 @@ margin: 1%;
     position: fixed;
     top: 0;
     right: 0;
+    
 }
 
 .opacity1 {
@@ -279,21 +280,18 @@ margin: 1%;
     font-weight: 700;
     padding: .6rem;
     margin: 3rem;
+    opacity: 0;
 }
 
 #cardPriceBtn:hover {
     cursor: pointer;
 }
 
-/* @media (min-width: 768px) {
-    .cardPrice {
-        opacity: 0;
-    }
-    
+@media (min-width: 992px) {
     #cardPriceBtn {
         opacity: 1;
     }
-} */
+}
 
 .contenedor-cerrarCompra {
     display: flex;
@@ -335,4 +333,5 @@ margin: 1%;
     height: 350px;
     justify-content: center;
     background-color: #fff;
+    opacity: 1;
 }

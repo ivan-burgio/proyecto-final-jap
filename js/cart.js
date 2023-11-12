@@ -421,17 +421,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const cardPrice = document.querySelector(".cardPrice");
     const cardPriceBtn = document.querySelector("#cardPriceBtn");
+    cardPrice.classList.add("opacity0");
 
     cardPriceBtn.addEventListener("click", () => {
         if(cardPrice.classList.contains("opacity0")) {
             cardPrice.classList.remove("opacity0");
             cardPrice.classList.add("opacity1");
-            console.log('a')
         } else if(cardPrice.classList.contains("opacity1")) {
             cardPrice.classList.remove("opacity1");
             cardPrice.classList.add("opacity0");
-            console.log('b')
         }
+        
+        window.addEventListener("resize", () => {
+            if (document.documentElement.clientWidth <= 992) {
+                containerCost.classList.remove("cardPrice");
+                containerCost.classList.add("cardPriceResponsive");
+            } else if (document.documentElement.clientWidth >= 992) {
+                containerCost.classList.add("cardPrice");
+                containerCost.classList.remove("cardPriceResponsive");
+            }
+        });
     });
 });
 
@@ -439,12 +448,3 @@ document.addEventListener("DOMContentLoaded", showCartList(cartItems));
 
 //Evento que según el tamaño, cambia las clases del container de los costos totales
 
-window.addEventListener("resize", () => {
-    if (document.documentElement.clientWidth <= 992) {
-        containerCost.classList.remove("cardPrice");
-        containerCost.classList.add("cardPriceResponsive");
-    } else if (document.documentElement.clientWidth >= 992) {
-        containerCost.classList.add("cardPrice");
-        containerCost.classList.remove("cardPriceResponsive");
-    }
-});
