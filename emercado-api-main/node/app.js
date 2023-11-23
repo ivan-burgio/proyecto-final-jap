@@ -90,57 +90,80 @@ app.get("/categorias/:id", (req, res) => {
         case 109:
             res.json(celulares);
         default:
-            res.status(404).json({mensaje: "Categoría no encontrada"});
+            res.status(404).json({ mensaje: "Categoría no encontrada" });
     }
 });
 
 app.get("/producto/:id", (req, res) => {
     let id = parseInt(req.params.id);
-    
+
     switch (id) {
         case 40281:
             res.json(ComputadoraDeEscritorio);
-            break;
         case 50741:
             res.json(OsoDePeluche);
-            break;
         case 50742:
             res.json(PelotaDeBasquetbol);
-            break;
         case 50743:
             res.json(PlayStation5);
-            break;
         case 50744:
             res.json(Bicicleta);
-            break;
         case 50921:
             res.json(ChevroletOnixJoy);
-            break;
         case 50922:
             res.json(FiatWay);
-            break;
         case 50923:
             res.json(SuzukiCelerio);
-            break;
         case 50924:
             res.json(Peugeot208);
-            break;
         case 50925:
             res.json(BugattiChiron);
-            break;
         case 60801:
             res.json(JuegoDeComedor);
-            break;
         case 60802:
             res.json(Sofa);
-            break;
         case 60803:
             res.json(Armario);
-            break;
         case 60804:
             res.json(MesaDeCentro);
-            break;
         default:
-            res.status(404).json({mensaje: "Producto no encontrado uwu"});
+            res.status(404).json({ mensaje: "Producto no encontrado uwu" });
+    }
+});
+
+app.get("/comentario/:id", (req, res) => {
+    let id = parseInt(req.params.id);
+
+    switch (id) {
+        case 40281:
+            res.json(comentarioCDE);
+        case 50741:
+            res.json(comentarioODP);
+        case 50742:
+            res.json(comentarioPDB);
+        case 50743:
+            res.json(comentarioPS5);
+        case 50744:
+            res.json(comentarioBici);
+        case 50921:
+            res.json(comentarioCOJ);
+        case 50922:
+            res.json(comentarioFW);
+        case 50923:
+            res.json(comentarioSC);
+        case 50924:
+            res.json(comentarioP208);
+        case 50925:
+            res.json(comentarioBC);
+        case 60801:
+            res.json(comentarioJDC);
+        case 60802:
+            res.json(comentarioSofa);
+        case 60803:
+            res.json(comentarioArmario);
+        case 60804:
+            res.json(comentarioMDC);
+        default:
+            res.status(404).json({ mensaje: "Comentarios no encontrados para el producto" });
     }
 });
