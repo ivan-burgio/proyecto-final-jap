@@ -6,51 +6,51 @@ const puerto = 3000; // Indico en que puerto voy a escucuhar
 app.use(express.json());
 
 // Listas de Productos
-let categorias = require("../cats/cat.json");
-let autos = require("../cats_products/101.json");
-let juguetes = require("../cats_products/102.json");
-let muebles = require("../cats_products/103.json");
-let herramientas = require("../cats_products/104.json");
-let computadoras = require("../cats_products/105.json");
-let vestimenta = require("../cats_products/106.json");
-let electrodomesticos = require("../cats_products/107.json");
-let deporte = require("../cats_products/108.json");
-let celulares = require("../cats_products/109.json");
+const categorias = require("../cats/cat.json");
+const autos = require("../cats_products/101.json");
+const juguetes = require("../cats_products/102.json");
+const muebles = require("../cats_products/103.json");
+const herramientas = require("../cats_products/104.json");
+const computadoras = require("../cats_products/105.json");
+const vestimenta = require("../cats_products/106.json");
+const electrodomesticos = require("../cats_products/107.json");
+const deporte = require("../cats_products/108.json");
+const celulares = require("../cats_products/109.json");
 
 // Productos
-let ComputadoraDeEscritorio = require("../products/40281.json");
-let OsoDePeluche = require("../products/50741.json");
-let PelotaDeBasquetbol = require("../products/50742.json");
-let PlayStation5 = require("../products/50743.json");
-let Bicicleta = require("../products/50744.json");
-let ChevroletOnixJoy = require("../products/50921.json");
-let FiatWay = require("../products/50922.json");
-let SuzukiCelerio = require("../products/50923.json");
-let Peugeot208 = require("../products/50924.json");
-let BugattiChiron = require("../products/50925.json");
-let JuegoDeComedor = require("../products/60801.json");
-let Sofa = require("../products/60802.json");
-let Armario = require("../products/60803.json");
-let MesaDeCentro = require("../products/60804.json");
+const ComputadoraDeEscritorio = require("../products/40281.json");
+const OsoDePeluche = require("../products/50741.json");
+const PelotaDeBasquetbol = require("../products/50742.json");
+const PlayStation5 = require("../products/50743.json");
+const Bicicleta = require("../products/50744.json");
+const ChevroletOnixJoy = require("../products/50921.json");
+const FiatWay = require("../products/50922.json");
+const SuzukiCelerio = require("../products/50923.json");
+const Peugeot208 = require("../products/50924.json");
+const BugattiChiron = require("../products/50925.json");
+const JuegoDeComedor = require("../products/60801.json");
+const Sofa = require("../products/60802.json");
+const Armario = require("../products/60803.json");
+const MesaDeCentro = require("../products/60804.json");
 
 //Comentarios por producto
-let comentarioCDE = require("../products_comments/40281.json");
-let comentarioODP = require("../products_comments/50741.json");
-let comentarioPDB = require("../products_comments/50742.json");
-let comentarioPS5 = require("../products_comments/50743.json");
-let comentarioBici = require("../products_comments/50744.json");
-let comentarioCOJ = require("../products_comments/50921.json");
-let comentarioFW = require("../products_comments/50922.json");
-let comentarioSC = require("../products_comments/50923.json");
-let comentarioP208 = require("../products_comments/50924.json");
-let comentarioBC = require("../products_comments/50925.json");
-let comentarioJDC = require("../products_comments/60801.json");
-let comentarioSofa = require("../products_comments/60802.json");
-let comentarioArmario = require("../products_comments/60803.json");
-let comentarioMDC = require("../products_comments/60804.json");
+const comentarioCDE = require("../products_comments/40281.json");
+const comentarioODP = require("../products_comments/50741.json");
+const comentarioPDB = require("../products_comments/50742.json");
+const comentarioPS5 = require("../products_comments/50743.json");
+const comentarioBici = require("../products_comments/50744.json");
+const comentarioCOJ = require("../products_comments/50921.json");
+const comentarioFW = require("../products_comments/50922.json");
+const comentarioSC = require("../products_comments/50923.json");
+const comentarioP208 = require("../products_comments/50924.json");
+const comentarioBC = require("../products_comments/50925.json");
+const comentarioJDC = require("../products_comments/60801.json");
+const comentarioSofa = require("../products_comments/60802.json");
+const comentarioArmario = require("../products_comments/60803.json");
+const comentarioMDC = require("../products_comments/60804.json");
 
 // Carrito Usuario
-let cartUser = require("../user_cart/25801.json");
+const cartUser = require("../user_cart/25801.json");
 
 // ------------------------------ ROUTER ------------------------------
 app.get("/", (req, res) => {
