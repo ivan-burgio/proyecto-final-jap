@@ -8,12 +8,12 @@ app.use(express.json());
 // Listas de Productos
 let categorias = require("../cats/cat.json");
 let autos = require("../cats_products/101.json");
-let jueguetes = require("../cats_products/102.json");
+let juguetes = require("../cats_products/102.json");
 let muebles = require("../cats_products/103.json");
 let herramientas = require("../cats_products/104.json");
 let computadoras = require("../cats_products/105.json");
 let vestimenta = require("../cats_products/106.json");
-let electrodomésticos = require("../cats_products/107.json");
+let electrodomesticos = require("../cats_products/107.json");
 let deporte = require("../cats_products/108.json");
 let celulares = require("../cats_products/109.json");
 
@@ -50,12 +50,12 @@ let comentarioArmario = require("../products_comments/60803.json");
 let comentarioMDC = require("../products_comments/60804.json");
 
 // Carrito Usuario
-let cartUser = require("../user_cart/25801.json");
+let cartUser = require("../user_cart/25801.json"); 
 
 // ------------------------------ ROUTER ------------------------------
 app.get("/", (req, res) => {
     // El primer parámetro SIEMPRE es asociado a la request (petición) y el segundo a la response (respuesta)
-    res.send("<h1>Bienvenid@ al servidor</h1>");
+    res.send("<h1>jeje</h1>");
 });
 
 // Esta línea inicia el servidor para que escuche peticiones en el puerto indicado
@@ -63,10 +63,37 @@ app.listen(puerto, () => {
     console.log(`Servidor funciona uwu`);
 });
 
-app.get("/", (req, res) => {
+app.get("/categorias", (req, res) => {
     res.json(categorias);
 });
 
-app.get("/listado/:id", (req, res) => {
-    res.json(categorias[req.params.id]);
-});
+app.get("/categorias/:id", (req, res) => {
+    let id = parseInt(req.params.id);
+    
+    switch (id) {
+        case 101:
+             res.json(autos);
+        case 102:
+            res.json(juguetes);
+        case 103:
+            res.json(muebles);
+        case 104:
+            res.json(herramientas);
+        case 105:
+            res.json(computadoras);
+        case 106:
+            res.json(vestimenta);
+        case 107:
+            res.json(electrodomesticos);
+        case 108:
+            res.json(deporte);
+        case 109:
+            res.json(celulares);
+        default:
+            res.status(404).json({ mensaje: 'Categoría no encontrada' });
+    }
+}
+);
+
+
+
