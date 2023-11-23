@@ -50,7 +50,7 @@ let comentarioArmario = require("../products_comments/60803.json");
 let comentarioMDC = require("../products_comments/60804.json");
 
 // Carrito Usuario
-let cartUser = require("../user_cart/25801.json"); 
+let cartUser = require("../user_cart/25801.json");
 
 // ------------------------------ ROUTER ------------------------------
 app.get("/", (req, res) => {
@@ -69,10 +69,10 @@ app.get("/categorias", (req, res) => {
 
 app.get("/categorias/:id", (req, res) => {
     let id = parseInt(req.params.id);
-    
+
     switch (id) {
         case 101:
-             res.json(autos);
+            res.json(autos);
         case 102:
             res.json(juguetes);
         case 103:
@@ -90,10 +90,57 @@ app.get("/categorias/:id", (req, res) => {
         case 109:
             res.json(celulares);
         default:
-            res.status(404).json({ mensaje: 'Categoría no encontrada' });
+            res.status(404).json({mensaje: "Categoría no encontrada"});
     }
-}
-);
+});
 
-
-
+app.get("/producto/:id", (req, res) => {
+    let id = parseInt(req.params.id);
+    
+    switch (id) {
+        case 40281:
+            res.json(ComputadoraDeEscritorio);
+            break;
+        case 50741:
+            res.json(OsoDePeluche);
+            break;
+        case 50742:
+            res.json(PelotaDeBasquetbol);
+            break;
+        case 50743:
+            res.json(PlayStation5);
+            break;
+        case 50744:
+            res.json(Bicicleta);
+            break;
+        case 50921:
+            res.json(ChevroletOnixJoy);
+            break;
+        case 50922:
+            res.json(FiatWay);
+            break;
+        case 50923:
+            res.json(SuzukiCelerio);
+            break;
+        case 50924:
+            res.json(Peugeot208);
+            break;
+        case 50925:
+            res.json(BugattiChiron);
+            break;
+        case 60801:
+            res.json(JuegoDeComedor);
+            break;
+        case 60802:
+            res.json(Sofa);
+            break;
+        case 60803:
+            res.json(Armario);
+            break;
+        case 60804:
+            res.json(MesaDeCentro);
+            break;
+        default:
+            res.status(404).json({mensaje: "Producto no encontrado uwu"});
+    }
+});
