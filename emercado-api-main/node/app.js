@@ -1,9 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 const jsonwebtoken = require("jsonwebtoken");
+const SECRET_KEY = "EL MEJOR SUBGRUPO";
 
 const app = express(); // Instancia de express
 const puerto = 3000; // Indico en que puerto voy a escucuhar
 app.use(express.json());
+app.use(cors());
 
 // Listas de Productos
 const categorias = require("../cats/cat.json");
@@ -58,10 +61,25 @@ app.get("/", (req, res) => {
     res.send("<h1>jeje</h1>");
 });
 
-// Esta línea inicia el servidor para que escuche peticiones en el puerto indicado
-app.listen(puerto, () => {
-    console.log(`Servidor funciona uwu`);
+app.post("/login", (req, res)=> {
+    const {username, password} = req.body;
+    if(username === "subgrupo1" && password === "subgrupo1password"){
+        const token = jsonwebtoken.sign({username}, SECRET_KEY);
+        res.status(200).json({token});
+    } else {
+        res.status(401).json({message: "Usuario y/o contraseña incorrecta"});
+    }
 });
+
+app.use("/cart", (req, res, next)=> {
+    try {
+        const decoded = jsonwebtoken.verify(req.headers["access-token"], SECRET_KEY);
+        console.log(decoded)
+        next();
+    } catch(error) {
+        res.status(401).json({message: "Usuario no autorizado"});
+    }
+})
 
 app.get("/categorias", (req, res) => {
     res.json(categorias);
@@ -166,4 +184,9 @@ app.get("/comentario/:id", (req, res) => {
         default:
             res.status(404).json({ mensaje: "Comentarios no encontrados para el producto" });
     }
+});
+
+// Esta línea inicia el servidor para que escuche peticiones en el puerto indicado
+app.listen(puerto, () => {
+    console.log(`Servidor funciona uwu`);
 });
