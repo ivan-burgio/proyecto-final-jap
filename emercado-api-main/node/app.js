@@ -9,9 +9,6 @@ app.use(express.json());
 app.use(cors());
 
 
-// Carrito Usuario
-const cartUser = require("../user_cart/25801.json");
-
 
 app.get("/", (req, res) => {
     // El primer parámetro SIEMPRE es asociado a la request (petición) y el segundo a la response (respuesta)
@@ -28,6 +25,7 @@ app.post("/login", (req, res)=> {
     }
 });
 
+//No utilizamos la dirección porque manejamos el carrito con un array en la pagina
 app.use("/cart", (req, res, next)=> {
     try {
         const decoded = jsonwebtoken.verify(req.headers["access-token"], SECRET_KEY);
@@ -38,15 +36,16 @@ app.use("/cart", (req, res, next)=> {
     }
 })
 
-
 const catRoutes     = require("./router/catRoutes");
 const productRoutes = require("./router/productRoutes");
 const commentRoutes = require("./router/commentRoutes");
+const sellRoutes = require("./router/sellRoutes");
 
 // Rutas
 app.use("/categorias", catRoutes);
-app.use("/productos", productRoutes);
-app.use("/comentarios", commentRoutes);
+app.use("/producto", productRoutes);
+app.use("/comentario", commentRoutes);
+app.use("/sell", sellRoutes);
 
 
 // Esta línea inicia el servidor para que escuche peticiones en el puerto indicado

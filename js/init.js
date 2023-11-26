@@ -1,5 +1,5 @@
 const CATEGORIES_URL = "http://localhost:3000/categorias"; //
-const PUBLISH_PRODUCT_URL = "http://localhost:3000/emercado-api/sell/publish.json";
+const PUBLISH_PRODUCT_URL = "http://localhost:3000/sell";
 const PRODUCTS_URL = "http://localhost:3000/categorias/"; //
 const PRODUCT_INFO_URL = "http://localhost:3000/producto/"; //
 const PRODUCT_INFO_COMMENTS_URL = "http://localhost:3000/comentario/"; //

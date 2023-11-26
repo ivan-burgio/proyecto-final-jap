@@ -46,7 +46,7 @@ const getIdProduct = (id) => {
         case 60804:
             return MesaDeCentro;
         default:
-            return { mensaje: "Producto no encontrado uwu" };
+            return null;
     }
     
 };
